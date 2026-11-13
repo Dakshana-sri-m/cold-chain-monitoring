@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FrostGuard - Keep Every Scoop Cold | Kongu Fleet Operations</title>
+  <title>FrostGuard Logistics - 3-Device Cold Chain Fleet Excursion Monitoring</title>
   
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -73,31 +73,23 @@
       margin: 0;
       line-height: 1.4;
     }
-    /* Toggle Switch Styling */
-    .toggle-checkbox:checked {
-      right: 0;
-      border-color: #7c3aed;
-    }
-    .toggle-checkbox:checked + .toggle-label {
-      background-color: #7c3aed;
-    }
   </style>
 </head>
 <body class="bg-surface antialiased text-slate-800 min-h-screen flex flex-col md:flex-row overflow-x-hidden">
 
   <!-- ==================== SIDEBAR ==================== -->
-  <aside class="w-full md:w-64 bg-white border-r border-slate-200/80 flex flex-col justify-between shrink-0 z-30 transition-all duration-200 min-h-screen">
+  <aside class="w-full md:w-64 bg-white border-r border-slate-200/80 flex flex-col justify-between shrink-0 z-30 min-h-screen">
     <div>
       <!-- Brand Logo & Header -->
       <div class="px-6 py-6 flex items-center gap-3">
-        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 to-indigo-400 flex items-center justify-center text-white shadow-md shadow-brand-500/20">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 to-indigo-500 flex items-center justify-center text-white shadow-md shadow-brand-500/20">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" d="M12 2v20m10-10H2m17.07-7.07l-14.14 14.14M19.07 19.07L4.93 4.93"/>
           </svg>
         </div>
         <div>
           <h1 class="text-xl font-bold tracking-tight text-slate-900 leading-none">FrostGuard</h1>
-          <p class="text-[11px] font-medium text-slate-400 mt-1">Keep Every Scoop Cold</p>
+          <p class="text-[11px] font-medium text-slate-400 mt-1">3-Device Fleet Logistics</p>
         </div>
       </div>
 
@@ -111,12 +103,12 @@
           <span>Dashboard</span>
         </button>
 
-        <!-- Shipments -->
+        <!-- Shipments & Corridors -->
         <button onclick="switchView('shipments')" id="nav-shipments" class="nav-item w-full flex items-center gap-3.5 px-3.5 py-2.5 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-all">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
           </svg>
-          <span>Shipments</span>
+          <span>Route Corridors</span>
         </button>
 
         <!-- Live Tracking -->
@@ -128,12 +120,12 @@
           <span>Live Tracking</span>
         </button>
 
-        <!-- Temperature Monitoring -->
+        <!-- 3-Device Temperature Monitoring -->
         <button onclick="switchView('sensors')" id="nav-sensors" class="nav-item w-full flex items-center gap-3.5 px-3.5 py-2.5 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-all">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
           </svg>
-          <span>Temperature Monitoring</span>
+          <span>3-Device Excursion</span>
         </button>
 
         <!-- Spoilage Analysis -->
@@ -142,7 +134,7 @@
             <path stroke-linecap="round" stroke-linejoin="round" d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z"/>
             <path stroke-linecap="round" stroke-linejoin="round" d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z"/>
           </svg>
-          <span>Spoilage Analysis</span>
+          <span>Spoilage & Risk</span>
         </button>
 
         <!-- Alerts -->
@@ -179,18 +171,13 @@
     <div class="p-4 border-t border-slate-100">
       <div class="p-3.5 rounded-2xl bg-gradient-to-br from-indigo-50/70 via-brand-50/60 to-purple-50/70 border border-brand-100/60 text-center mb-3">
         <div class="w-8 h-8 mx-auto mb-2 text-brand-600 bg-white rounded-full flex items-center justify-center shadow-xs">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M12 2v20m10-10H2m17.07-7.07l-14.14 14.14M19.07 19.07L4.93 4.93"/>
-          </svg>
+          🚚
         </div>
-        <p class="text-xs font-bold text-slate-800">Cold Chain. In Safe Hands.</p>
-        <p class="text-[10px] text-slate-500 mt-0.5">Kongu Region Dairy Logistics</p>
+        <p class="text-xs font-bold text-slate-800">Kongu Logistics Network</p>
+        <p class="text-[10px] text-slate-500 mt-0.5">3 Probes per Lorry &bull; Multi-Fleet Sync</p>
       </div>
 
-      <button onclick="alert('Session secured. Antigravity Cold Chain Dispatcher active.')" class="w-full flex items-center justify-center gap-2 px-3 py-2 text-xs font-semibold text-slate-500 hover:text-slate-800 hover:bg-slate-100 rounded-xl transition">
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/>
-        </svg>
+      <button onclick="alert('Session secured. Active Antigravity Fleet Dispatcher.')" class="w-full flex items-center justify-center gap-2 px-3 py-2 text-xs font-semibold text-slate-500 hover:text-slate-800 hover:bg-slate-100 rounded-xl transition">
         <span>Logout</span>
       </button>
     </div>
@@ -203,18 +190,13 @@
     <header class="bg-white/95 backdrop-blur-md sticky top-0 z-20 border-b border-slate-200/70 px-6 py-3.5 flex items-center justify-between gap-4">
       <!-- Search Input -->
       <div class="flex items-center gap-3 flex-1 max-w-md">
-        <button class="md:hidden text-slate-500 hover:text-slate-700">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
-          </svg>
-        </button>
         <div class="relative w-full">
           <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
             </svg>
           </span>
-          <input type="text" id="global-search" placeholder="Search shipments, trucks, or locations..." 
+          <input type="text" id="global-search" placeholder="Search source hub, destination, truck ID, or corridor..." 
                  class="w-full pl-10 pr-4 py-2 text-xs md:text-sm bg-slate-50 border border-slate-200/80 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500 transition-all text-slate-800 placeholder-slate-400">
         </div>
       </div>
@@ -224,23 +206,20 @@
         <!-- Live Pill -->
         <div class="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-50 border border-emerald-100 text-xs font-semibold text-emerald-700">
           <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-          <span>Live</span>
+          <span>Live Fleet Stream</span>
           <span class="text-slate-300">|</span>
-          <span class="text-[11px] font-normal text-slate-500" id="header-last-updated">Last updated: 10:24 AM</span>
+          <span class="text-[11px] font-normal text-slate-500" id="header-last-updated">10:24 AM</span>
         </div>
 
         <!-- User Profile Pill -->
         <div class="flex items-center gap-2.5 pl-2">
-          <div class="w-9 h-9 rounded-full bg-gradient-to-tr from-brand-600 to-pink-500 p-0.5 text-white flex items-center justify-center font-bold text-xs shadow-sm">
+          <div class="w-9 h-9 rounded-full bg-gradient-to-tr from-brand-600 to-indigo-500 p-0.5 text-white flex items-center justify-center font-bold text-xs shadow-sm">
             <span>S</span>
           </div>
           <div class="hidden lg:block text-left">
             <p class="text-xs font-bold text-slate-800 leading-tight">Srinithi</p>
-            <p class="text-[10px] text-slate-400">Operations Lead</p>
+            <p class="text-[10px] text-slate-400">Logistics Fleet Lead</p>
           </div>
-          <svg class="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
-          </svg>
         </div>
       </div>
     </header>
@@ -254,15 +233,29 @@
       <div id="view-dashboard" class="view-panel space-y-6">
         
         <!-- View Header -->
-        <div>
-          <h2 class="text-2xl font-bold text-slate-900 tracking-tight">Dashboard</h2>
-          <p class="text-xs text-slate-500 mt-0.5">Real-time overview of your cold chain operations</p>
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+          <div>
+            <h2 class="text-2xl font-bold text-slate-900 tracking-tight">Cold Chain Logistics Dashboard</h2>
+            <p class="text-xs text-slate-500 mt-0.5">3 In-Vehicle IoT Detectors &bull; Source-to-Destination Multi-Lorry Corridors</p>
+          </div>
+
+          <!-- Active Corridor Filter Pill -->
+          <div class="flex items-center gap-2 bg-white px-3 py-1.5 rounded-xl border border-slate-200 text-xs shadow-xs">
+            <span class="text-slate-400 font-medium">Active Corridor:</span>
+            <select id="dash-corridor-filter" onchange="filterDashboardCorridor(this.value)" class="font-bold text-brand-700 bg-transparent focus:outline-none">
+              <option value="ALL">All Kongu Corridors (8 Lorries)</option>
+              <option value="COR-ERD-SLM">Erode -> Salem (NH544)</option>
+              <option value="COR-CBE-ERD">Coimbatore -> Erode (NH544)</option>
+              <option value="COR-OTY-CBE">Nilgiris -> Coimbatore (NH181)</option>
+              <option value="COR-NMK-KRR">Namakkal -> Karur (NH44)</option>
+            </select>
+          </div>
         </div>
 
         <!-- 4 Top KPI Cards -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           <!-- Card 1: Active Shipments -->
-          <div onclick="switchView('shipments')" class="cursor-pointer bg-white p-5 rounded-2xl border border-slate-100/90 shadow-xs hover:shadow-md transition-all flex items-center justify-between">
+          <div onclick="switchView('shipments')" class="cursor-pointer bg-white p-5 rounded-2xl border border-slate-100 shadow-xs hover:shadow-md transition-all flex items-center justify-between">
             <div class="flex items-center gap-4">
               <div class="w-12 h-12 rounded-2xl bg-indigo-50 text-brand-600 flex items-center justify-center">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -270,15 +263,15 @@
                 </svg>
               </div>
               <div>
-                <p class="text-xs font-semibold text-slate-500">Active Shipments</p>
-                <h3 class="text-2xl font-extrabold text-slate-900 mt-0.5" id="dash-active-shipments">4</h3>
+                <p class="text-xs font-semibold text-slate-500">Active Lorries</p>
+                <h3 class="text-2xl font-extrabold text-slate-900 mt-0.5" id="dash-active-shipments">8</h3>
               </div>
             </div>
-            <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+            <span class="text-xs text-brand-600 font-bold bg-brand-50 px-2 py-1 rounded-lg">4 Corridors</span>
           </div>
 
-          <!-- Card 2: Current Temperature -->
-          <div onclick="switchView('sensors')" class="cursor-pointer bg-white p-5 rounded-2xl border border-slate-100/90 shadow-xs hover:shadow-md transition-all flex items-center justify-between">
+          <!-- Card 2: Current Active Lorry Temp (3 Probes Avg) -->
+          <div onclick="switchView('sensors')" class="cursor-pointer bg-white p-5 rounded-2xl border border-slate-100 shadow-xs hover:shadow-md transition-all flex items-center justify-between">
             <div class="flex items-center gap-4">
               <div class="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -286,18 +279,21 @@
                 </svg>
               </div>
               <div>
-                <p class="text-xs font-semibold text-slate-500">Current Temperature</p>
+                <p class="text-xs font-semibold text-slate-500">Active Lorry Average</p>
                 <div class="flex items-center gap-2 mt-0.5">
                   <h3 class="text-2xl font-extrabold text-slate-900" id="dash-curr-temp">-20.4°C</h3>
                   <span id="dash-temp-pill" class="px-2 py-0.5 text-[11px] font-bold rounded-full bg-emerald-100 text-emerald-700">Safe</span>
                 </div>
               </div>
             </div>
-            <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+            <div class="text-right text-[10px] text-slate-400 font-mono">
+              <span id="dash-mini-t1">D1:-16°</span><br>
+              <span id="dash-mini-t3" class="text-rose-500 font-bold">D3:-7°</span>
+            </div>
           </div>
 
-          <!-- Card 3: Alerts -->
-          <div onclick="switchView('alerts')" class="cursor-pointer bg-white p-5 rounded-2xl border border-slate-100/90 shadow-xs hover:shadow-md transition-all flex items-center justify-between">
+          <!-- Card 3: Excursion Alerts -->
+          <div onclick="switchView('alerts')" class="cursor-pointer bg-white p-5 rounded-2xl border border-slate-100 shadow-xs hover:shadow-md transition-all flex items-center justify-between">
             <div class="flex items-center gap-4">
               <div class="w-12 h-12 rounded-2xl bg-rose-50 text-rose-500 flex items-center justify-center">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -305,15 +301,15 @@
                 </svg>
               </div>
               <div>
-                <p class="text-xs font-semibold text-slate-500">Alerts</p>
+                <p class="text-xs font-semibold text-slate-500">Excursion Incidents</p>
                 <h3 class="text-2xl font-extrabold text-slate-900 mt-0.5" id="dash-alert-count">2</h3>
               </div>
             </div>
-            <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+            <span class="text-xs text-rose-600 font-bold bg-rose-50 px-2 py-1 rounded-lg">1 Critical</span>
           </div>
 
-          <!-- Card 4: Cold Chain Health -->
-          <div class="bg-white p-5 rounded-2xl border border-slate-100/90 shadow-xs flex items-center justify-between">
+          <!-- Card 4: Corridor Fleet Health -->
+          <div class="bg-white p-5 rounded-2xl border border-slate-100 shadow-xs flex items-center justify-between">
             <div class="flex items-center gap-4 w-full">
               <div class="w-12 h-12 rounded-2xl bg-brand-50 text-brand-600 flex items-center justify-center shrink-0">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -321,32 +317,51 @@
                 </svg>
               </div>
               <div class="flex-1 min-w-0">
-                <p class="text-xs font-semibold text-slate-500">Cold Chain Health</p>
-                <h3 class="text-2xl font-extrabold text-slate-900 mt-0.5">98%</h3>
+                <p class="text-xs font-semibold text-slate-500">Fleet Excursion Compliance</p>
+                <h3 class="text-2xl font-extrabold text-slate-900 mt-0.5">96.4%</h3>
                 <div class="w-full bg-slate-100 rounded-full h-1.5 mt-2">
-                  <div class="bg-gradient-to-r from-brand-500 to-indigo-600 h-1.5 rounded-full" style="width: 98%"></div>
+                  <div class="bg-gradient-to-r from-emerald-500 to-brand-600 h-1.5 rounded-full" style="width: 96.4%"></div>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Row 2: Temperature Trend Chart & Live Tracking Preview -->
+        <!-- NEW HIGHLIGHT: SAME-CORRIDOR MULTI-LORRY LOGISTICS EFFICIENCY COMPARATOR -->
+        <div class="bg-white p-5 rounded-2xl border border-brand-100/80 shadow-xs">
+          <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between pb-3 border-b border-slate-100 gap-2">
+            <div class="flex items-center gap-2.5">
+              <span class="px-2.5 py-1 rounded-lg bg-brand-50 text-brand-700 text-xs font-bold">Logistics Multi-Vehicle Sync</span>
+              <h3 class="text-sm font-bold text-slate-900">Same Source &rarr; Destination Corridor Efficiency Comparator</h3>
+            </div>
+            <span class="text-xs text-slate-400 font-medium">Multiple lorries operating concurrently on identical transit corridors</span>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-4" id="corridor-cards-container">
+            <!-- Dynamically populated corridor comparison cards -->
+          </div>
+        </div>
+
+        <!-- Row 2: In-Vehicle 3-Device Real-Time Curves & Live Tracking Preview -->
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
           
-          <!-- Temperature Trend -->
-          <div class="lg:col-span-7 bg-white p-5 rounded-2xl border border-slate-100/90 shadow-xs flex flex-col justify-between">
+          <!-- In-Vehicle 3-Device Real-Time Excursion Curves -->
+          <div class="lg:col-span-7 bg-white p-5 rounded-2xl border border-slate-100 shadow-xs flex flex-col justify-between">
             <div class="flex items-center justify-between mb-4">
-              <div class="flex items-center gap-2">
-                <svg class="w-4 h-4 text-brand-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
-                </svg>
-                <h4 class="text-sm font-bold text-slate-900">Temperature Trend</h4>
+              <div>
+                <h4 class="text-sm font-bold text-slate-900 flex items-center gap-2">
+                  <span>3-Device Spatial Excursion Trend</span>
+                  <span class="text-[11px] font-normal text-slate-400" id="dash-chart-truck-label">(TN-33-CC-204)</span>
+                </h4>
+                <p class="text-[11px] text-slate-400 mt-0.5">Device 1 (Front), Device 2 (Mid Core), Device 3 (Rear Influx) vs -18°C Setpoint</p>
               </div>
-              <select id="trend-time-range" class="text-xs font-semibold bg-slate-50 border border-slate-200 rounded-lg px-2.5 py-1 text-slate-600 focus:outline-none">
-                <option>Last 6 Hours</option>
-                <option>Last 24 Hours</option>
-              </select>
+
+              <!-- Legend -->
+              <div class="hidden sm:flex items-center gap-3 text-xs">
+                <span class="flex items-center gap-1 text-[11px]"><span class="w-2.5 h-2.5 rounded-full bg-blue-500"></span> D1 Front</span>
+                <span class="flex items-center gap-1 text-[11px]"><span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span> D2 Mid</span>
+                <span class="flex items-center gap-1 text-[11px]"><span class="w-2.5 h-2.5 rounded-full bg-rose-500"></span> D3 Rear</span>
+              </div>
             </div>
             
             <div class="relative h-64 w-full">
@@ -355,16 +370,19 @@
           </div>
 
           <!-- Live Tracking Preview Card -->
-          <div class="lg:col-span-5 bg-white p-5 rounded-2xl border border-slate-100/90 shadow-xs flex flex-col justify-between">
+          <div class="lg:col-span-5 bg-white p-5 rounded-2xl border border-slate-100 shadow-xs flex flex-col justify-between">
             <div class="flex items-center justify-between mb-3">
-              <div class="flex items-center gap-2">
-                <svg class="w-4 h-4 text-brand-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
-                </svg>
-                <h4 class="text-sm font-bold text-slate-900">Live Tracking</h4>
+              <div>
+                <h4 class="text-sm font-bold text-slate-900 flex items-center gap-2">
+                  <svg class="w-4 h-4 text-brand-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                  </svg>
+                  <span>Corridor Transit Tracking</span>
+                </h4>
+                <p class="text-[11px] text-slate-400 mt-0.5" id="dash-corridor-subtext">Erode Regional Storage &rarr; Salem Central Terminal</p>
               </div>
               <button onclick="switchView('tracking')" class="text-xs font-bold text-brand-600 hover:text-brand-700 flex items-center gap-1">
-                <span>View Details</span>
+                <span>Full Map</span>
                 <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
               </button>
             </div>
@@ -372,20 +390,20 @@
             <!-- Mini Map Container -->
             <div id="dashMiniMap" class="w-full h-44 rounded-xl border border-slate-100 overflow-hidden relative z-0"></div>
 
-            <!-- Mini Map Footer Status -->
-            <div class="mt-3 pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
-              <div class="flex items-center gap-2">
-                <span class="w-7 h-7 rounded-lg bg-indigo-50 text-brand-600 flex items-center justify-center">
-                  🚚
-                </span>
-                <div>
+            <!-- Mini Map Footer Status with Source & Destination Details -->
+            <div class="mt-3 pt-3 border-t border-slate-100 space-y-2 text-xs">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                  <span class="w-6 h-6 rounded-lg bg-indigo-50 text-brand-600 flex items-center justify-center text-xs">🚚</span>
                   <span class="font-bold text-slate-800" id="dash-truck-id">TN-33-CC-204</span>
-                  <span class="ml-2 px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-700" id="dash-truck-status">On Route</span>
+                  <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-rose-100 text-rose-700" id="dash-truck-status">Rear Excursion</span>
                 </div>
+                <div class="text-slate-500 font-medium">ETA <strong class="text-slate-800" id="dash-truck-eta">1h 20m</strong></div>
               </div>
-              <div class="flex items-center gap-1 text-slate-500 font-medium">
-                <svg class="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                <span>ETA <strong class="text-slate-700" id="dash-truck-eta">1h 20m</strong></span>
+              <div class="flex items-center justify-between text-[11px] text-slate-500 bg-slate-50 p-2 rounded-lg">
+                <span><b>Source:</b> <span id="dash-source-name">Erode Regional Storage</span></span>
+                <span>&rarr;</span>
+                <span><b>Destination:</b> <span id="dash-dest-name">Salem Central Terminal</span></span>
               </div>
             </div>
           </div>
@@ -394,17 +412,15 @@
         <!-- Row 3: Shipment Overview Table & Recent Alerts -->
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
           
-          <!-- Shipment Overview Table -->
-          <div class="lg:col-span-7 bg-white p-5 rounded-2xl border border-slate-100/90 shadow-xs">
+          <!-- Shipment Overview Table with Source & Destination details -->
+          <div class="lg:col-span-8 bg-white p-5 rounded-2xl border border-slate-100 shadow-xs">
             <div class="flex items-center justify-between mb-4">
-              <div class="flex items-center gap-2">
-                <svg class="w-4 h-4 text-brand-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
-                </svg>
-                <h4 class="text-sm font-bold text-slate-900">Shipment Overview</h4>
+              <div>
+                <h4 class="text-sm font-bold text-slate-900">Active Multi-Lorry Fleet &bull; 3 Detectors Matrix</h4>
+                <p class="text-[11px] text-slate-400">Comparing 3 In-Vehicle Devices: D1 (Front), D2 (Mid Core), D3 (Rear Door)</p>
               </div>
               <button onclick="switchView('shipments')" class="text-xs font-bold text-brand-600 hover:text-brand-700 flex items-center gap-1">
-                <span>View All Shipments</span>
+                <span>All Corridors</span>
                 <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
               </button>
             </div>
@@ -412,11 +428,14 @@
             <div class="overflow-x-auto">
               <table class="w-full text-left text-xs">
                 <thead>
-                  <tr class="text-slate-400 border-b border-slate-100">
-                    <th class="pb-2.5 font-semibold">Truck ID</th>
-                    <th class="pb-2.5 font-semibold">Temperature</th>
-                    <th class="pb-2.5 font-semibold">Status</th>
-                    <th class="pb-2.5 font-semibold">ETA</th>
+                  <tr class="text-slate-400 border-b border-slate-100 pb-2.5">
+                    <th class="pb-2.5 font-semibold">Lorry ID</th>
+                    <th class="pb-2.5 font-semibold">Source &rarr; Destination</th>
+                    <th class="pb-2.5 font-semibold text-center">D1 (Front)</th>
+                    <th class="pb-2.5 font-semibold text-center">D2 (Mid)</th>
+                    <th class="pb-2.5 font-semibold text-center">D3 (Rear)</th>
+                    <th class="pb-2.5 font-semibold text-center">&Delta;T (Gradient)</th>
+                    <th class="pb-2.5 font-semibold">Excursion Diagnosis</th>
                   </tr>
                 </thead>
                 <tbody class="divide-y divide-slate-100 text-slate-700" id="dash-shipments-tbody">
@@ -427,19 +446,11 @@
           </div>
 
           <!-- Recent Alerts -->
-          <div class="lg:col-span-5 bg-white p-5 rounded-2xl border border-slate-100/90 shadow-xs flex flex-col justify-between">
+          <div class="lg:col-span-4 bg-white p-5 rounded-2xl border border-slate-100 shadow-xs flex flex-col justify-between">
             <div>
-              <div class="flex items-center justify-between mb-4">
-                <div class="flex items-center gap-2">
-                  <svg class="w-4 h-4 text-rose-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
-                  </svg>
-                  <h4 class="text-sm font-bold text-slate-900">Recent Alerts</h4>
-                </div>
-                <button onclick="switchView('alerts')" class="text-xs font-bold text-brand-600 hover:text-brand-700 flex items-center gap-1">
-                  <span>View All</span>
-                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
-                </button>
+              <div class="flex items-center justify-between mb-3">
+                <h4 class="text-sm font-bold text-slate-900">Excursion Alerts</h4>
+                <button onclick="switchView('alerts')" class="text-xs font-bold text-brand-600 hover:text-brand-700">View All</button>
               </div>
 
               <!-- Alert Items Container -->
@@ -447,79 +458,12 @@
                 <!-- Injected via JS -->
               </div>
             </div>
-          </div>
-        </div>
 
-        <!-- Row 4: Spoilage Analysis Summary Card -->
-        <div class="bg-white p-5 rounded-2xl border border-slate-100/90 shadow-xs">
-          <div class="flex items-center gap-2 mb-4">
-            <svg class="w-4 h-4 text-brand-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z"/>
-            </svg>
-            <h4 class="text-sm font-bold text-slate-900">Spoilage Analysis</h4>
-          </div>
-
-          <div class="grid grid-cols-1 md:grid-cols-4 gap-4 items-center">
-            
-            <!-- Ring Chart: Spoilage Rate -->
-            <div class="flex items-center justify-center gap-4 bg-slate-50/70 p-4 rounded-xl border border-slate-100">
-              <div class="relative w-20 h-20">
-                <canvas id="spoilageMiniRingChart"></canvas>
-                <div class="absolute inset-0 flex items-center justify-center font-extrabold text-sm text-slate-800">
-                  2.6%
-                </div>
-              </div>
-              <div>
-                <p class="text-xs font-bold text-slate-800">Spoilage Rate</p>
-                <p class="text-[11px] text-slate-400 mt-0.5">(Current vs 5%)</p>
-              </div>
+            <div class="pt-3 border-t border-slate-100 mt-4">
+              <button onclick="switchView('sensors')" class="w-full py-2 bg-slate-50 hover:bg-slate-100 text-slate-700 font-bold text-xs rounded-xl transition text-center">
+                Open 3-Device Diagnostics &rarr;
+              </button>
             </div>
-
-            <!-- Potential Spoilage -->
-            <div class="bg-rose-50/50 border border-rose-100 p-4 rounded-xl flex items-center gap-3.5">
-              <div class="w-10 h-10 rounded-xl bg-rose-100 text-rose-600 flex items-center justify-center shrink-0">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
-                </svg>
-              </div>
-              <div>
-                <p class="text-xs font-semibold text-rose-600">Potential Spoilage</p>
-                <h4 class="text-lg font-extrabold text-slate-900 mt-0.5">~ 18 kg</h4>
-                <p class="text-[10px] text-slate-400">(Potential Loss)</p>
-              </div>
-            </div>
-
-            <!-- Savings Opportunity -->
-            <div class="bg-emerald-50/50 border border-emerald-100 p-4 rounded-xl flex items-center gap-3.5">
-              <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
-                </svg>
-              </div>
-              <div>
-                <p class="text-xs font-semibold text-emerald-700">Savings Opportunity</p>
-                <h4 class="text-lg font-extrabold text-slate-900 mt-0.5">₹ 6,300</h4>
-                <p class="text-[10px] text-slate-400">(by preventing spoilage)</p>
-              </div>
-            </div>
-
-            <!-- How to Save More Checklist -->
-            <div class="bg-slate-50/70 border border-slate-100 p-3.5 rounded-xl text-xs space-y-1.5">
-              <p class="font-bold text-slate-800 text-[11px] mb-1">How to Save More?</p>
-              <div class="flex items-center gap-1.5 text-slate-600 text-[11px]">
-                <span class="text-emerald-500 font-bold">✔</span>
-                <span>Maintain temp between -25°C & -18°C</span>
-              </div>
-              <div class="flex items-center gap-1.5 text-slate-600 text-[11px]">
-                <span class="text-emerald-500 font-bold">✔</span>
-                <span>Reduce transit time by 15%</span>
-              </div>
-              <div class="flex items-center gap-1.5 text-slate-600 text-[11px]">
-                <span class="text-emerald-500 font-bold">✔</span>
-                <span>Improve packaging insulation</span>
-              </div>
-            </div>
-
           </div>
         </div>
 
@@ -527,71 +471,71 @@
 
 
       <!-- ======================================================== -->
-      <!-- SCREEN 2: SHIPMENTS                                      -->
+      <!-- SCREEN 2: SHIPMENTS & LOGISTICS CORRIDORS               -->
       <!-- ======================================================== -->
       <div id="view-shipments" class="view-panel hidden space-y-6">
         
         <!-- Header -->
         <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <div>
-            <h2 class="text-2xl font-bold text-slate-900 tracking-tight">Shipments</h2>
-            <p class="text-xs text-slate-500 mt-0.5">All lorries and shipment details across the Kongu belt</p>
+            <h2 class="text-2xl font-bold text-slate-900 tracking-tight">Logistics Route Corridors & Shipments</h2>
+            <p class="text-xs text-slate-500 mt-0.5">Multi-vehicle tracking on shared Source-to-Destination corridors across Kongu region</p>
           </div>
-          <button onclick="openNewShipmentModal()" class="inline-flex items-center gap-2 px-4 py-2.5 bg-brand-600 hover:bg-brand-700 text-white text-xs font-bold rounded-xl shadow-sm transition">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
-            <span>+ New Shipment</span>
+          <button onclick="openNewShipmentModal()" class="inline-flex items-center gap-2 px-4 py-2 bg-brand-600 hover:bg-brand-700 text-white text-xs font-bold rounded-xl shadow-sm transition">
+            <span>+ Dispatch New Lorry</span>
           </button>
         </div>
 
         <!-- 4 Summary KPI Cards -->
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
           <div class="bg-white p-4 rounded-2xl border border-slate-100 flex items-center gap-3">
-            <div class="w-10 h-10 rounded-xl bg-indigo-50 text-brand-600 flex items-center justify-center">📦</div>
+            <div class="w-10 h-10 rounded-xl bg-indigo-50 text-brand-600 flex items-center justify-center font-bold">🛣️</div>
             <div>
-              <p class="text-xs text-slate-500 font-medium">Total Shipments</p>
-              <h3 class="text-xl font-extrabold text-slate-900">12</h3>
+              <p class="text-xs text-slate-500 font-medium">Active Corridors</p>
+              <h3 class="text-xl font-extrabold text-slate-900">4 Highway Routes</h3>
             </div>
           </div>
           <div class="bg-white p-4 rounded-2xl border border-slate-100 flex items-center gap-3">
-            <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center">🚚</div>
+            <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold">🚚</div>
             <div>
-              <p class="text-xs text-slate-500 font-medium">In Transit</p>
-              <h3 class="text-xl font-extrabold text-slate-900">6</h3>
+              <p class="text-xs text-slate-500 font-medium">In Transit Lorries</p>
+              <h3 class="text-xl font-extrabold text-slate-900">8 Vehicles</h3>
             </div>
           </div>
           <div class="bg-white p-4 rounded-2xl border border-slate-100 flex items-center gap-3">
-            <div class="w-10 h-10 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center">✅</div>
+            <div class="w-10 h-10 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center font-bold">⏱️</div>
             <div>
-              <p class="text-xs text-slate-500 font-medium">Delivered</p>
-              <h3 class="text-xl font-extrabold text-slate-900">5</h3>
+              <p class="text-xs text-slate-500 font-medium">Delayed Route</p>
+              <h3 class="text-xl font-extrabold text-slate-900">1 (Namakkal)</h3>
             </div>
           </div>
           <div class="bg-white p-4 rounded-2xl border border-slate-100 flex items-center gap-3">
-            <div class="w-10 h-10 rounded-xl bg-rose-50 text-rose-500 flex items-center justify-center">⚠️</div>
+            <div class="w-10 h-10 rounded-xl bg-rose-50 text-rose-500 flex items-center justify-center font-bold">⚠️</div>
             <div>
-              <p class="text-xs text-slate-500 font-medium">Delayed</p>
-              <h3 class="text-xl font-extrabold text-slate-900">1</h3>
+              <p class="text-xs text-slate-500 font-medium">Excursion Breached</p>
+              <h3 class="text-xl font-extrabold text-slate-900">1 (Erode &rarr; Salem)</h3>
             </div>
           </div>
         </div>
 
         <!-- Master Shipments Table -->
-        <div class="bg-white p-5 rounded-2xl border border-slate-100/90 shadow-xs">
+        <div class="bg-white p-5 rounded-2xl border border-slate-100 shadow-xs">
           <div class="overflow-x-auto">
             <table class="w-full text-left text-xs">
               <thead>
                 <tr class="text-slate-400 border-b border-slate-100 pb-3">
-                  <th class="pb-3 font-semibold">Shipment ID</th>
-                  <th class="pb-3 font-semibold">Truck ID</th>
-                  <th class="pb-3 font-semibold">Cargo Type</th>
-                  <th class="pb-3 font-semibold">Temperature</th>
-                  <th class="pb-3 font-semibold">Status</th>
+                  <th class="pb-3 font-semibold">Lorry ID</th>
+                  <th class="pb-3 font-semibold">Corridor Name</th>
+                  <th class="pb-3 font-semibold">Source Hub</th>
+                  <th class="pb-3 font-semibold">Destination Depot</th>
+                  <th class="pb-3 font-semibold">Departure</th>
+                  <th class="pb-3 font-semibold text-center">3 Devices ($D_1 / D_2 / D_3$)</th>
                   <th class="pb-3 font-semibold">ETA</th>
-                  <th class="pb-3 font-semibold text-right">Actions</th>
+                  <th class="pb-3 font-semibold text-right">Action</th>
                 </tr>
               </thead>
               <tbody class="divide-y divide-slate-100 text-slate-700" id="shipments-full-tbody">
-                <!-- Dynamically generated rows matching Image 7 -->
+                <!-- Dynamically generated rows -->
               </tbody>
             </table>
           </div>
@@ -606,19 +550,22 @@
       <div id="view-tracking" class="view-panel hidden space-y-6">
         
         <!-- Header -->
-        <div class="flex items-center justify-between">
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <div>
-            <h2 class="text-2xl font-bold text-slate-900 tracking-tight">Live Tracking</h2>
-            <p class="text-xs text-slate-500 mt-0.5">Track your shipments in real-time across Tamil Nadu Kongu corridors</p>
+            <h2 class="text-2xl font-bold text-slate-900 tracking-tight">Live Highway Fleet Tracking</h2>
+            <p class="text-xs text-slate-500 mt-0.5">Real-time GPS tracking with Source-to-Destination progress and multi-lorry corridors</p>
           </div>
           <div class="flex items-center gap-2">
-            <span class="text-xs text-slate-500 font-medium">Select Lorry:</span>
+            <span class="text-xs text-slate-500 font-medium">Focus Lorry:</span>
             <select id="tracking-vehicle-select" onchange="changeActiveVehicle(this.value)" class="text-xs font-bold bg-white border border-slate-200 rounded-xl px-3 py-1.5 focus:outline-none focus:ring-2 focus:ring-brand-500 text-slate-800">
-              <option value="TN-33-CC-204">TN-33-CC-204 (Erode -> Salem)</option>
+              <option value="TN-33-CC-204">TN-33-CC-204 (Erode -> Salem) [EXCURSION]</option>
+              <option value="TN-33-CC-512">TN-33-CC-512 (Erode -> Salem) [COMPLIANT]</option>
               <option value="TN-38-CC-181">TN-38-CC-181 (Coimbatore -> Erode)</option>
+              <option value="TN-38-CC-290">TN-38-CC-290 (Coimbatore -> Erode)</option>
               <option value="TN-43-CC-309">TN-43-CC-309 (Nilgiris -> Coimbatore)</option>
+              <option value="TN-43-CC-114">TN-43-CC-114 (Nilgiris -> Coimbatore)</option>
               <option value="TN-41-CC-276">TN-41-CC-276 (Namakkal -> Karur)</option>
-              <option value="TN-39-CC-221">TN-39-CC-221 (Salem Depot)</option>
+              <option value="TN-28-CC-415">TN-28-CC-415 (Namakkal -> Karur)</option>
             </select>
           </div>
         </div>
@@ -628,82 +575,99 @@
           
           <!-- Large OpenStreetMap Leaflet Container -->
           <div class="lg:col-span-8 bg-white p-4 rounded-2xl border border-slate-100 shadow-xs flex flex-col justify-between">
-            <div id="trackingFullMap" class="w-full h-[460px] rounded-xl border border-slate-100 overflow-hidden relative z-0"></div>
+            <div id="trackingFullMap" class="w-full h-[480px] rounded-xl border border-slate-100 overflow-hidden relative z-0"></div>
 
-            <!-- Map Legend matching Image 6 -->
+            <!-- Map Legend -->
             <div class="mt-4 pt-3 border-t border-slate-100 flex flex-wrap items-center justify-center gap-6 text-xs text-slate-600">
               <div class="flex items-center gap-2">
                 <span class="w-3.5 h-3.5 rounded-full bg-emerald-500"></span>
-                <span>Storage (Origin Vault)</span>
-              </div>
-              <div class="flex items-center gap-2">
-                <span class="w-3.5 h-3.5 rounded-full bg-indigo-600"></span>
-                <span>Truck (Active Transport)</span>
+                <span>Source Origin Plant</span>
               </div>
               <div class="flex items-center gap-2">
                 <span class="w-3.5 h-3.5 rounded-full bg-purple-600"></span>
-                <span>Distribution Center (Depot)</span>
+                <span>Transit Waypoint / Vault</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="w-3.5 h-3.5 rounded-full bg-indigo-600"></span>
+                <span>Destination Mega Terminal</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-xs">🚚 Moving Lorries (Live)</span>
               </div>
             </div>
           </div>
 
-          <!-- Shipment Details Sidebar Card matching Image 6 -->
+          <!-- Shipment Details Sidebar Card -->
           <div class="lg:col-span-4 bg-white p-5 rounded-2xl border border-slate-100 shadow-xs flex flex-col justify-between">
             <div>
               <div class="flex items-center justify-between pb-3 border-b border-slate-100">
-                <h4 class="text-sm font-bold text-slate-900">Shipment Details</h4>
-                <span id="track-status-pill" class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-emerald-100 text-emerald-700">On Route</span>
+                <h4 class="text-sm font-bold text-slate-900">Lorry Route Telematics</h4>
+                <span id="track-status-pill" class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-rose-100 text-rose-700">Rear Breach</span>
               </div>
 
-              <div class="mt-4 space-y-3.5 text-xs">
-                <div>
-                  <p class="text-slate-400 text-[11px] font-medium">Vehicle ID</p>
-                  <p class="text-base font-extrabold text-slate-800" id="track-vehicle-id">TN-33-CC-204</p>
+              <!-- Source to Destination Route Milestone Visual -->
+              <div class="mt-4 p-3.5 bg-slate-50/80 rounded-xl border border-slate-100 space-y-2.5">
+                <div class="flex items-center gap-2">
+                  <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+                  <div class="flex-1">
+                    <p class="text-[10px] text-slate-400 font-semibold uppercase">Source Hub</p>
+                    <p class="text-xs font-bold text-slate-800" id="track-source-hub">Erode Regional Storage (ERD-01)</p>
+                  </div>
+                  <span class="text-[10px] text-slate-400 font-mono" id="track-dep-time">Dep: 08:30 AM</span>
                 </div>
 
-                <div>
-                  <p class="text-slate-400 text-[11px] font-medium">Current Location</p>
-                  <p class="text-sm font-bold text-slate-700" id="track-current-location">Near Erode (NH544)</p>
+                <div class="pl-1.5 py-0.5 border-l-2 border-dashed border-slate-300 ml-1 text-[11px] text-slate-500">
+                  <span id="track-corridor-name">Erode to Salem Corridor (NH544)</span>
                 </div>
 
-                <div class="grid grid-cols-2 gap-3 pt-2">
-                  <div class="bg-slate-50 p-2.5 rounded-xl border border-slate-100">
-                    <p class="text-slate-400 text-[10px]">ETA</p>
-                    <p class="text-sm font-extrabold text-slate-800" id="track-eta">1h 20m</p>
+                <div class="flex items-center gap-2">
+                  <span class="w-2.5 h-2.5 rounded-full bg-indigo-600"></span>
+                  <div class="flex-1">
+                    <p class="text-[10px] text-slate-400 font-semibold uppercase">Destination Depot</p>
+                    <p class="text-xs font-bold text-slate-800" id="track-dest-hub">Salem Central Terminal (SLM-01)</p>
                   </div>
-                  <div class="bg-slate-50 p-2.5 rounded-xl border border-slate-100">
-                    <p class="text-slate-400 text-[10px]">Speed</p>
-                    <p class="text-sm font-extrabold text-slate-800" id="track-speed">48.0 km/h</p>
+                  <span class="text-[10px] text-brand-600 font-bold" id="track-eta-pill">ETA 1h 20m</span>
+                </div>
+              </div>
+
+              <!-- 3 In-Vehicle Devices Live Breakdown -->
+              <div class="mt-4 pt-3 border-t border-slate-100 space-y-2 text-xs">
+                <p class="font-bold text-slate-800 text-[11px]">3 In-Vehicle IoT Devices:</p>
+                
+                <div class="grid grid-cols-3 gap-2 text-center">
+                  <div class="p-2 bg-slate-50 rounded-lg">
+                    <p class="text-[10px] text-slate-400">D1 Front</p>
+                    <p class="font-bold text-slate-800" id="track-d1">-16.4°C</p>
+                  </div>
+                  <div class="p-2 bg-slate-50 rounded-lg">
+                    <p class="text-[10px] text-slate-400">D2 Mid</p>
+                    <p class="font-bold text-slate-800" id="track-d2">-13.8°C</p>
+                  </div>
+                  <div class="p-2 bg-rose-50 border border-rose-100 rounded-lg">
+                    <p class="text-[10px] text-rose-500 font-bold">D3 Rear</p>
+                    <p class="font-bold text-rose-600" id="track-d3">-7.5°C</p>
                   </div>
                 </div>
 
-                <div class="pt-2 space-y-2 border-t border-slate-100">
+                <div class="pt-2 space-y-1.5 text-xs text-slate-600">
                   <div class="flex justify-between">
-                    <span class="text-slate-400">Driver:</span>
-                    <span class="font-bold text-slate-700" id="track-driver">K. Murugan</span>
+                    <span class="text-slate-400">Thermal Gradient:</span>
+                    <span class="font-extrabold text-rose-600" id="track-gradient">+8.9°C (Disparity)</span>
                   </div>
                   <div class="flex justify-between">
-                    <span class="text-slate-400">Phone:</span>
-                    <a id="track-phone" href="tel:+919842271045" class="font-bold text-brand-600 hover:underline">+91 98422 71045</a>
+                    <span class="text-slate-400">Door Status:</span>
+                    <span class="font-bold text-rose-600" id="track-door">OPEN (Rear Seal Breach)</span>
                   </div>
                   <div class="flex justify-between">
-                    <span class="text-slate-400">Cargo:</span>
-                    <span class="font-semibold text-slate-700" id="track-cargo">Dairy Soft Ice Cream & Bars</span>
-                  </div>
-                  <div class="flex justify-between">
-                    <span class="text-slate-400">Cargo Value:</span>
-                    <span class="font-bold text-emerald-600" id="track-val">₹ 4,32,000</span>
-                  </div>
-                  <div class="flex justify-between">
-                    <span class="text-slate-400">Battery:</span>
-                    <span class="font-semibold text-slate-700" id="track-battery">88%</span>
+                    <span class="text-slate-400">Driver Contact:</span>
+                    <a id="track-phone" href="tel:+919842271045" class="font-bold text-brand-600 hover:underline">K. Murugan (+91 98422 71045)</a>
                   </div>
                 </div>
               </div>
             </div>
 
-            <button onclick="switchView('sensors')" class="mt-6 w-full py-2.5 bg-brand-50 hover:bg-brand-100 text-brand-700 font-bold text-xs rounded-xl transition flex items-center justify-center gap-1.5">
-              <span>View Temperature Details</span>
+            <button onclick="switchView('sensors')" class="mt-5 w-full py-2.5 bg-brand-600 hover:bg-brand-700 text-white font-bold text-xs rounded-xl transition flex items-center justify-center gap-1.5">
+              <span>Open 3-Device Excursion Analysis</span>
               <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
             </button>
           </div>
@@ -714,54 +678,51 @@
 
 
       <!-- ======================================================== -->
-      <!-- SCREEN 4: TEMPERATURE MONITORING                         -->
+      <!-- SCREEN 4: 3-DEVICE TEMPERATURE EXCURSION MONITORING      -->
       <!-- ======================================================== -->
       <div id="view-sensors" class="view-panel hidden space-y-6">
         
         <!-- Header -->
         <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <div>
-            <h2 class="text-2xl font-bold text-slate-900 tracking-tight">Temperature Monitoring</h2>
-            <p class="text-xs text-slate-500 mt-0.5">Track temperature across all 3 compartments in real-time</p>
+            <h2 class="text-2xl font-bold text-slate-900 tracking-tight">In-Vehicle 3-Device Temperature Excursion Check</h2>
+            <p class="text-xs text-slate-500 mt-0.5">3 physical IoT sensors per transport vehicle for multi-point spatial excursion detection</p>
           </div>
           <div class="flex items-center gap-2">
-            <span class="text-xs text-slate-500 font-medium">Vehicle:</span>
+            <span class="text-xs text-slate-500 font-medium">Lorry:</span>
             <select id="sensor-vehicle-select" onchange="changeActiveVehicle(this.value)" class="text-xs font-bold bg-white border border-slate-200 rounded-xl px-3 py-1.5 text-slate-800">
-              <option value="TN-33-CC-204">TN-33-CC-204</option>
-              <option value="TN-38-CC-181">TN-38-CC-181</option>
-              <option value="TN-43-CC-309">TN-43-CC-309</option>
-              <option value="TN-41-CC-276">TN-41-CC-276</option>
+              <option value="TN-33-CC-204">TN-33-CC-204 (Erode -> Salem) [Rear Excursion]</option>
+              <option value="TN-33-CC-512">TN-33-CC-512 (Erode -> Salem) [Healthy Benchmark]</option>
+              <option value="TN-38-CC-181">TN-38-CC-181 (Coimbatore -> Erode)</option>
+              <option value="TN-43-CC-309">TN-43-CC-309 (Nilgiris -> Coimbatore)</option>
+              <option value="TN-41-CC-276">TN-41-CC-276 (Namakkal -> Karur)</option>
             </select>
           </div>
         </div>
 
-        <!-- 3 Sensor Tabs matching Image 5 -->
-        <div class="flex items-center justify-between border-b border-slate-200 pb-3">
+        <!-- 3 Device Selectors -->
+        <div class="flex flex-wrap items-center justify-between border-b border-slate-200 pb-3 gap-3">
           <div class="flex items-center gap-2 bg-slate-100 p-1 rounded-xl">
             <button onclick="setSensorTab('front')" id="tab-sensor-front" class="sensor-tab px-4 py-1.5 text-xs font-bold rounded-lg bg-brand-600 text-white shadow-xs transition">
-              Front Sensor
+              Device 1 &bull; Front (Chiller Air Delivery)
             </button>
             <button onclick="setSensorTab('mid')" id="tab-sensor-mid" class="sensor-tab px-4 py-1.5 text-xs font-bold rounded-lg text-slate-600 hover:text-slate-900 transition">
-              Middle Sensor
+              Device 2 &bull; Middle (Core Cargo Mass)
             </button>
             <button onclick="setSensorTab('rear')" id="tab-sensor-rear" class="sensor-tab px-4 py-1.5 text-xs font-bold rounded-lg text-slate-600 hover:text-slate-900 transition">
-              Rear Sensor
+              Device 3 &bull; Rear (Door Influx Zone)
             </button>
           </div>
 
-          <select class="text-xs font-semibold bg-white border border-slate-200 rounded-lg px-2.5 py-1 text-slate-600">
-            <option>Last 24 Hours</option>
-            <option>Last 6 Hours</option>
-            <option>Live Stream</option>
-          </select>
+          <span class="text-xs text-slate-500 font-semibold">Safe Limit: &le; -18.0°C</span>
         </div>
 
-        <!-- Gauge & Chart Two-Column Grid matching Image 5 -->
+        <!-- Gauge & Chart Two-Column Grid -->
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
           
           <!-- Semicircular Gauge Card -->
           <div class="lg:col-span-5 bg-white p-6 rounded-2xl border border-slate-100 shadow-xs flex flex-col items-center justify-center text-center min-h-[340px]">
-            <p class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2" id="gauge-sensor-label">Front Sensor (Chiller Delivery)</p>
+            <p class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2" id="gauge-sensor-label">Device 1 &bull; Front Evaporator</p>
             
             <div class="relative w-56 h-36 flex items-center justify-center">
               <canvas id="tempGaugeCanvas"></canvas>
@@ -774,19 +735,19 @@
             </div>
 
             <div class="mt-4 pt-3 border-t border-slate-100 w-full text-center">
-              <p class="text-xs font-semibold text-slate-600">Safe Range</p>
+              <p class="text-xs font-semibold text-slate-600">Safe Setpoint Range</p>
               <p class="text-xs font-extrabold text-slate-800 mt-0.5">-25°C to -18°C</p>
-              <p class="text-[11px] text-slate-400 mt-1" id="gauge-compartment-desc">Measures primary evaporator cooling output.</p>
+              <p class="text-[11px] text-slate-400 mt-1" id="gauge-compartment-desc">Measures cooling output delivered from front evaporator.</p>
             </div>
           </div>
 
-          <!-- 24-Hour Detailed Curve Chart -->
+          <!-- Real-Time Detailed Curve -->
           <div class="lg:col-span-7 bg-white p-6 rounded-2xl border border-slate-100 shadow-xs min-h-[340px] flex flex-col justify-between">
             <div class="flex items-center justify-between mb-2">
-              <h4 class="text-sm font-bold text-slate-900" id="sensor-curve-title">Front Sensor 24h Temperature Curve</h4>
+              <h4 class="text-sm font-bold text-slate-900" id="sensor-curve-title">Device Real-Time Excursion Curve</h4>
               <div class="flex items-center gap-3 text-xs">
-                <span class="flex items-center gap-1.5"><span class="w-3 h-0.5 bg-brand-600"></span> Sensor Reading</span>
-                <span class="flex items-center gap-1.5"><span class="w-3 h-0.5 bg-rose-500 border-dashed border-b"></span> -18°C Threshold</span>
+                <span class="flex items-center gap-1.5"><span class="w-3 h-0.5 bg-brand-600"></span> Live Reading</span>
+                <span class="flex items-center gap-1.5"><span class="w-3 h-0.5 bg-rose-500 border-dashed border-b"></span> -18°C Safe Limit</span>
               </div>
             </div>
             
@@ -797,27 +758,42 @@
 
         </div>
 
-        <!-- 3-Sensor Container Cross-Section Gradient Card -->
+        <!-- 3 In-Vehicle Devices Side-by-Side Spatial Breakdown -->
         <div class="bg-white p-5 rounded-2xl border border-slate-100 shadow-xs">
-          <h4 class="text-sm font-bold text-slate-900 mb-3">Container 3-Detector Thermal Gradient Comparison</h4>
+          <div class="flex items-center justify-between mb-3">
+            <div>
+              <h4 class="text-sm font-bold text-slate-900">Why 3 Devices in Every Vehicle? Multi-Point Spatial Excursion Detection</h4>
+              <p class="text-[11px] text-slate-400">Single-sensor setups miss localized thermal breaches. 3 devices detect exactly where and why the temperature drifted.</p>
+            </div>
+            <span class="text-xs font-bold text-brand-700 bg-brand-50 px-3 py-1 rounded-lg">Spatial Delta: &Delta;T = D3 - D1</span>
+          </div>
           
           <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div class="p-4 rounded-xl bg-slate-50 border border-slate-100">
-              <p class="text-xs text-slate-500 font-semibold">T1 &bull; Front (Chiller Air Delivery)</p>
-              <h3 class="text-xl font-extrabold text-slate-900 mt-1" id="cmp-t1">-21.6°C</h3>
-              <p class="text-[11px] text-emerald-600 font-medium mt-1">✓ Evaporator Healthy</p>
+              <div class="flex justify-between items-center">
+                <span class="text-xs text-slate-500 font-bold">Device 1 &bull; Front</span>
+                <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-blue-100 text-blue-700">Evaporator Discharge</span>
+              </div>
+              <h3 class="text-2xl font-extrabold text-slate-900 mt-2" id="cmp-t1">-16.4°C</h3>
+              <p class="text-[11px] text-slate-500 mt-1">Checks refrigeration unit mechanical health. If D1 warms, compressor is faulty.</p>
             </div>
 
             <div class="p-4 rounded-xl bg-slate-50 border border-slate-100">
-              <p class="text-xs text-slate-500 font-semibold">T2 &bull; Middle (Cargo Core Mass)</p>
-              <h3 class="text-xl font-extrabold text-slate-900 mt-1" id="cmp-t2">-20.2°C</h3>
-              <p class="text-[11px] text-emerald-600 font-medium mt-1">✓ Core Preserved</p>
+              <div class="flex justify-between items-center">
+                <span class="text-xs text-slate-500 font-bold">Device 2 &bull; Middle</span>
+                <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-100 text-emerald-700">Cargo Core Mass</span>
+              </div>
+              <h3 class="text-2xl font-extrabold text-slate-900 mt-2" id="cmp-t2">-13.8°C</h3>
+              <p class="text-[11px] text-slate-500 mt-1">Embedded in pallets. Verifies product core thermal inertia and thawing prevention.</p>
             </div>
 
-            <div class="p-4 rounded-xl bg-slate-50 border border-slate-100">
-              <p class="text-xs text-slate-500 font-semibold">T3 &bull; Rear (Door Influx Zone)</p>
-              <h3 class="text-xl font-extrabold text-slate-900 mt-1" id="cmp-t3">-7.5°C</h3>
-              <p class="text-[11px] text-rose-500 font-bold mt-1" id="cmp-t3-status">⚠️ Influx Hazard Detected</p>
+            <div class="p-4 rounded-xl bg-rose-50/70 border border-rose-200">
+              <div class="flex justify-between items-center">
+                <span class="text-xs text-rose-700 font-bold">Device 3 &bull; Rear</span>
+                <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-rose-100 text-rose-700">Door Influx Zone</span>
+              </div>
+              <h3 class="text-2xl font-extrabold text-rose-600 mt-2" id="cmp-t3">-7.5°C</h3>
+              <p class="text-[11px] text-rose-600 font-bold mt-1" id="cmp-t3-status">⚠️ Influx Hazard: Warm ambient air entered via open door</p>
             </div>
           </div>
         </div>
@@ -826,20 +802,18 @@
 
 
       <!-- ======================================================== -->
-      <!-- SCREEN 5: SPOILAGE ANALYSIS                              -->
+      <!-- SCREEN 5: SPOILAGE ANALYSIS & GEMINI ADVISOR             -->
       <!-- ======================================================== -->
       <div id="view-spoilage" class="view-panel hidden space-y-6">
         
         <!-- Header -->
         <div>
-          <h2 class="text-2xl font-bold text-slate-900 tracking-tight">Spoilage Analysis</h2>
-          <p class="text-xs text-slate-500 mt-0.5">Analyze spoilage risk and potential savings across transport routes</p>
+          <h2 class="text-2xl font-bold text-slate-900 tracking-tight">Spoilage Analysis & Financial Risk</h2>
+          <p class="text-xs text-slate-500 mt-0.5">Quantifying temperature excursion impact across corridor shipments</p>
         </div>
 
-        <!-- Top 3 Metric Cards matching Image 4 -->
+        <!-- Top 3 Metric Cards -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-          
-          <!-- Spoilage Rate Ring -->
           <div class="bg-white p-5 rounded-2xl border border-slate-100 shadow-xs flex items-center justify-center gap-5">
             <div class="relative w-24 h-24">
               <canvas id="spoilageFullRingChart"></canvas>
@@ -848,49 +822,36 @@
               </div>
             </div>
             <div>
-              <h4 class="text-sm font-bold text-slate-800">Spoilage Rate</h4>
-              <p class="text-xs text-slate-400 mt-0.5">(Current vs 5% baseline)</p>
+              <h4 class="text-sm font-bold text-slate-800">Fleet Spoilage Rate</h4>
+              <p class="text-xs text-slate-400 mt-0.5">(Kongu Corridors vs 5% Max)</p>
               <span class="inline-block mt-2 px-2 py-0.5 text-[10px] font-bold rounded-full bg-emerald-100 text-emerald-700">48% Below Target</span>
             </div>
           </div>
 
-          <!-- Potential Spoilage -->
           <div class="bg-rose-50/60 p-5 rounded-2xl border border-rose-100/90 shadow-xs flex items-center gap-4">
-            <div class="w-12 h-12 rounded-2xl bg-rose-100 text-rose-600 flex items-center justify-center shrink-0">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
-              </svg>
-            </div>
+            <div class="w-12 h-12 rounded-2xl bg-rose-100 text-rose-600 flex items-center justify-center shrink-0 text-xl font-bold">⚠️</div>
             <div>
-              <p class="text-xs font-semibold text-rose-700">Potential Spoilage</p>
+              <p class="text-xs font-semibold text-rose-700">Potential Spoilage at Risk</p>
               <h3 class="text-2xl font-extrabold text-slate-900 mt-0.5">~ 18 kg</h3>
-              <p class="text-xs text-slate-500 mt-0.5">(Prevented: ~15 kg)</p>
+              <p class="text-xs text-slate-500 mt-0.5">Incident: TN-33-CC-204 Rear Zone</p>
             </div>
           </div>
 
-          <!-- Estimated Savings -->
           <div class="bg-emerald-50/60 p-5 rounded-2xl border border-emerald-100/90 shadow-xs flex items-center gap-4">
-            <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-              </svg>
-            </div>
+            <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0 text-xl font-bold">₹</div>
             <div>
-              <p class="text-xs font-semibold text-emerald-700">Estimated Savings</p>
+              <p class="text-xs font-semibold text-emerald-700">Estimated Value Saved</p>
               <h3 class="text-2xl font-extrabold text-slate-900 mt-0.5">₹ 6,300</h3>
-              <p class="text-xs text-slate-500 mt-0.5">(from reduced spoilage)</p>
+              <p class="text-xs text-slate-500 mt-0.5">Preserved via active dispatcher notification</p>
             </div>
           </div>
-
         </div>
 
-        <!-- Spoilage Trend Chart & Action Checklist matching Image 4 -->
+        <!-- Spoilage Trend & Gemini Advisor -->
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-          
-          <!-- Spoilage Trend Chart -->
-          <div class="lg:col-span-8 bg-white p-5 rounded-2xl border border-slate-100 shadow-xs">
+          <div class="lg:col-span-7 bg-white p-5 rounded-2xl border border-slate-100 shadow-xs">
             <div class="flex items-center justify-between mb-4">
-              <h4 class="text-sm font-bold text-slate-900">Spoilage Trend</h4>
+              <h4 class="text-sm font-bold text-slate-900">Corridor Spoilage Trend (Mon &ndash; Sun)</h4>
               <div class="flex items-center gap-4 text-xs font-medium">
                 <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-full bg-brand-600"></span> Actual</span>
                 <span class="flex items-center gap-1.5"><span class="w-3 h-0.5 border-dashed border-b-2 border-brand-400"></span> Predicted</span>
@@ -901,22 +862,21 @@
             </div>
           </div>
 
-          <!-- Prevention Checklist & Gemini Advisor -->
-          <div class="lg:col-span-4 bg-white p-5 rounded-2xl border border-slate-100 shadow-xs flex flex-col justify-between">
+          <div class="lg:col-span-5 bg-white p-5 rounded-2xl border border-slate-100 shadow-xs flex flex-col justify-between">
             <div>
-              <h4 class="text-sm font-bold text-slate-900 mb-3">How to Prevent?</h4>
+              <h4 class="text-sm font-bold text-slate-900 mb-3">Logistics Efficiency Checklist</h4>
               <div class="space-y-3 text-xs">
                 <div class="flex items-start gap-2.5">
-                  <div class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0 mt-0.5 font-bold">✓</div>
-                  <span class="text-slate-600">Maintain temperature strictly between <strong>-25°C and -18°C</strong>.</span>
+                  <span class="text-emerald-600 font-bold">✓</span>
+                  <span class="text-slate-600">Cross-compare <strong>sister lorries</strong> running on identical source-to-destination corridors.</span>
                 </div>
                 <div class="flex items-start gap-2.5">
-                  <div class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0 mt-0.5 font-bold">✓</div>
-                  <span class="text-slate-600">Reduce transit time by <strong>15%</strong> with direct bypass routing.</span>
+                  <span class="text-emerald-600 font-bold">✓</span>
+                  <span class="text-slate-600">Divert cargo to <strong>Perundurai SIPCOT Vault</strong> if Device 3 excursion exceeds 20 minutes.</span>
                 </div>
                 <div class="flex items-start gap-2.5">
-                  <div class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0 mt-0.5 font-bold">✓</div>
-                  <span class="text-slate-600">Improve packaging insulation & verify rear door seals.</span>
+                  <span class="text-emerald-600 font-bold">✓</span>
+                  <span class="text-slate-600">Enforce dual-latch magnetic sensors to prevent rear door flapping on highway bypasses.</span>
                 </div>
               </div>
             </div>
@@ -924,23 +884,22 @@
             <!-- Gemini AI Trigger -->
             <div class="mt-6 pt-4 border-t border-slate-100">
               <button onclick="runAiDiagnosis()" class="w-full py-2.5 bg-gradient-to-r from-brand-600 to-indigo-600 hover:from-brand-700 hover:to-indigo-700 text-white font-bold text-xs rounded-xl shadow-xs transition flex items-center justify-center gap-2">
-                <span>⚡ Run AI Excursion Analysis</span>
+                <span>⚡ Run AI Excursion Intelligence (Gemini)</span>
               </button>
             </div>
           </div>
-
         </div>
 
-        <!-- AI Excursion Diagnosis Box -->
-        <div id="ai-advisor-panel" class="hidden bg-gradient-to-br from-indigo-50/60 to-brand-50/50 p-5 rounded-2xl border border-brand-200/80 shadow-xs">
+        <!-- AI Advisor Output Panel -->
+        <div id="ai-advisor-panel" class="hidden bg-gradient-to-br from-indigo-50/60 to-brand-50/50 p-5 rounded-2xl border border-brand-200 shadow-xs">
           <div class="flex items-center justify-between mb-2">
             <h4 class="text-sm font-bold text-brand-900 flex items-center gap-2">
-              <span>🤖 FrostGuard Gemini Fleet Intelligence Report</span>
+              <span>🤖 FrostGuard Gemini Logistics Excursion Intelligence</span>
             </h4>
             <span class="text-[11px] text-brand-600 font-semibold" id="ai-report-time">Generated Live</span>
           </div>
           <div class="text-xs text-slate-700 whitespace-pre-line leading-relaxed font-mono bg-white/80 p-4 rounded-xl border border-brand-100" id="ai-advisory-text">
-            Generating root-cause analysis...
+            Analyzing 3-device sensor telemetry...
           </div>
         </div>
 
@@ -951,23 +910,19 @@
       <!-- SCREEN 6: ALERTS                                         -->
       <!-- ======================================================== -->
       <div id="view-alerts" class="view-panel hidden space-y-6">
-        
-        <!-- Header -->
-        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+        <div class="flex items-center justify-between">
           <div>
-            <h2 class="text-2xl font-bold text-slate-900 tracking-tight">Alerts</h2>
-            <p class="text-xs text-slate-500 mt-0.5">Critical alerts and notifications across transport routes</p>
+            <h2 class="text-2xl font-bold text-slate-900 tracking-tight">Fleet Excursion Alerts</h2>
+            <p class="text-xs text-slate-500 mt-0.5">Real-time alerts triggered by 3 in-vehicle IoT detectors</p>
           </div>
           <button onclick="markAllAlertsAsRead()" class="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold rounded-xl transition">
             Mark All as Read
           </button>
         </div>
 
-        <!-- Alerts List Card matching Image 3 -->
         <div class="bg-white rounded-2xl border border-slate-100 shadow-xs divide-y divide-slate-100" id="alerts-full-list">
-          <!-- Injected via JS matching Image 3 -->
+          <!-- Injected via JS -->
         </div>
-
       </div>
 
 
@@ -975,91 +930,58 @@
       <!-- SCREEN 7: REPORTS & ANALYTICS                            -->
       <!-- ======================================================== -->
       <div id="view-reports" class="view-panel hidden space-y-6">
-        
-        <!-- Header -->
         <div class="flex items-center justify-between">
           <div>
-            <h2 class="text-2xl font-bold text-slate-900 tracking-tight">Reports & Analytics</h2>
-            <p class="text-xs text-slate-500 mt-0.5">Insights from your cold chain operational data</p>
+            <h2 class="text-2xl font-bold text-slate-900 tracking-tight">Reports & Corridor Analytics</h2>
+            <p class="text-xs text-slate-500 mt-0.5">Longitudinal telemetry analysis across Kongu highway corridors</p>
           </div>
-          <div class="flex items-center gap-3">
-            <select class="text-xs font-semibold bg-white border border-slate-200 rounded-lg px-3 py-1.5 text-slate-600">
-              <option>Last 7 Days</option>
-              <option>Last 30 Days</option>
-            </select>
-            <a href="/api/export/csv" class="px-3.5 py-1.5 bg-brand-600 hover:bg-brand-700 text-white text-xs font-bold rounded-xl transition">
-              Export CSV
-            </a>
-          </div>
+          <a href="/api/export/csv" class="px-4 py-2 bg-brand-600 hover:bg-brand-700 text-white text-xs font-bold rounded-xl transition">
+            Export Fleet Telemetry CSV
+          </a>
         </div>
 
-        <!-- 3 Cards matching Image 2 -->
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          
-          <!-- Card 1: Temperature Compliance -->
           <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-xs flex flex-col items-center justify-between min-h-[360px]">
             <h4 class="text-sm font-bold text-slate-900 self-start">Temperature Compliance</h4>
-            
             <div class="relative w-44 h-44 my-4">
               <canvas id="complianceRingChart"></canvas>
               <div class="absolute inset-0 flex items-center justify-center font-extrabold text-2xl text-slate-900">
                 96.4%
               </div>
             </div>
-
             <div class="flex items-center justify-center gap-6 text-xs w-full pt-4 border-t border-slate-100">
-              <div class="flex items-center gap-2">
-                <span class="w-3 h-3 rounded-full bg-emerald-500"></span>
-                <span class="font-semibold text-slate-700">Within Range</span>
-              </div>
-              <div class="flex items-center gap-2">
-                <span class="w-3 h-3 rounded-full bg-rose-500"></span>
-                <span class="font-semibold text-slate-700">Out of Range</span>
-              </div>
+              <span class="flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-emerald-500"></span> Within Range</span>
+              <span class="flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-rose-500"></span> Out of Range</span>
             </div>
           </div>
 
-          <!-- Card 2: Spoilage Trend -->
           <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-xs flex flex-col justify-between min-h-[360px]">
             <div class="flex items-center justify-between mb-2">
-              <h4 class="text-sm font-bold text-slate-900">Spoilage Trend</h4>
+              <h4 class="text-sm font-bold text-slate-900">Weekly Spoilage Trend</h4>
               <span class="text-[11px] text-slate-400 font-semibold">% Loss</span>
             </div>
-
             <div class="h-56 w-full relative">
               <canvas id="spoilageBarChart"></canvas>
             </div>
-
             <div class="pt-3 border-t border-slate-100 text-center text-xs text-slate-400">
-              Average weekly spoilage maintained at <strong class="text-slate-700">1.8%</strong>
+              Average weekly spoilage across corridors: <strong class="text-slate-700">1.8%</strong>
             </div>
           </div>
 
-          <!-- Card 3: Shipment Performance -->
           <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-xs flex flex-col items-center justify-between min-h-[360px]">
-            <h4 class="text-sm font-bold text-slate-900 self-start">Shipment Performance</h4>
-            
+            <h4 class="text-sm font-bold text-slate-900 self-start">Logistics On-Time Rating</h4>
             <div class="relative w-44 h-44 my-4">
               <canvas id="shipmentPerfRingChart"></canvas>
               <div class="absolute inset-0 flex items-center justify-center font-extrabold text-2xl text-slate-900">
                 94%
               </div>
             </div>
-
             <div class="flex items-center justify-center gap-6 text-xs w-full pt-4 border-t border-slate-100">
-              <div class="flex items-center gap-2">
-                <span class="w-3 h-3 rounded-full bg-emerald-500"></span>
-                <span class="font-semibold text-slate-700">On Time</span>
-              </div>
-              <div class="flex items-center gap-2">
-                <span class="w-3 h-3 rounded-full bg-amber-500"></span>
-                <span class="font-semibold text-slate-700">Delayed</span>
-              </div>
+              <span class="flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-emerald-500"></span> On Time</span>
+              <span class="flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-amber-500"></span> Delayed</span>
             </div>
           </div>
-
         </div>
-
       </div>
 
 
@@ -1067,159 +989,130 @@
       <!-- SCREEN 8: SETTINGS                                       -->
       <!-- ======================================================== -->
       <div id="view-settings" class="view-panel hidden space-y-6">
-        
-        <!-- Header -->
         <div>
-          <h2 class="text-2xl font-bold text-slate-900 tracking-tight">Settings</h2>
-          <p class="text-xs text-slate-500 mt-0.5">Configure your preferences and system settings</p>
+          <h2 class="text-2xl font-bold text-slate-900 tracking-tight">System Settings</h2>
+          <p class="text-xs text-slate-500 mt-0.5">Configure 3-device thresholds and corridor alert preferences</p>
         </div>
 
-        <!-- Tabs matching Image 1 -->
-        <div class="flex items-center gap-2 bg-slate-100 p-1 rounded-xl w-fit">
-          <button class="px-4 py-1.5 text-xs font-bold rounded-lg bg-brand-600 text-white shadow-xs">General</button>
-          <button class="px-4 py-1.5 text-xs font-bold rounded-lg text-slate-600 hover:text-slate-900">Sensors</button>
-          <button class="px-4 py-1.5 text-xs font-bold rounded-lg text-slate-600 hover:text-slate-900">Notifications</button>
-          <button class="px-4 py-1.5 text-xs font-bold rounded-lg text-slate-600 hover:text-slate-900">Users</button>
-        </div>
-
-        <!-- Settings Cards matching Image 1 -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          
-          <!-- Left Column: Temperature Threshold & Alert Preferences -->
           <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-xs space-y-6">
-            
-            <!-- Temperature Threshold -->
             <div>
-              <h4 class="text-sm font-bold text-slate-900 mb-3">Temperature Threshold</h4>
+              <h4 class="text-sm font-bold text-slate-900 mb-3">Temperature Setpoint Thresholds</h4>
               <div class="grid grid-cols-2 gap-4">
                 <div>
-                  <label class="text-xs font-semibold text-slate-500">Min</label>
+                  <label class="text-xs font-semibold text-slate-500">Min Allowed</label>
                   <div class="flex items-center mt-1">
-                    <input type="number" id="setting-temp-min" value="-25" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-l-xl text-sm font-bold focus:outline-none">
+                    <input type="number" id="setting-temp-min" value="-25" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-l-xl text-sm font-bold">
                     <span class="px-3 py-2 bg-slate-100 border border-l-0 border-slate-200 rounded-r-xl text-xs font-bold text-slate-500">°C</span>
                   </div>
                 </div>
                 <div>
-                  <label class="text-xs font-semibold text-slate-500">Max</label>
+                  <label class="text-xs font-semibold text-slate-500">Max Setpoint</label>
                   <div class="flex items-center mt-1">
-                    <input type="number" id="setting-temp-max" value="-18" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-l-xl text-sm font-bold focus:outline-none">
+                    <input type="number" id="setting-temp-max" value="-18" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-l-xl text-sm font-bold">
                     <span class="px-3 py-2 bg-slate-100 border border-l-0 border-slate-200 rounded-r-xl text-xs font-bold text-slate-500">°C</span>
                   </div>
                 </div>
               </div>
             </div>
 
-            <!-- Alert Preferences -->
             <div class="pt-4 border-t border-slate-100 space-y-4">
-              <h4 class="text-sm font-bold text-slate-900">Alert Preferences</h4>
-              
+              <h4 class="text-sm font-bold text-slate-900">Dispatcher Notifications</h4>
               <div class="flex items-center justify-between">
                 <div>
                   <p class="text-xs font-bold text-slate-800">Email Alerts</p>
-                  <p class="text-[11px] text-slate-400">Receive incident notifications via email</p>
+                  <p class="text-[11px] text-slate-400">Excursion reports to dispatch team</p>
                 </div>
-                <input type="checkbox" id="setting-email" checked class="w-5 h-5 accent-brand-600 rounded">
+                <input type="checkbox" id="setting-email" checked class="w-5 h-5 accent-brand-600">
               </div>
-
               <div class="flex items-center justify-between">
                 <div>
-                  <p class="text-xs font-bold text-slate-800">SMS Alerts</p>
-                  <p class="text-[11px] text-slate-400">Instant driver & dispatcher SMS warnings</p>
+                  <p class="text-xs font-bold text-slate-800">SMS Driver Alerts</p>
+                  <p class="text-[11px] text-slate-400">Instant SMS to driver when Device 3 breaches -15°C</p>
                 </div>
-                <input type="checkbox" id="setting-sms" checked class="w-5 h-5 accent-brand-600 rounded">
+                <input type="checkbox" id="setting-sms" checked class="w-5 h-5 accent-brand-600">
               </div>
-
               <div class="flex items-center justify-between">
                 <div>
                   <p class="text-xs font-bold text-slate-800">Push Notifications</p>
-                  <p class="text-[11px] text-slate-400">Real-time browser popups for temperature drift</p>
+                  <p class="text-[11px] text-slate-400">Real-time browser popups for door open state</p>
                 </div>
-                <input type="checkbox" id="setting-push" checked class="w-5 h-5 accent-brand-600 rounded">
+                <input type="checkbox" id="setting-push" checked class="w-5 h-5 accent-brand-600">
               </div>
             </div>
-
           </div>
 
-          <!-- Right Column: System Info & Save Changes -->
           <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-xs flex flex-col justify-between">
             <div>
-              <h4 class="text-sm font-bold text-slate-900 mb-4">System Info</h4>
+              <h4 class="text-sm font-bold text-slate-900 mb-4">Logistics Architecture</h4>
               <div class="space-y-3 text-xs">
                 <div class="flex justify-between py-2 border-b border-slate-100">
-                  <span class="text-slate-400">Version:</span>
-                  <span class="font-bold text-slate-800">v1.0.0</span>
+                  <span class="text-slate-400">Release:</span>
+                  <span class="font-bold text-slate-800">v1.2.0 (Corridor Multi-Lorry Sync)</span>
                 </div>
                 <div class="flex justify-between py-2 border-b border-slate-100">
-                  <span class="text-slate-400">Last Updated:</span>
-                  <span class="font-bold text-slate-800">Nov 13, 2026</span>
+                  <span class="text-slate-400">Operational Region:</span>
+                  <span class="font-semibold text-slate-800">Kongu Corridor Belt, Tamil Nadu</span>
                 </div>
                 <div class="flex justify-between py-2 border-b border-slate-100">
-                  <span class="text-slate-400">Region:</span>
-                  <span class="font-semibold text-slate-800">Kongu Logistics Belt, Tamil Nadu</span>
+                  <span class="text-slate-400">Probes per Lorry:</span>
+                  <span class="font-bold text-brand-700">3 IoT Devices (D1 Front, D2 Mid, D3 Rear)</span>
                 </div>
                 <div class="flex justify-between py-2 border-b border-slate-100">
-                  <span class="text-slate-400">Sensor Architecture:</span>
-                  <span class="font-semibold text-slate-800">3 Detectors (Front / Mid / Rear)</span>
-                </div>
-                <div class="flex justify-between py-2 border-b border-slate-100">
-                  <span class="text-slate-400">Mapping Engine:</span>
-                  <span class="font-semibold text-emerald-600">OpenStreetMap (Free &amp; Open Source)</span>
+                  <span class="text-slate-400">Map Service:</span>
+                  <span class="font-semibold text-emerald-600">OpenStreetMap (Leaflet &bull; 100% Free)</span>
                 </div>
               </div>
             </div>
 
             <div class="pt-6">
               <button onclick="saveSettings()" class="w-full py-2.5 bg-brand-600 hover:bg-brand-700 text-white font-bold text-xs rounded-xl shadow-xs transition">
-                Save Changes
+                Save Settings
               </button>
             </div>
           </div>
-
         </div>
-
       </div>
 
     </div>
-
   </main>
 
-  <!-- ==================== NEW SHIPMENT MODAL ==================== -->
+  <!-- ==================== DISPATCH NEW LORRY MODAL ==================== -->
   <div id="new-shipment-modal" class="fixed inset-0 bg-slate-900/40 backdrop-blur-xs z-50 hidden flex items-center justify-center p-4">
     <div class="bg-white max-w-md w-full rounded-2xl p-6 shadow-2xl border border-slate-100">
       <div class="flex items-center justify-between pb-3 border-b border-slate-100">
-        <h3 class="text-base font-bold text-slate-900">Create New Cold Chain Shipment</h3>
-        <button onclick="closeNewShipmentModal()" class="text-slate-400 hover:text-slate-600">&times;</button>
+        <h3 class="text-base font-bold text-slate-900">Dispatch Lorry onto Corridor</h3>
+        <button onclick="closeNewShipmentModal()" class="text-slate-400 hover:text-slate-600 text-xl font-bold">&times;</button>
       </div>
       <div class="space-y-3 mt-4 text-xs">
         <div>
-          <label class="font-semibold text-slate-600">Lorry / Truck Registration</label>
-          <input type="text" id="modal-truck-id" value="TN-38-CC-552" class="w-full mt-1 p-2 bg-slate-50 border border-slate-200 rounded-xl font-bold">
+          <label class="font-semibold text-slate-600">Lorry / Vehicle Registration</label>
+          <input type="text" id="modal-truck-id" value="TN-38-CC-704" class="w-full mt-1 p-2 bg-slate-50 border border-slate-200 rounded-xl font-bold">
         </div>
         <div>
-          <label class="font-semibold text-slate-600">Product / Cargo</label>
-          <input type="text" id="modal-cargo" value="Ice Cream Tubs" class="w-full mt-1 p-2 bg-slate-50 border border-slate-200 rounded-xl">
-        </div>
-        <div>
-          <label class="font-semibold text-slate-600">Route</label>
+          <label class="font-semibold text-slate-600">Source Hub &rarr; Destination Depot</label>
           <select id="modal-route" class="w-full mt-1 p-2 bg-slate-50 border border-slate-200 rounded-xl font-semibold">
-            <option>Coimbatore -> Tirupur -> Erode (NH544)</option>
-            <option>Erode -> Perundurai -> Salem (NH544)</option>
-            <option>Nilgiris/Ooty -> Coimbatore (NH181)</option>
-            <option>Namakkal -> Karur (NH44)</option>
+            <option value="COR-ERD-SLM">Erode Regional Storage &rarr; Salem Central Terminal (NH544)</option>
+            <option value="COR-CBE-ERD">Coimbatore Mega Dairy &rarr; Erode Regional Storage (NH544)</option>
+            <option value="COR-OTY-CBE">Nilgiris Vault, Ooty &rarr; Coimbatore Mega Dairy (NH181)</option>
+            <option value="COR-NMK-KRR">Namakkal Base &rarr; Karur Perishables Bay (NH44)</option>
           </select>
+        </div>
+        <div>
+          <label class="font-semibold text-slate-600">Cargo Type</label>
+          <input type="text" id="modal-cargo" value="Bulk Ice Cream Tubs" class="w-full mt-1 p-2 bg-slate-50 border border-slate-200 rounded-xl">
         </div>
         <div class="pt-4 flex items-center justify-end gap-2">
           <button onclick="closeNewShipmentModal()" class="px-4 py-2 bg-slate-100 text-slate-600 font-bold rounded-xl">Cancel</button>
-          <button onclick="confirmNewShipment()" class="px-4 py-2 bg-brand-600 text-white font-bold rounded-xl">Dispatch Lorry</button>
+          <button onclick="confirmNewShipment()" class="px-4 py-2 bg-brand-600 text-white font-bold rounded-xl">Confirm Dispatch</button>
         </div>
       </div>
     </div>
   </div>
 
 
-  <!-- ==================== FRONTEND CONTROLLER JAVASCRIPT ==================== -->
+  <!-- ==================== FRONTEND JAVASCRIPT CONTROLLER ==================== -->
   <script>
-    // Global Application State
     let currentView = 'dashboard';
     let currentSensorTab = 'front';
     let activeVehicleId = 'TN-33-CC-204';
@@ -1232,7 +1125,6 @@
 
     // Chart References
     let chartDashTrend = null;
-    let chartDashMiniRing = null;
     let chartDetailedSensor = null;
     let chartTempGauge = null;
     let chartSpoilageFullRing = null;
@@ -1258,7 +1150,6 @@
         activeNavEl.classList.remove('text-slate-600');
       }
 
-      // Invalidate maps if switching to views with Leaflet
       setTimeout(() => {
         if (viewName === 'dashboard' && dashMiniMap) dashMiniMap.invalidateSize();
         if (viewName === 'tracking') {
@@ -1269,7 +1160,7 @@
       }, 100);
     }
 
-    // Sensor Tab Switcher
+    // Switch sensor tab (Front, Mid, Rear)
     function setSensorTab(tab) {
       currentSensorTab = tab;
       document.querySelectorAll('.sensor-tab').forEach(b => {
@@ -1287,12 +1178,9 @@
     // Initialize Leaflet Mini Map (Dashboard)
     function initMiniMap() {
       if (dashMiniMap) return;
-      dashMiniMap = L.map('dashMiniMap', { zoomControl: false, attributionControl: false }).setView([11.45, 77.85], 9);
+      dashMiniMap = L.map('dashMiniMap', { zoomControl: false, attributionControl: false }).setView([11.50, 77.90], 9);
       
-      // Free OpenStreetMap Carto tiles matching pastel theme
-      L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
-        maxZoom: 19
-      }).addTo(dashMiniMap);
+      L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 19 }).addTo(dashMiniMap);
 
       // Route dashed line Erode -> Salem
       const erodeSalemLine = [
@@ -1303,30 +1191,27 @@
       ];
       L.polyline(erodeSalemLine, { color: '#6366f1', weight: 3, dashArray: '6, 6' }).addTo(dashMiniMap);
 
-      // Storage pin (Salem)
-      const storageIcon = L.divIcon({
+      // Source Storage (Erode)
+      const srcIcon = L.divIcon({
         className: 'custom-icon',
-        html: `<div style="background:#10b981; color:#fff; padding:4px 8px; border-radius:12px; font-size:10px; font-weight:bold; box-shadow:0 2px 6px rgba(0,0,0,0.15);">Storage (Salem)</div>`,
-        iconSize: [80, 24],
-        iconAnchor: [40, 12]
+        html: `<div style="background:#10b981; color:#fff; padding:3px 6px; border-radius:10px; font-size:9px; font-weight:bold; box-shadow:0 2px 4px rgba(0,0,0,0.15);">Src: Erode</div>`,
+        iconSize: [60, 20], iconAnchor: [30, 10]
       });
-      L.marker([11.6643, 78.1460], { icon: storageIcon }).addTo(dashMiniMap);
+      L.marker([11.3410, 77.7172], { icon: srcIcon }).addTo(dashMiniMap);
 
-      // Distribution Center pin (Erode)
-      const distIcon = L.divIcon({
+      // Dest Terminal (Salem)
+      const dstIcon = L.divIcon({
         className: 'custom-icon',
-        html: `<div style="background:#8b5cf6; color:#fff; padding:4px 8px; border-radius:12px; font-size:10px; font-weight:bold; box-shadow:0 2px 6px rgba(0,0,0,0.15);">Dist. Center</div>`,
-        iconSize: [80, 24],
-        iconAnchor: [40, 12]
+        html: `<div style="background:#4f46e5; color:#fff; padding:3px 6px; border-radius:10px; font-size:9px; font-weight:bold; box-shadow:0 2px 4px rgba(0,0,0,0.15);">Dest: Salem</div>`,
+        iconSize: [65, 20], iconAnchor: [32, 10]
       });
-      L.marker([11.3410, 77.7172], { icon: distIcon }).addTo(dashMiniMap);
+      L.marker([11.6643, 78.1460], { icon: dstIcon }).addTo(dashMiniMap);
 
       // Moving Truck Icon
       const truckIcon = L.divIcon({
         className: 'custom-icon',
-        html: `<div style="background:#4f46e5; color:#fff; width:30px; height:30px; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 10px rgba(79,70,229,0.4); border:2px solid #fff; font-size:14px;">🚚</div>`,
-        iconSize: [30, 30],
-        iconAnchor: [15, 15]
+        html: `<div style="background:#ef4444; color:#fff; width:28px; height:28px; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 3px 8px rgba(239,68,68,0.4); border:2px solid #fff; font-size:13px;">🚚</div>`,
+        iconSize: [28, 28], iconAnchor: [14, 14]
       });
       miniMapMarkers['TN-33-CC-204'] = L.marker([11.4880, 77.8720], { icon: truckIcon }).addTo(dashMiniMap);
     }
@@ -1336,11 +1221,8 @@
       if (trackingFullMap) return;
       trackingFullMap = L.map('trackingFullMap', { zoomControl: true, attributionControl: false }).setView([11.35, 77.60], 9);
 
-      L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
-        maxZoom: 19
-      }).addTo(trackingFullMap);
+      L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 19 }).addTo(trackingFullMap);
 
-      // Draw Kongu corridors
       if (fleetState && fleetState.fleet) {
         Object.values(fleetState.fleet).forEach(v => {
           if (v.waypoints && v.waypoints.length > 1) {
@@ -1356,38 +1238,46 @@
       }
     }
 
-    // Initialize Chart.js Instances
+    // Initialize Chart.js
     function initCharts() {
-      // 1. Dashboard Temp Trend (Area Line Chart)
+      // 1. Dashboard 3-Device Simultaneous Trend
       const ctxDashTrend = document.getElementById('dashTempTrendChart').getContext('2d');
-      const gradPurple = ctxDashTrend.createLinearGradient(0, 0, 0, 240);
-      gradPurple.addColorStop(0, 'rgba(124, 58, 237, 0.22)');
-      gradPurple.addColorStop(1, 'rgba(124, 58, 237, 0.00)');
-
       chartDashTrend = new Chart(ctxDashTrend, {
         type: 'line',
         data: {
-          labels: ['04 AM', '06 AM', '08 AM', '10 AM', '12 PM', '02 PM'],
+          labels: ['04 AM', '06 AM', '08 AM', '10 AM', '12 PM', 'Now'],
           datasets: [
             {
-              label: 'Chamber Temperature',
-              data: [-20.1, -19.8, -18.4, -20.4, -20.8, -20.4],
-              borderColor: '#7c3aed',
-              backgroundColor: gradPurple,
-              borderWidth: 2.5,
-              fill: true,
-              tension: 0.4,
-              pointBackgroundColor: '#7c3aed',
-              pointRadius: 4,
-              pointHoverRadius: 6
+              label: 'Device 1: Front (Chiller)',
+              data: [-21.2, -21.0, -20.4, -18.2, -16.8, -16.4],
+              borderColor: '#3b82f6',
+              borderWidth: 2,
+              tension: 0.3,
+              pointRadius: 3
             },
             {
-              label: 'Safe Limit (-18°C)',
-              data: [-18, -18, -18, -18, -18, -18],
+              label: 'Device 2: Middle (Core Mass)',
+              data: [-20.5, -20.1, -19.5, -16.4, -14.5, -13.8],
+              borderColor: '#10b981',
+              borderWidth: 2,
+              tension: 0.3,
+              pointRadius: 3
+            },
+            {
+              label: 'Device 3: Rear (Door Influx Zone)',
+              data: [-19.8, -19.2, -18.0, -11.5, -8.6, -7.5],
               borderColor: '#ef4444',
+              borderWidth: 2.5,
+              tension: 0.3,
+              pointRadius: 4,
+              pointBackgroundColor: '#ef4444'
+            },
+            {
+              label: 'Safe Setpoint (-18°C)',
+              data: [-18, -18, -18, -18, -18, -18],
+              borderColor: '#64748b',
               borderWidth: 1.5,
               borderDash: [5, 5],
-              fill: false,
               pointRadius: 0
             }
           ]
@@ -1399,238 +1289,113 @@
           scales: {
             y: {
               min: -25,
-              max: -15,
-              ticks: { stepSize: 2, callback: val => val + '°C', font: { size: 10 } },
+              max: -5,
+              ticks: { stepSize: 3, callback: val => val + '°C', font: { size: 10 } },
               grid: { color: 'rgba(226, 232, 240, 0.6)' }
             },
-            x: {
-              grid: { display: false },
-              ticks: { font: { size: 10 } }
-            }
+            x: { grid: { display: false }, ticks: { font: { size: 10 } } }
           }
         }
       });
 
-      // 2. Dashboard Spoilage Mini Ring
-      const ctxMiniRing = document.getElementById('spoilageMiniRingChart').getContext('2d');
-      chartDashMiniRing = new Chart(ctxMiniRing, {
-        type: 'doughnut',
-        data: {
-          datasets: [{
-            data: [2.6, 97.4],
-            backgroundColor: ['#06b6d4', '#e2e8f0'],
-            borderWidth: 0,
-            circumference: 360
-          }]
-        },
-        options: {
-          cutout: '76%',
-          responsive: true,
-          maintainAspectRatio: false,
-          plugins: { legend: { display: false }, tooltip: { enabled: false } }
-        }
-      });
-
-      // 3. Spoilage Full Ring
+      // 2. Spoilage Full Ring
       const ctxFullRing = document.getElementById('spoilageFullRingChart').getContext('2d');
       chartSpoilageFullRing = new Chart(ctxFullRing, {
         type: 'doughnut',
         data: {
-          datasets: [{
-            data: [2.6, 97.4],
-            backgroundColor: ['#06b6d4', '#e2e8f0'],
-            borderWidth: 0
-          }]
+          datasets: [{ data: [2.6, 97.4], backgroundColor: ['#06b6d4', '#e2e8f0'], borderWidth: 0 }]
         },
-        options: {
-          cutout: '78%',
-          responsive: true,
-          maintainAspectRatio: false,
-          plugins: { legend: { display: false }, tooltip: { enabled: false } }
-        }
+        options: { cutout: '78%', responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } } }
       });
 
-      // 4. Spoilage Trend Line Chart (Mon - Sun)
+      // 3. Spoilage Trend Line Chart
       const ctxSpoilTrend = document.getElementById('spoilageTrendLineChart').getContext('2d');
       chartSpoilageTrendLine = new Chart(ctxSpoilTrend, {
         type: 'line',
         data: {
           labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
           datasets: [
-            {
-              label: 'Actual',
-              data: [2.8, 3.1, 3.3, 3.5, 3.4, null, null],
-              borderColor: '#4f46e5',
-              backgroundColor: '#4f46e5',
-              borderWidth: 2.5,
-              tension: 0.3,
-              pointRadius: 4
-            },
-            {
-              label: 'Predicted',
-              data: [null, null, null, null, 3.4, 3.2, 3.0],
-              borderColor: '#818cf8',
-              borderWidth: 2,
-              borderDash: [5, 5],
-              tension: 0.3,
-              pointRadius: 3
-            }
+            { label: 'Actual', data: [2.8, 3.1, 3.3, 3.5, 3.4, null, null], borderColor: '#4f46e5', backgroundColor: '#4f46e5', borderWidth: 2.5, tension: 0.3, pointRadius: 4 },
+            { label: 'Predicted', data: [null, null, null, null, 3.4, 3.2, 3.0], borderColor: '#818cf8', borderWidth: 2, borderDash: [5, 5], tension: 0.3, pointRadius: 3 }
           ]
         },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          scales: {
-            y: {
-              min: 0,
-              max: 6,
-              ticks: { callback: val => val + '%' }
-            }
-          }
-        }
+        options: { responsive: true, maintainAspectRatio: false, scales: { y: { min: 0, max: 6, ticks: { callback: v => v + '%' } } } }
       });
 
-      // 5. Compliance Ring Chart
+      // 4. Compliance Ring
       const ctxCompRing = document.getElementById('complianceRingChart').getContext('2d');
       chartComplianceRing = new Chart(ctxCompRing, {
         type: 'doughnut',
-        data: {
-          datasets: [{
-            data: [96.4, 3.6],
-            backgroundColor: ['#10b981', '#ef4444'],
-            borderWidth: 0
-          }]
-        },
-        options: {
-          cutout: '80%',
-          responsive: true,
-          maintainAspectRatio: false,
-          plugins: { legend: { display: false } }
-        }
+        data: { datasets: [{ data: [96.4, 3.6], backgroundColor: ['#10b981', '#ef4444'], borderWidth: 0 }] },
+        options: { cutout: '80%', responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } } }
       });
 
-      // 6. Spoilage Weekly Bar Chart
+      // 5. Spoilage Weekly Bar
       const ctxBar = document.getElementById('spoilageBarChart').getContext('2d');
       chartSpoilageBar = new Chart(ctxBar, {
         type: 'bar',
         data: {
           labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-          datasets: [{
-            data: [1.6, 1.4, 1.8, 1.9, 2.1, 2.3, 2.0],
-            backgroundColor: '#c7d2fe',
-            hoverBackgroundColor: '#818cf8',
-            borderRadius: 6
-          }]
+          datasets: [{ data: [1.6, 1.4, 1.8, 1.9, 2.1, 2.3, 2.0], backgroundColor: '#c7d2fe', hoverBackgroundColor: '#818cf8', borderRadius: 6 }]
         },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          plugins: { legend: { display: false } },
-          scales: {
-            y: { min: 0, max: 3, ticks: { callback: v => v + '%' } },
-            x: { grid: { display: false } }
-          }
-        }
+        options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { min: 0, max: 3, ticks: { callback: v => v + '%' } }, x: { grid: { display: false } } } }
       });
 
-      // 7. Shipment Performance Ring Chart
+      // 6. Shipment Performance Ring
       const ctxShipPerf = document.getElementById('shipmentPerfRingChart').getContext('2d');
       chartShipmentPerfRing = new Chart(ctxShipPerf, {
         type: 'doughnut',
-        data: {
-          datasets: [{
-            data: [94, 6],
-            backgroundColor: ['#10b981', '#f59e0b'],
-            borderWidth: 0
-          }]
-        },
-        options: {
-          cutout: '80%',
-          responsive: true,
-          maintainAspectRatio: false,
-          plugins: { legend: { display: false } }
-        }
+        data: { datasets: [{ data: [94, 6], backgroundColor: ['#10b981', '#f59e0b'], borderWidth: 0 }] },
+        options: { cutout: '80%', responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } } }
       });
 
-      // 8. Gauge Meter (Canvas Half-Doughnut)
+      // 7. Gauge Meter
       const ctxGauge = document.getElementById('tempGaugeCanvas').getContext('2d');
       chartTempGauge = new Chart(ctxGauge, {
         type: 'doughnut',
         data: {
-          datasets: [{
-            data: [60, 40],
-            backgroundColor: ['#10b981', '#e2e8f0'],
-            borderWidth: 0,
-            circumference: 180,
-            rotation: 270
-          }]
+          datasets: [{ data: [60, 40], backgroundColor: ['#10b981', '#e2e8f0'], borderWidth: 0, circumference: 180, rotation: 270 }]
         },
-        options: {
-          cutout: '84%',
-          responsive: true,
-          maintainAspectRatio: false,
-          plugins: { legend: { display: false }, tooltip: { enabled: false } }
-        }
+        options: { cutout: '84%', responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false }, tooltip: { enabled: false } } }
       });
 
-      // 9. Detailed 24h Sensor Chart
+      // 8. Detailed Sensor Curve
       const ctxDetSensor = document.getElementById('detailedSensorChart').getContext('2d');
       chartDetailedSensor = new Chart(ctxDetSensor, {
         type: 'line',
         data: {
-          labels: ['6 AM', '10 AM', '2 PM', '6 PM', '10 PM', '2 AM', 'Now'],
+          labels: ['6 AM', '8 AM', '10 AM', '12 PM', '2 PM', 'Now'],
           datasets: [
-            {
-              label: 'Selected Sensor Temp',
-              data: [-20.5, -20.2, -18.6, -19.9, -20.6, -20.8, -20.4],
-              borderColor: '#7c3aed',
-              backgroundColor: 'rgba(124, 58, 237, 0.1)',
-              borderWidth: 2.5,
-              fill: true,
-              tension: 0.4
-            },
-            {
-              label: 'Safe Threshold (-18°C)',
-              data: [-18, -18, -18, -18, -18, -18, -18],
-              borderColor: '#ef4444',
-              borderWidth: 1.5,
-              borderDash: [4, 4],
-              fill: false
-            }
+            { label: 'Device Temp', data: [-20.5, -20.2, -18.6, -19.9, -20.6, -20.4], borderColor: '#7c3aed', backgroundColor: 'rgba(124, 58, 237, 0.1)', borderWidth: 2.5, fill: true, tension: 0.4 },
+            { label: 'Safe Limit (-18°C)', data: [-18, -18, -18, -18, -18, -18], borderColor: '#ef4444', borderWidth: 1.5, borderDash: [4, 4], fill: false }
           ]
         },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          scales: {
-            y: { min: -25, max: -15, ticks: { callback: v => v + '°C' } }
-          }
-        }
+        options: { responsive: true, maintainAspectRatio: false, scales: { y: { min: -25, max: -5, ticks: { callback: v => v + '°C' } } } }
       });
     }
 
-    // Update Sensor Gauge & Detailed Chart based on active sensor tab
+    // Update Sensor Gauge based on active sensor tab
     function updateSensorGaugeAndChart() {
       if (!fleetState || !fleetState.active_vehicle) return;
       const v = fleetState.active_vehicle;
       let val = v.temp_front;
-      let label = "Front Sensor (Chiller Delivery)";
-      let desc = "Measures primary cooling output directly from evaporator fan.";
+      let label = "Device 1 &bull; Front (Chiller Delivery)";
+      let desc = "Measures cooling output delivered from front evaporator. Detects compressor failure.";
 
       if (currentSensorTab === 'mid') {
         val = v.temp_mid;
-        label = "Middle Sensor (Cargo Core Center)";
-        desc = "Embedded deep inside ice cream bulk pallets to monitor thermal inertia.";
+        label = "Device 2 &bull; Middle (Core Mass)";
+        desc = "Embedded deep inside ice cream pallets. Detects core product thawing & crystal softening.";
       } else if (currentSensorTab === 'rear') {
         val = v.temp_rear;
-        label = "Rear Sensor (Back Door / Influx Zone)";
-        desc = "Directly monitors door seal integrity and warm ambient thermal breaches.";
+        label = "Device 3 &bull; Rear (Door Influx Zone)";
+        desc = "Monitors boundary layer at rear doors. Detects air infiltration, gasket failure, and open doors.";
       }
 
-      document.getElementById('gauge-sensor-label').innerText = label;
+      document.getElementById('gauge-sensor-label').innerHTML = label;
       document.getElementById('gauge-temp-value').innerText = `${val.toFixed(1)}°C`;
       document.getElementById('gauge-compartment-desc').innerText = desc;
-      document.getElementById('sensor-curve-title').innerText = `${label} Real-Time Curve`;
+      document.getElementById('sensor-curve-title').innerHTML = `${label} Real-Time Curve`;
 
       const badge = document.getElementById('gauge-status-badge');
       if (val <= -18.0) {
@@ -1639,22 +1404,21 @@
         if (chartTempGauge) chartTempGauge.data.datasets[0].backgroundColor = ['#10b981', '#e2e8f0'];
       } else if (val <= -15.0) {
         badge.className = "px-2.5 py-0.5 rounded-full text-xs font-bold bg-amber-100 text-amber-700";
-        badge.innerText = "Warning";
+        badge.innerText = "Warning Drift";
         if (chartTempGauge) chartTempGauge.data.datasets[0].backgroundColor = ['#f59e0b', '#e2e8f0'];
       } else {
         badge.className = "px-2.5 py-0.5 rounded-full text-xs font-bold bg-rose-100 text-rose-700 animate-pulse";
-        badge.innerText = "Critical Thaw";
+        badge.innerText = "Critical Thaw Excursion";
         if (chartTempGauge) chartTempGauge.data.datasets[0].backgroundColor = ['#ef4444', '#e2e8f0'];
       }
       if (chartTempGauge) chartTempGauge.update('none');
 
-      // Update detailed curve with historical points
       if (fleetState.active_history && chartDetailedSensor) {
         const hist = fleetState.active_history.slice(-15);
         chartDetailedSensor.data.labels = hist.map(h => h.timestamp);
-        let key = 'temp_front';
-        if (currentSensorTab === 'mid') key = 'temp_mid';
-        if (currentSensorTab === 'rear') key = 'temp_rear';
+        let key = 'device_1_front';
+        if (currentSensorTab === 'mid') key = 'device_2_mid';
+        if (currentSensorTab === 'rear') key = 'device_3_rear';
 
         chartDetailedSensor.data.datasets[0].data = hist.map(h => h[key]);
         chartDetailedSensor.data.datasets[1].data = hist.map(() => -18);
@@ -1677,7 +1441,7 @@
       }
     }
 
-    // Fetch Real-Time Fleet State from Flask Backend
+    // Fetch Fleet State
     async function fetchFleetState() {
       try {
         const res = await fetch(`/api/fleet/state?vehicle_id=${activeVehicleId}`);
@@ -1688,20 +1452,20 @@
       }
     }
 
-    // Render Data into DOM
+    // Render Dashboard Data
     function renderDashboardData(data) {
       if (!data) return;
       const v = data.active_vehicle;
       const summary = data.fleet_summary;
 
-      // Header time
       if (data.time_str) {
-        document.getElementById('header-last-updated').innerText = `Last updated: ${data.time_str}`;
+        document.getElementById('header-last-updated').innerText = data.time_str;
       }
 
-      // Top Cards
-      document.getElementById('dash-active-shipments').innerText = summary.total_transports || 4;
+      document.getElementById('dash-active-shipments').innerText = summary.active_transports || 8;
       document.getElementById('dash-curr-temp').innerText = `${v.temp_avg.toFixed(1)}°C`;
+      document.getElementById('dash-mini-t1').innerText = `D1:${v.temp_front.toFixed(1)}°`;
+      document.getElementById('dash-mini-t3').innerText = `D3:${v.temp_rear.toFixed(1)}°`;
       
       const tempPill = document.getElementById('dash-temp-pill');
       if (v.temp_avg <= -18.0) {
@@ -1718,22 +1482,32 @@
       document.getElementById('dash-alert-count').innerText = data.active_alerts.length;
       document.getElementById('sidebar-alert-badge').innerText = data.active_alerts.length;
 
+      // Dashboard chart subtitle
+      document.getElementById('dash-chart-truck-label').innerText = `(${v.vehicle_id} - ${v.corridor_name})`;
+
       // Mini map bottom bar
       document.getElementById('dash-truck-id').innerText = v.vehicle_id;
-      document.getElementById('dash-truck-status').innerText = v.status_label || (v.alert_level === 'No Alert' ? 'On Route' : 'Alert');
+      document.getElementById('dash-truck-status').innerText = v.alert_level === 'Critical' ? 'Excursion Breached' : (v.status_label || 'On Route');
+      document.getElementById('dash-truck-status').className = v.alert_level === 'Critical' ? "px-2 py-0.5 rounded-full text-[10px] font-bold bg-rose-100 text-rose-700 animate-pulse" : "px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-700";
       document.getElementById('dash-truck-eta').innerText = v.eta || '1h 20m';
+      document.getElementById('dash-source-name').innerText = v.source_hub || 'Erode Regional Storage';
+      document.getElementById('dash-dest-name').innerText = v.destination_hub || 'Salem Central Terminal';
+      document.getElementById('dash-corridor-subtext').innerText = `${v.source_hub} \u2192 ${v.destination_hub}`;
 
       // Live Tracking Sidebar Card
-      document.getElementById('track-vehicle-id').innerText = v.vehicle_id;
-      document.getElementById('track-current-location').innerText = v.current_location || 'Kongu Highway (NH544)';
-      document.getElementById('track-eta').innerText = v.eta || '1h 20m';
-      document.getElementById('track-speed').innerText = `${v.speed_kmh} km/h`;
-      document.getElementById('track-driver').innerText = v.driver;
-      document.getElementById('track-phone').innerText = v.driver_phone;
+      document.getElementById('track-source-hub').innerText = v.source_hub;
+      document.getElementById('track-dest-hub').innerText = v.destination_hub;
+      document.getElementById('track-dep-time').innerText = `Dep: ${v.departure_time}`;
+      document.getElementById('track-corridor-name').innerText = v.corridor_name;
+      document.getElementById('track-eta-pill').innerText = `ETA ${v.eta}`;
+      document.getElementById('track-d1').innerText = `${v.temp_front.toFixed(1)}°C`;
+      document.getElementById('track-d2').innerText = `${v.temp_mid.toFixed(1)}°C`;
+      document.getElementById('track-d3').innerText = `${v.temp_rear.toFixed(1)}°C`;
+      document.getElementById('track-gradient').innerText = `+${v.thermal_gradient.toFixed(1)}°C (${v.thermal_gradient > 3 ? 'Excursion' : 'Balanced'})`;
+      document.getElementById('track-door').innerText = v.door_status === 'Open' ? 'OPEN (Air Influx Breach)' : 'Closed (Sealed)';
+      document.getElementById('track-door').className = v.door_status === 'Open' ? "font-bold text-rose-600" : "font-bold text-emerald-600";
+      document.getElementById('track-phone').innerText = `${v.driver} (${v.driver_phone})`;
       document.getElementById('track-phone').href = `tel:${v.driver_phone}`;
-      document.getElementById('track-cargo').innerText = v.product;
-      document.getElementById('track-val').innerText = `₹ ${v.cargo_val_inr.toLocaleString()}`;
-      document.getElementById('track-battery').innerText = `${v.battery_percent.toFixed(0)}%`;
 
       // 3-Detector Comparison Card
       document.getElementById('cmp-t1').innerText = `${v.temp_front.toFixed(1)}°C`;
@@ -1742,32 +1516,77 @@
 
       const t3Status = document.getElementById('cmp-t3-status');
       if (v.temp_rear >= -10.0) {
-        t3Status.innerText = "⚠️ Critical Rear Thaw (Door Influx)";
-        t3Status.className = "text-[11px] text-rose-500 font-bold mt-1";
+        t3Status.innerText = "⚠️ Influx Hazard: Warm ambient air entered via open door";
+        t3Status.className = "text-[11px] text-rose-600 font-bold mt-1";
       } else {
-        t3Status.innerText = "✓ Rear Gasket Sealed";
+        t3Status.innerText = "✓ Rear Gasket Sealed (No Ambient Influx)";
         t3Status.className = "text-[11px] text-emerald-600 font-medium mt-1";
       }
 
-      // Update Chart.js Trend Curve
+      // Update Chart.js 3-Device Simultaneous Trend Curve
       if (data.active_history && chartDashTrend) {
         const hist = data.active_history.slice(-15);
         chartDashTrend.data.labels = hist.map(h => h.timestamp);
-        chartDashTrend.data.datasets[0].data = hist.map(h => h.temp_avg);
-        chartDashTrend.data.datasets[1].data = hist.map(() => -18);
+        chartDashTrend.data.datasets[0].data = hist.map(h => h.device_1_front);
+        chartDashTrend.data.datasets[1].data = hist.map(h => h.device_2_mid);
+        chartDashTrend.data.datasets[2].data = hist.map(h => h.device_3_rear);
+        chartDashTrend.data.datasets[3].data = hist.map(() => -18);
         chartDashTrend.update('none');
       }
 
-      // Update Sensor Gauge
       updateSensorGaugeAndChart();
-
-      // Render Tables & Alerts
+      renderCorridorComparatorCards(data.corridors);
       renderShipmentTables(data.fleet);
       renderRecentAlerts(data.all_alerts || data.active_alerts);
       updateMapPositions(data.fleet);
     }
 
-    // Render Shipment Rows
+    // Render Same-Corridor Multi-Lorry Comparison Cards
+    function renderCorridorComparatorCards(corridors) {
+      if (!corridors) return;
+      const container = document.getElementById('corridor-cards-container');
+      let html = '';
+
+      Object.values(corridors).forEach(c => {
+        let vHtml = '';
+        c.vehicles.forEach(v => {
+          let badge = `<span class="px-1.5 py-0.5 rounded text-[9px] font-bold bg-emerald-100 text-emerald-700">Safe (-20°C)</span>`;
+          if (v.alert_level === 'Critical') badge = `<span class="px-1.5 py-0.5 rounded text-[9px] font-bold bg-rose-100 text-rose-700 animate-pulse">D3 Excursion (-7.5°C)</span>`;
+          if (v.alert_level === 'Warning') badge = `<span class="px-1.5 py-0.5 rounded text-[9px] font-bold bg-amber-100 text-amber-700">Delayed</span>`;
+
+          vHtml += `
+            <div class="flex items-center justify-between py-1.5 border-t border-slate-100 text-xs cursor-pointer hover:bg-slate-50 rounded px-1" onclick="changeActiveVehicle('${v.vehicle_id}')">
+              <div>
+                <span class="font-bold text-slate-800">${v.vehicle_id}</span>
+                <span class="text-[10px] text-slate-400 ml-1">(${v.truck_id})</span>
+              </div>
+              <div class="flex items-center gap-1.5">
+                ${badge}
+              </div>
+            </div>
+          `;
+        });
+
+        html += `
+          <div class="p-3.5 rounded-xl border ${c.has_excursion ? 'border-rose-200 bg-rose-50/20' : 'border-slate-100 bg-slate-50/50'}">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs font-bold text-slate-900">${c.name}</span>
+              <span class="text-[10px] font-semibold text-slate-400">${c.distance_km} km</span>
+            </div>
+            <div class="text-[10px] text-slate-500 mb-2 truncate">
+              <b>Src:</b> ${c.source.split('(')[0]} &rarr; <b>Dest:</b> ${c.destination.split('(')[0]}
+            </div>
+            <div class="space-y-1">
+              ${vHtml}
+            </div>
+          </div>
+        `;
+      });
+
+      if (container) container.innerHTML = html;
+    }
+
+    // Render Shipment Rows with 3 Devices
     function renderShipmentTables(fleet) {
       if (!fleet) return;
       const dashTbody = document.getElementById('dash-shipments-tbody');
@@ -1777,34 +1596,47 @@
       let fullHtml = '';
 
       Object.values(fleet).forEach(v => {
-        let statusBadge = `<span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-700">● On Route</span>`;
-        if (v.status_label === 'At Depot') statusBadge = `<span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-indigo-100 text-brand-700">● At Depot</span>`;
-        if (v.status_label === 'Delayed' || v.alert_level === 'Warning') statusBadge = `<span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-100 text-amber-700">● Delayed</span>`;
-        if (v.status_label === 'Delivered') statusBadge = `<span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-slate-100 text-slate-700">● Delivered</span>`;
-        if (v.alert_level === 'Critical') statusBadge = `<span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-rose-100 text-rose-700 animate-pulse">● Critical Thaw</span>`;
+        let diagBadge = `<span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-700">● Safe (All 3 Safe)</span>`;
+        if (v.alert_level === 'Critical') {
+          diagBadge = `<span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-rose-100 text-rose-700 animate-pulse">⚠️ Rear Breach (D3)</span>`;
+        } else if (v.alert_level === 'Warning') {
+          diagBadge = `<span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-100 text-amber-700">● Traffic Drift</span>`;
+        }
 
-        // Dashboard table row
         dashHtml += `
-          <tr class="hover:bg-slate-50/80 cursor-pointer transition" onclick="changeActiveVehicle('${v.vehicle_id}')">
-            <td class="py-2.5 font-bold text-slate-800">${v.vehicle_id}</td>
-            <td class="py-2.5 font-mono font-semibold">${v.temp_avg ? v.temp_avg.toFixed(1) : v.temp_mid}°C</td>
-            <td class="py-2.5">${statusBadge}</td>
-            <td class="py-2.5 text-slate-500 font-medium">${v.eta || '1h 20m'}</td>
+          <tr class="hover:bg-slate-50 cursor-pointer transition" onclick="changeActiveVehicle('${v.vehicle_id}')">
+            <td class="py-2.5 font-bold text-slate-900">
+              ${v.vehicle_id}
+              <span class="block text-[10px] text-slate-400 font-normal">${v.truck_id} &bull; ${v.driver}</span>
+            </td>
+            <td class="py-2.5">
+              <span class="font-semibold text-slate-800">${v.source_hub}</span>
+              <span class="text-slate-400 text-[10px] block">&rarr; ${v.destination_hub}</span>
+            </td>
+            <td class="py-2.5 font-mono text-center ${v.temp_front > -18 ? 'text-rose-600 font-bold' : 'text-slate-700'}">${v.temp_front.toFixed(1)}°C</td>
+            <td class="py-2.5 font-mono text-center ${v.temp_mid > -18 ? 'text-rose-600 font-bold' : 'text-slate-700'}">${v.temp_mid.toFixed(1)}°C</td>
+            <td class="py-2.5 font-mono text-center ${v.temp_rear > -18 ? 'text-rose-600 font-extrabold bg-rose-50 px-1.5 py-0.5 rounded' : 'text-slate-700'}">${v.temp_rear.toFixed(1)}°C</td>
+            <td class="py-2.5 font-mono text-center ${v.thermal_gradient > 3 ? 'text-rose-600 font-bold' : 'text-slate-500'}">+${v.thermal_gradient.toFixed(1)}°C</td>
+            <td class="py-2.5">${diagBadge}</td>
           </tr>
         `;
 
-        // Full shipments table row
         fullHtml += `
-          <tr class="hover:bg-slate-50/80 transition">
+          <tr class="hover:bg-slate-50 transition">
             <td class="py-3 font-bold text-slate-900">${v.vehicle_id}</td>
-            <td class="py-3 font-semibold text-brand-600">${v.truck_id || 'T-101'}</td>
-            <td class="py-3 text-slate-600">${v.cargo_type || v.product}</td>
-            <td class="py-3 font-mono font-bold">${v.temp_avg ? v.temp_avg.toFixed(1) : v.temp_mid}°C</td>
-            <td class="py-3">${statusBadge}</td>
-            <td class="py-3 text-slate-500">${v.eta || '--'}</td>
+            <td class="py-3 text-brand-700 font-semibold">${v.corridor_name}</td>
+            <td class="py-3 text-slate-700">${v.source_hub}</td>
+            <td class="py-3 text-slate-700 font-semibold">${v.destination_hub}</td>
+            <td class="py-3 text-slate-500">${v.departure_time}</td>
+            <td class="py-3 text-center font-mono text-xs">
+              <span class="${v.temp_front > -18 ? 'text-rose-600 font-bold' : ''}">F:${v.temp_front.toFixed(1)}°</span> |
+              <span class="${v.temp_mid > -18 ? 'text-rose-600 font-bold' : ''}">M:${v.temp_mid.toFixed(1)}°</span> |
+              <span class="${v.temp_rear > -18 ? 'text-rose-600 font-bold' : ''}">R:${v.temp_rear.toFixed(1)}°</span>
+            </td>
+            <td class="py-3 text-slate-600 font-medium">${v.eta}</td>
             <td class="py-3 text-right">
-              <button onclick="changeActiveVehicle('${v.vehicle_id}'); switchView('tracking');" class="px-3 py-1 bg-brand-50 hover:bg-brand-100 text-brand-700 font-bold rounded-lg text-xs transition">
-                View
+              <button onclick="changeActiveVehicle('${v.vehicle_id}'); switchView('sensors');" class="px-3 py-1 bg-brand-50 hover:bg-brand-100 text-brand-700 font-bold rounded-lg text-xs transition">
+                3-Probe View
               </button>
             </td>
           </tr>
@@ -1815,7 +1647,7 @@
       if (fullTbody) fullTbody.innerHTML = fullHtml;
     }
 
-    // Render Recent Alerts matching Image 3
+    // Render Recent Alerts
     function renderRecentAlerts(alerts) {
       if (!alerts) return;
       const dashList = document.getElementById('dash-recent-alerts');
@@ -1824,66 +1656,37 @@
       let dashHtml = '';
       let fullHtml = '';
 
-      alerts.slice(0, 4).forEach(a => {
-        let iconBg = "bg-rose-100 text-rose-600";
-        let iconSvg = "⚠️";
-        let pillClass = "bg-rose-100 text-rose-700";
-
-        if (a.alert_level === 'Warning') {
-          iconBg = "bg-amber-100 text-amber-600";
-          iconSvg = "🔔";
-          pillClass = "bg-amber-100 text-amber-700";
-        } else if (a.alert_level === 'Info') {
-          iconBg = "bg-indigo-100 text-brand-600";
-          iconSvg = "ℹ️";
-          pillClass = "bg-indigo-100 text-brand-700";
-        }
-
+      alerts.slice(0, 3).forEach(a => {
+        let iconBg = a.alert_level === 'Critical' ? "bg-rose-100 text-rose-600" : "bg-amber-100 text-amber-600";
         dashHtml += `
           <div class="flex items-center justify-between p-2.5 rounded-xl hover:bg-slate-50 cursor-pointer transition" onclick="switchView('alerts')">
             <div class="flex items-center gap-3">
-              <div class="w-8 h-8 rounded-full ${iconBg} flex items-center justify-center text-xs shrink-0">
-                ${iconSvg}
-              </div>
+              <div class="w-8 h-8 rounded-full ${iconBg} flex items-center justify-center text-xs shrink-0 font-bold">⚠️</div>
               <div>
-                <p class="text-xs font-bold text-slate-800">${a.title || 'Excursion Alert'}</p>
-                <p class="text-[11px] text-slate-400">${a.description || a.vehicle_id}</p>
+                <p class="text-xs font-bold text-slate-800">${a.title}</p>
+                <p class="text-[11px] text-slate-400">${a.description}</p>
               </div>
             </div>
-            <span class="text-[11px] font-semibold text-slate-400">${a.timestamp || 'Just now'}</span>
+            <span class="text-[11px] font-semibold text-slate-400">${a.timestamp}</span>
           </div>
         `;
       });
 
       alerts.forEach(a => {
-        let iconBg = "bg-rose-100 text-rose-600";
-        let pillClass = "bg-rose-100 text-rose-700";
-        let iconSvg = "⚠️";
-
-        if (a.alert_level === 'Warning') {
-          iconBg = "bg-amber-100 text-amber-600";
-          pillClass = "bg-amber-100 text-amber-700";
-          iconSvg = "🔔";
-        } else if (a.alert_level === 'Info') {
-          iconBg = "bg-indigo-100 text-brand-600";
-          pillClass = "bg-indigo-100 text-brand-700";
-          iconSvg = "ℹ️";
-        }
-
+        let pillClass = a.alert_level === 'Critical' ? "bg-rose-100 text-rose-700" : (a.alert_level === 'Warning' ? "bg-amber-100 text-amber-700" : "bg-indigo-100 text-brand-700");
         fullHtml += `
-          <div class="p-4 flex items-center justify-between hover:bg-slate-50/70 transition">
+          <div class="p-4 flex items-center justify-between hover:bg-slate-50 transition">
             <div class="flex items-center gap-4">
-              <div class="w-10 h-10 rounded-full ${iconBg} flex items-center justify-center text-sm font-bold shrink-0">
-                ${iconSvg}
-              </div>
+              <div class="w-10 h-10 rounded-full ${a.alert_level === 'Critical' ? 'bg-rose-100 text-rose-600' : 'bg-amber-100 text-amber-600'} flex items-center justify-center font-bold">⚠️</div>
               <div>
-                <h4 class="text-sm font-bold text-slate-800">${a.title || 'Excursion Notice'}</h4>
-                <p class="text-xs text-slate-500 mt-0.5">${a.description || a.vehicle_id}</p>
+                <h4 class="text-sm font-bold text-slate-800">${a.title}</h4>
+                <p class="text-xs text-slate-500 mt-0.5">${a.description}</p>
+                <span class="text-[10px] text-brand-700 font-semibold">Corridor: ${a.corridor || 'NH544 Logistics Highway'}</span>
               </div>
             </div>
             <div class="flex items-center gap-4">
-              <span class="text-xs font-semibold text-slate-400">${a.timestamp || '09:52 AM'}</span>
-              <span class="px-2.5 py-0.5 rounded-full text-xs font-bold ${pillClass}">${a.alert_level || 'Alert'}</span>
+              <span class="text-xs font-semibold text-slate-400">${a.timestamp}</span>
+              <span class="px-2.5 py-0.5 rounded-full text-xs font-bold ${pillClass}">${a.alert_level}</span>
             </div>
           </div>
         `;
@@ -1897,30 +1700,27 @@
     function updateMapPositions(fleet) {
       if (!fleet) return;
       
-      // Update Mini Map Truck
       const incidentLorry = fleet['TN-33-CC-204'];
       if (incidentLorry && miniMapMarkers['TN-33-CC-204']) {
         miniMapMarkers['TN-33-CC-204'].setLatLng([incidentLorry.gps_lat, incidentLorry.gps_lng]);
       }
 
-      // Update Full Map Trucks
       if (trackingFullMap) {
         Object.values(fleet).forEach(v => {
           if (!fullMapMarkers[v.vehicle_id]) {
             const icon = L.divIcon({
               className: 'custom-icon',
               html: `<div style="background:${v.route_color || '#4f46e5'}; color:#fff; width:32px; height:32px; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 10px rgba(0,0,0,0.25); border:2px solid #fff; font-size:15px; cursor:pointer;" title="${v.vehicle_id}">🚚</div>`,
-              iconSize: [32, 32],
-              iconAnchor: [16, 16]
+              iconSize: [32, 32], iconAnchor: [16, 16]
             });
             const marker = L.marker([v.gps_lat, v.gps_lng], { icon: icon }).addTo(trackingFullMap);
             marker.bindPopup(`
               <div style="padding:10px; font-family:'Plus Jakarta Sans',sans-serif;">
-                <strong style="font-size:13px; color:#1e293b;">${v.vehicle_id} (${v.name})</strong><br>
-                <span style="font-size:11px; color:#64748b;">Route: ${v.route_name}</span><br>
+                <strong style="font-size:13px; color:#1e293b;">${v.vehicle_id} (${v.truck_id})</strong><br>
+                <span style="font-size:11px; color:#64748b;">${v.source_hub} &rarr; ${v.destination_hub}</span><br>
                 <div style="margin-top:6px; font-size:12px;">
-                  <b>Temp:</b> ${v.temp_avg}°C (F:${v.temp_front}°C | R:${v.temp_rear}°C)<br>
-                  <b>Door:</b> ${v.door_status} | <b>Speed:</b> ${v.speed_kmh} km/h
+                  <b>3 Devices:</b> F:${v.temp_front}°C | M:${v.temp_mid}°C | R:${v.temp_rear}°C<br>
+                  <b>Gradient:</b> +${v.thermal_gradient}°C | <b>Door:</b> ${v.door_status}
                 </div>
               </div>
             `);
@@ -1940,7 +1740,7 @@
       const timeEl = document.getElementById('ai-report-time');
 
       panel.classList.remove('hidden');
-      textEl.innerText = "Analyzing live 3-detector sensor telemetries with Google Gemini...";
+      textEl.innerText = "Cross-referencing 3-device sensor telemetry with companion corridor lorries...";
       
       try {
         const res = await fetch('/api/ai/diagnose', {
@@ -1956,7 +1756,7 @@
       }
     }
 
-    // Mark All Alerts as Read
+    // Mark Alerts Read
     async function markAllAlertsAsRead() {
       try {
         await fetch('/api/alerts/read-all', { method: 'POST' });
@@ -1978,13 +1778,7 @@
         await fetch('/api/settings', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            temp_min: min,
-            temp_max: max,
-            email_alerts: email,
-            sms_alerts: sms,
-            push_notifications: push
-          })
+          body: JSON.stringify({ temp_min: min, temp_max: max, email_alerts: email, sms_alerts: sms, push_notifications: push })
         });
         alert("Settings saved successfully.");
       } catch (e) {
@@ -1993,23 +1787,18 @@
     }
 
     // Modal controls
-    function openNewShipmentModal() {
-      document.getElementById('new-shipment-modal').classList.remove('hidden');
-    }
-    function closeNewShipmentModal() {
-      document.getElementById('new-shipment-modal').classList.add('hidden');
-    }
+    function openNewShipmentModal() { document.getElementById('new-shipment-modal').classList.remove('hidden'); }
+    function closeNewShipmentModal() { document.getElementById('new-shipment-modal').classList.add('hidden'); }
     function confirmNewShipment() {
       closeNewShipmentModal();
-      alert("New refrigerated shipment dispatched successfully onto NH544 corridor.");
+      alert("New refrigerated lorry dispatched onto selected corridor with 3 IoT devices active.");
     }
 
-    // Initialization on Page Load
     window.addEventListener('DOMContentLoaded', () => {
       initCharts();
       initMiniMap();
       fetchFleetState();
-      setInterval(fetchFleetState, 1500); // 1.5s real-time heartbeat
+      setInterval(fetchFleetState, 1500);
     });
   </script>
 
