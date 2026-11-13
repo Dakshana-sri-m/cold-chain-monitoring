@@ -1,67 +1,72 @@
-# Boomerang Logistics &bull; Kongu Fleet Cold Chain Real-Time Operations Center
+# FrostGuard &bull; Keep Every Scoop Cold
+### Real-Time Cold Chain Temperature Excursion Monitoring System
 
-**Company / Partner:** Boomerang Cold Chain Logistics  
-**Operational Belt:** Kongu Region, Tamil Nadu (Coimbatore, Tirupur, Erode, Salem, Namakkal, Nilgiris/Ooty, Karur)  
+**Operational Belt:** Kongu Logistics Corridor, Tamil Nadu (Coimbatore, Tirupur, Erode, Salem, Namakkal, Nilgiris/Ooty, Karur)  
 **Lead Developer:** Dakshana Sri M  
-**Dashboard URL:** `http://127.0.0.1:5050`  
+**Operations Center URL:** `http://127.0.0.1:5050`  
 
 ---
 
-## 1. Owner's Real-Time Operational Overview
+## ❄️ 1. Overview & Modern FrostGuard UI/UX
 
-Designed exclusively as an **Executive Fleet Owner's Real-Time Control Center**, this interface strips away technical hardware setup clutter to display solely the live operational data the fleet owner needs to know:
-- **No historical simulation sliders or past/present toggles** &mdash; a 100% pure real-time data stream updating every 1.5 seconds.
-- **Concurrent Multiple Transport Lorries** traversing the Kongu logistics corridor in Tamil Nadu.
-- **3 Dedicated Temperature Detectors per Vehicle:**
-  1. **Detector 1 ($T_1$) &ndash; Front (Chiller Air Outlet):** Measures refrigeration delivery temperature.
-  2. **Detector 2 ($T_2$) &ndash; Middle (Cargo Core Mass):** Measures preservation of the bulk ice cream core.
-  3. **Detector 3 ($T_3$) &ndash; Rear (Back Door Zone):** Directly monitors thermal ingress and door seal integrity.
+**FrostGuard** is an industrial-grade cold chain operations center designed to protect sensitive perishables (ice cream, frozen dairy desserts, and vaccines) during highway transit.
 
----
-
-## 2. Kongu Region Fleet Lorries
-
-| Vehicle ID | Lorry Name | Route (Kongu Belt) | Status | Driver & Contact |
-| :--- | :--- | :--- | :--- | :--- |
-| **`TN-38-CC-101`** | Kongu Express 1 | **Coimbatore $\rightarrow$ Tirupur $\rightarrow$ Erode** (NH544) | <span style="color:#10b981">SAFE</span> | M. Senthil Kumar (`+91 94431 22891`) |
-| **`TN-33-CC-204`** | Erode Cold Carrier 2 | **Erode Hub $\rightarrow$ Perundurai $\rightarrow$ Salem Depot** (NH544 Bypass) | <span style="color:#ef4444">CRITICAL (Door Open)</span> | K. Murugan (`+91 98422 71045`) |
-| **`TN-28-CC-415`** | Namakkal Cold Liner 3 | **Namakkal Dairy Belt $\rightarrow$ Karur Cold Bay** (NH44) | <span style="color:#f59e0b">WARNING</span> | P. Ramesh (`+91 97890 33412`) |
-| **`TN-43-CC-309`** | Nilgiris Mountain Vault 4 | **Nilgiris/Ooty $\rightarrow$ Mettupalayam $\rightarrow$ Coimbatore Hub** | <span style="color:#10b981">SAFE</span> | A. Balaji (`+91 99441 55620`) |
-
----
-
-## 3. Real-Time Graphs Incorporating 3 Temperature Detectors
-
-1. **Graph 1: 3-Detector Real-Time Thermal Multi-Line ($T_1, T_2, T_3$):**
-   * Plotted simultaneously with Safe ($-18.0^\circ\text{C}$), Warning ($-15.0^\circ\text{C}$), and Critical Thawing ($-10.0^\circ\text{C}$) reference lines.
-2. **Graph 2: Thermal Gradient & Airflow Distribution ($\Delta T = T_3 - T_1$):**
-   * Measures thermal disparity between the rear door and front chiller. $\Delta T > 3.0^\circ\text{C}$ flags cargo ventilation blockage or door seal leaks.
-3. **Graph 3: Kongu Fleet Comparative Real-Time Temperatures:**
-   * Plots the real-time average temperature curves of all 4 Kongu transport lorries concurrently.
-4. **Graph 4: Moisture Ingress & Rear Door Influx Correlation:**
-   * Real-time physical correlation between door opening events and humidity/rear probe ($T_3$) temperature spikes.
+The interface incorporates 8 specialized operational modules:
+1. **Dashboard:** Executive real-time overview featuring live KPI metric cards (Active Shipments, Current Temp, Active Alerts, Cold Chain Health), area temperature trend with safe limit line, OpenStreetMap live tracking preview, shipment overview table, recent alerts feed, and spoilage analysis summary.
+2. **Shipments:** Comprehensive shipment registry with status filters (Total: 12, In Transit: 6, Delivered: 5, Delayed: 1), live truck temperatures, route milestones, and dispatch modal.
+3. **Live Tracking:** Interactive OpenStreetMap (powered by Leaflet.js) visualizing Tamil Nadu NH544, NH44, and NH181 corridors with live moving lorries, transit hubs, cold vaults, and vehicle telematics sidebar.
+4. **Temperature Monitoring:** 3-detector spatial monitoring:
+   - **Front Sensor ($T_1$):** Chiller evaporator air delivery
+   - **Middle Sensor ($T_2$):** Bulk cargo core mass
+   - **Rear Sensor ($T_3$):** Back door / heat influx zone
+   - Semicircular radial gauge with safe threshold indicator (-25°C to -18°C) and 24h curve.
+5. **Spoilage Analysis:** Quantified financial & mass loss analytics:
+   - Spoilage Rate Ring: **2.6%** (48% below target baseline)
+   - Potential Spoilage: **~18 kg**
+   - Estimated Savings: **₹ 6,300**
+   - Actual vs. Predicted trend curves
+   - 1-click **Google Gemini AI Excursion Intelligence Officer**
+6. **Alerts:** Prioritized notification center with real-time severity levels (Critical, Warning, Info) and 1-click acknowledgment.
+7. **Reports & Analytics:** Temperature compliance doughnut (96.4%), weekly spoilage bar chart (Mon–Sun), shipment timeliness (94% On Time), and telemetry CSV export.
+8. **Settings:** Operational thresholds (-25°C to -18°C), notification toggles (Email, SMS, Push), and system info.
 
 ---
 
-## 4. Quick Start Guide
+## 🚚 2. Kongu Region Active Transport Fleet
 
-### Launch Dashboard
-* Double-click [start_dashboard.bat](file:///c:/Users/Dakshana%20Sri/OneDrive/Desktop/cold%20chain/start_dashboard.bat) or run [run_dashboard.ps1](file:///c:/Users/Dakshana%20Sri/OneDrive/Desktop/cold%20chain/run_dashboard.ps1).
-* Opens directly at `http://127.0.0.1:5050`.
+| Vehicle ID | Truck ID | Route (Tamil Nadu) | Cargo Type | Temp | Status | Driver & Contact |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| **`TN-33-CC-204`** | `T-101` | Erode Hub $\rightarrow$ Perundurai $\rightarrow$ Salem Depot (NH544) | Milk & Ice Cream | `-20.4°C` | **On Route** | K. Murugan (`+91 98422 71045`) |
+| **`TN-38-CC-181`** | `T-103` | Coimbatore $\rightarrow$ Tirupur $\rightarrow$ Erode (NH544) | Ice Cream Pints | `-18.7°C` | **At Depot** | M. Senthil Kumar (`+91 94431 22891`) |
+| **`TN-43-CC-309`** | `T-107` | Nilgiris/Ooty $\rightarrow$ Mettupalayam $\rightarrow$ Coimbatore (NH181) | Frozen Veg & Ice Cream | `-21.5°C` | **On Route** | A. Balaji (`+91 99441 55620`) |
+| **`TN-41-CC-276`** | `T-105` | Namakkal Dairy Belt $\rightarrow$ Karur Cold Bay (NH44) | Dairy Soft Cream | `-19.2°C` | **Delayed** | P. Ramesh (`+91 97890 33412`) |
+| **`TN-39-CC-221`** | `T-102` | Salem Terminal $\rightarrow$ Perundurai Transit Hub | Fruits & Dairy | `-20.1°C` | **Delivered** | S. Rajesh (`+91 94421 88392`) |
 
-### Ingest Data from Hardware
-Send live sensor data directly to `POST http://127.0.0.1:5050/api/telemetry` with:
-```json
-{
-  "vehicle_id": "TN-33-CC-204",
-  "temp_front": -20.5,
-  "temp_mid": -19.2,
-  "temp_rear": -14.0,
-  "humidity": 82.0,
-  "door_status": "Open",
-  "battery_percent": 95.0,
-  "gps_lat": 11.3410,
-  "gps_lng": 77.7172,
-  "speed_kmh": 0.0
-}
-```
+---
+
+## ⚡ 3. Quick Start & Execution
+
+1. Run the local dashboard:
+   ```bash
+   python app.py
+   ```
+   Or double-click `start_dashboard.bat`.
+2. Open your browser at **`http://127.0.0.1:5050`**.
+3. Ingest real hardware sensor data:
+   ```bash
+   POST http://127.0.0.1:5050/api/telemetry
+   Content-Type: application/json
+
+   {
+     "vehicle_id": "TN-33-CC-204",
+     "temp_front": -21.0,
+     "temp_mid": -19.5,
+     "temp_rear": -18.0,
+     "humidity": 72.0,
+     "door_status": "Closed",
+     "battery_percent": 95.0,
+     "gps_lat": 11.3410,
+     "gps_lng": 77.7172,
+     "speed_kmh": 48.0
+   }
+   ```

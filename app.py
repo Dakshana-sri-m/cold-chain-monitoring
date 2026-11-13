@@ -33,7 +33,7 @@ if os.path.exists(env_file):
 GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "")
 
 # ---------------------------------------------------------------------------
-# KONGU REGION, TAMIL NADU COLD CHAIN HUBS & ACCURATE HIGHWAY ROAD WAYPOINTS
+# KONGU REGION, TAMIL NADU COLD CHAIN HUBS & HIGHWAY ROAD WAYPOINTS
 # ---------------------------------------------------------------------------
 KONGU_HUBS = {
     "coimbatore": {"name": "Coimbatore Mega Dairy Hub", "lat": 11.0168, "lng": 76.9558, "city": "Coimbatore", "type": "Origin Plant"},
@@ -46,19 +46,60 @@ KONGU_HUBS = {
     "ooty":       {"name": "Nilgiris High-Altitude Cold Vault", "lat": 11.4102, "lng": 76.6950, "city": "Ooty", "type": "Hardening Plant"}
 }
 
-# 4 Active Refrigerated Transport Lorries with High-Density Highway Route Waypoints
+# 5 Active Refrigerated Transport Lorries matching FrostGuard UI
 FLEET_LORRIES = {
-    "TN-38-CC-101": {
-        "vehicle_id": "TN-38-CC-101",
+    "TN-33-CC-204": {
+        "vehicle_id": "TN-33-CC-204",
+        "truck_id": "T-101",
+        "name": "Erode Cold Carrier 2",
+        "driver": "K. Murugan",
+        "driver_phone": "+91 98422 71045",
+        "product": "Milk & Ice Cream",
+        "cargo_type": "Milk & Ice Cream",
+        "cargo_load_kg": 4800,
+        "cargo_val_inr": 432000,
+        "route_name": "Erode Hub -> Perundurai -> Salem Depot (NH544 Bypass)",
+        "route_color": "#6366f1", # Indigo
+        "eta": "1h 20m",
+        "status_label": "On Route",
+        "current_location": "Near Erode",
+        "waypoints": [
+            [11.3410, 77.7172], # Erode Depot
+            [11.3900, 77.7400], # Chithode
+            [11.4450, 77.7780], # Bhavani / Kumarapalayam
+            [11.4880, 77.8720], # Sankari Toll
+            [11.5300, 77.9600], # Magudanchavadi
+            [11.5900, 78.0400], # Ariyanoor
+            [11.6643, 78.1460]  # Salem Central Terminal
+        ],
+        "progress": 0.55,
+        "speed_kmh": 0.0,
+        "door_status": "Open", # Incident: Rear Door Open
+        "battery_percent": 88.0,
+        "temp_front": -16.4,
+        "temp_mid": -13.8,
+        "temp_rear": -7.5,
+        "humidity": 89.2,
+        "alert_level": "Critical",
+        "condition": "Thawing Risk",
+        "refreezing_detected": "No",
+        "active": True
+    },
+    "TN-38-CC-181": {
+        "vehicle_id": "TN-38-CC-181",
+        "truck_id": "T-103",
         "name": "Kongu Express 1",
         "driver": "M. Senthil Kumar",
         "driver_phone": "+91 94431 22891",
         "product": "Ice Cream Pints",
+        "cargo_type": "Ice Cream",
         "cargo_load_kg": 5200,
         "cargo_val_inr": 468000,
         "route_name": "Coimbatore -> Tirupur -> Erode (NH544)",
         "route_color": "#10b981", # Emerald
-        # Realistic waypoints along NH544
+        "eta": "2h 10m",
+        "status_label": "At Depot",
+        "current_location": "Tirupur Cold Bay",
         "waypoints": [
             [11.0168, 76.9558], # Coimbatore Hub
             [11.0420, 77.0300], # Singanallur
@@ -71,91 +112,33 @@ FLEET_LORRIES = {
             [11.3410, 77.7172]  # Erode Depot
         ],
         "progress": 0.42,
-        "speed_kmh": 50.0,
+        "speed_kmh": 48.0,
         "door_status": "Closed",
         "battery_percent": 96.5,
-        "temp_front": -21.6,
-        "temp_mid": -20.2,
-        "temp_rear": -19.1,
+        "temp_front": -20.8,
+        "temp_mid": -19.4,
+        "temp_rear": -18.7,
         "humidity": 72.0,
         "alert_level": "No Alert",
         "condition": "Safe",
         "refreezing_detected": "No",
         "active": True
     },
-    "TN-33-CC-204": {
-        "vehicle_id": "TN-33-CC-204",
-        "name": "Erode Cold Carrier 2",
-        "driver": "K. Murugan",
-        "driver_phone": "+91 98422 71045",
-        "product": "Dairy Soft Ice Cream & Bars",
-        "cargo_load_kg": 4800,
-        "cargo_val_inr": 432000,
-        "route_name": "Erode Hub -> Perundurai -> Salem Depot (NH544 Bypass)",
-        "route_color": "#ef4444", # Red (Incident Lorry)
-        "waypoints": [
-            [11.3410, 77.7172], # Erode Depot
-            [11.3900, 77.7400], # Chithode
-            [11.4450, 77.7780], # Bhavani / Kumarapalayam
-            [11.4880, 77.8720], # Sankari Toll
-            [11.5300, 77.9600], # Magudanchavadi
-            [11.5900, 78.0400], # Ariyanoor
-            [11.6643, 78.1460]  # Salem Central Terminal
-        ],
-        "progress": 0.55,
-        "speed_kmh": 0.0, # Halted at transit bay
-        "door_status": "Open", # INCIDENT: Rear door open & heat influx
-        "battery_percent": 88.0,
-        "temp_front": -16.4,
-        "temp_mid": -13.8,
-        "temp_rear": -7.5, # CRITICAL THAWING RISK
-        "humidity": 89.2,
-        "alert_level": "Critical",
-        "condition": "Thawing Risk",
-        "refreezing_detected": "No",
-        "active": True
-    },
-    "TN-28-CC-415": {
-        "vehicle_id": "TN-28-CC-415",
-        "name": "Namakkal Cold Liner 3",
-        "driver": "P. Ramesh",
-        "driver_phone": "+91 97890 33412",
-        "product": "Frozen Dairy Desserts",
-        "cargo_load_kg": 4400,
-        "cargo_val_inr": 396000,
-        "route_name": "Namakkal Dairy Belt -> Karur Cold Bay (NH44)",
-        "route_color": "#f59e0b", # Amber
-        "waypoints": [
-            [11.2189, 78.1674], # Namakkal Base
-            [11.1600, 78.1400], # Keerambur
-            [11.1000, 78.0800], # Paramathi
-            [11.0500, 78.0100], # Velur Cauvery Bridge
-            [10.9900, 78.0400], # Vangal Road
-            [10.9601, 78.0766]  # Karur Bay
-        ],
-        "progress": 0.65,
-        "speed_kmh": 46.0,
-        "door_status": "Closed",
-        "battery_percent": 91.2,
-        "temp_front": -19.4,
-        "temp_mid": -17.5,
-        "temp_rear": -15.9,
-        "humidity": 76.5,
-        "alert_level": "Warning",
-        "condition": "Warning",
-        "refreezing_detected": "No",
-        "active": True
-    },
     "TN-43-CC-309": {
         "vehicle_id": "TN-43-CC-309",
+        "truck_id": "T-107",
         "name": "Nilgiris Mountain Vault 4",
         "driver": "A. Balaji",
         "driver_phone": "+91 99441 55620",
-        "product": "Artisanal Ice Cream",
+        "product": "Frozen Veg & Ice Cream",
+        "cargo_type": "Frozen Veg",
         "cargo_load_kg": 3600,
         "cargo_val_inr": 324000,
         "route_name": "Nilgiris/Ooty -> Mettupalayam -> Coimbatore Hub (NH181)",
         "route_color": "#06b6d4", # Cyan
+        "eta": "3h 05m",
+        "status_label": "On Route",
+        "current_location": "Coonoor Ghats",
         "waypoints": [
             [11.4102, 76.6950], # Ooty Vault
             [11.3700, 76.7500], # Aruvankadu
@@ -166,14 +149,84 @@ FLEET_LORRIES = {
             [11.1200, 76.9500], # Thudiyalur
             [11.0168, 76.9558]  # Coimbatore Hub
         ],
-        "progress": 0.28,
+        "progress": 0.30,
         "speed_kmh": 38.0,
         "door_status": "Closed",
         "battery_percent": 98.0,
-        "temp_front": -22.4,
-        "temp_mid": -21.1,
-        "temp_rear": -20.3,
-        "humidity": 69.0,
+        "temp_front": -22.5,
+        "temp_mid": -21.5,
+        "temp_rear": -20.6,
+        "humidity": 68.0,
+        "alert_level": "No Alert",
+        "condition": "Safe",
+        "refreezing_detected": "No",
+        "active": True
+    },
+    "TN-41-CC-276": {
+        "vehicle_id": "TN-41-CC-276",
+        "truck_id": "T-105",
+        "name": "Namakkal Cold Liner 3",
+        "driver": "P. Ramesh",
+        "driver_phone": "+91 97890 33412",
+        "product": "Dairy Desserts",
+        "cargo_type": "Dairy",
+        "cargo_load_kg": 4400,
+        "cargo_val_inr": 396000,
+        "route_name": "Namakkal Dairy Belt -> Karur Cold Bay (NH44)",
+        "route_color": "#f59e0b", # Amber
+        "eta": "4h 30m",
+        "status_label": "Delayed",
+        "current_location": "Paramathi NH44",
+        "waypoints": [
+            [11.2189, 78.1674], # Namakkal Base
+            [11.1600, 78.1400], # Keerambur
+            [11.1000, 78.0800], # Paramathi
+            [11.0500, 78.0100], # Velur Cauvery Bridge
+            [10.9900, 78.0400], # Vangal Road
+            [10.9601, 78.0766]  # Karur Bay
+        ],
+        "progress": 0.65,
+        "speed_kmh": 42.0,
+        "door_status": "Closed",
+        "battery_percent": 91.2,
+        "temp_front": -20.1,
+        "temp_mid": -19.2,
+        "temp_rear": -18.2,
+        "humidity": 76.5,
+        "alert_level": "Warning",
+        "condition": "Warning",
+        "refreezing_detected": "No",
+        "active": True
+    },
+    "TN-39-CC-221": {
+        "vehicle_id": "TN-39-CC-221",
+        "truck_id": "T-102",
+        "name": "Salem Perishables Runner",
+        "driver": "S. Rajesh",
+        "driver_phone": "+91 94421 88392",
+        "product": "Fruits & Dairy",
+        "cargo_type": "Fruits",
+        "cargo_load_kg": 4100,
+        "cargo_val_inr": 369000,
+        "route_name": "Salem Depot -> Perundurai Transit Hub",
+        "route_color": "#10b981", # Green
+        "eta": "--",
+        "status_label": "Delivered",
+        "current_location": "Salem Depot",
+        "waypoints": [
+            [11.6643, 78.1460], # Salem
+            [11.5900, 78.0400],
+            [11.4880, 77.8720],
+            [11.3410, 77.7172]  # Erode
+        ],
+        "progress": 1.0,
+        "speed_kmh": 0.0,
+        "door_status": "Closed",
+        "battery_percent": 99.0,
+        "temp_front": -21.0,
+        "temp_mid": -20.4,
+        "temp_rear": -19.8,
+        "humidity": 70.0,
         "alert_level": "No Alert",
         "condition": "Safe",
         "refreezing_detected": "No",
@@ -182,9 +235,86 @@ FLEET_LORRIES = {
 }
 
 VEHICLE_HISTORY = {vid: [] for vid in FLEET_LORRIES}
-ACTIVE_ALERTS = []
-AUDIT_LOG = []
+ACTIVE_ALERTS = [
+    {
+        "id": "ALT-101",
+        "title": "Temperature Spike Detected",
+        "vehicle_id": "TN-33-CC-204",
+        "truck_id": "T-101",
+        "description": "TN-33-CC-204 • -18.2°C in 30 min",
+        "timestamp": "09:52 AM",
+        "alert_level": "Critical",
+        "condition": "Thawing Risk",
+        "raw_time": time.time() - 1200,
+        "door_status": "Open",
+        "temp_front": -16.4,
+        "temp_mid": -13.8,
+        "temp_rear": -7.5,
+        "read": False
+    },
+    {
+        "id": "ALT-102",
+        "title": "Compartment Door Open",
+        "vehicle_id": "TN-33-CC-204",
+        "truck_id": "T-101",
+        "description": "Rear Door • TN-33-CC-204",
+        "timestamp": "09:47 AM",
+        "alert_level": "Warning",
+        "condition": "Warning",
+        "raw_time": time.time() - 1500,
+        "door_status": "Open",
+        "temp_front": -16.8,
+        "temp_mid": -14.2,
+        "temp_rear": -8.1,
+        "read": False
+    },
+    {
+        "id": "ALT-103",
+        "title": "Temperature Back to Normal",
+        "vehicle_id": "TN-38-CC-181",
+        "truck_id": "T-103",
+        "description": "TN-38-CC-181 • -20.1°C",
+        "timestamp": "08:20 AM",
+        "alert_level": "Info",
+        "condition": "Safe",
+        "raw_time": time.time() - 7200,
+        "door_status": "Closed",
+        "temp_front": -21.4,
+        "temp_mid": -20.1,
+        "temp_rear": -19.0,
+        "read": False
+    },
+    {
+        "id": "ALT-104",
+        "title": "Shipment Delivered",
+        "vehicle_id": "TN-39-CC-221",
+        "truck_id": "T-102",
+        "description": "TN-39-CC-221 • Salem Terminal",
+        "timestamp": "Yesterday",
+        "alert_level": "Info",
+        "condition": "Delivered",
+        "raw_time": time.time() - 86400,
+        "door_status": "Closed",
+        "temp_front": -20.5,
+        "temp_mid": -20.1,
+        "temp_rear": -19.8,
+        "read": False
+    }
+]
 
+SYSTEM_SETTINGS = {
+    "temp_min": -25.0,
+    "temp_max": -18.0,
+    "email_alerts": True,
+    "sms_alerts": True,
+    "push_notifications": True,
+    "version": "v1.0.0",
+    "last_updated": "Nov 13, 2026",
+    "app_name": "FrostGuard",
+    "tagline": "Keep Every Scoop Cold"
+}
+
+AUDIT_LOG = []
 state_lock = threading.Lock()
 ACTIVE_VEHICLE_ID = "TN-33-CC-204"
 
@@ -201,7 +331,7 @@ def get_route_position(waypoints, progress):
     lng = p1[1] + frac * (p2[1] - p1[1])
     return round(lat, 5), round(lng, 5)
 
-# Seed historical time series for each vehicle (30 historical points)
+# Initialize historical points (30 historical intervals)
 now_ts = datetime.now()
 with state_lock:
     for vid, v in FLEET_LORRIES.items():
@@ -235,28 +365,28 @@ with state_lock:
 # Background Real-Time Generator & Streamer
 def live_stream_engine():
     while True:
-        time.sleep(1.5) # Live tick every 1.5 seconds
+        time.sleep(1.5)
         with state_lock:
             ts_str = datetime.now().strftime("%H:%M:%S")
             
             for vid, v in FLEET_LORRIES.items():
-                if v["door_status"] == "Closed":
-                    v["progress"] += 0.004
-                    if v["progress"] > 1.0:
-                        v["progress"] = 0.02 # Loop along highway
-                    lat, lng = get_route_position(v["waypoints"], v["progress"])
-                    v["gps_lat"] = lat
-                    v["gps_lng"] = lng
-                    v["speed_kmh"] = round(random.uniform(44.0, 56.0), 1)
-                else:
-                    v["speed_kmh"] = 0.0 # Halted while door open
+                if v["status_label"] != "Delivered":
+                    if v["door_status"] == "Closed":
+                        v["progress"] += 0.004
+                        if v["progress"] > 1.0:
+                            v["progress"] = 0.02
+                        lat, lng = get_route_position(v["waypoints"], v["progress"])
+                        v["gps_lat"] = lat
+                        v["gps_lng"] = lng
+                        v["speed_kmh"] = round(random.uniform(42.0, 55.0), 1)
+                    else:
+                        v["speed_kmh"] = 0.0
 
-                # Dynamics of 3 Temperature Detectors per Transport Lorry
+                # 3 Temperature Detectors Simulation
                 if vid == "TN-33-CC-204":
-                    # Lorry 2: Incident near Salem Bypass (Rear Door Open)
                     if v["door_status"] == "Open":
-                        v["temp_rear"] = min(-6.8, v["temp_rear"] + round(random.uniform(0.04, 0.15), 2))
-                        v["temp_mid"]  = min(-13.0, v["temp_mid"]  + round(random.uniform(0.02, 0.08), 2))
+                        v["temp_rear"] = min(-6.8, v["temp_rear"] + round(random.uniform(0.03, 0.12), 2))
+                        v["temp_mid"]  = min(-13.0, v["temp_mid"]  + round(random.uniform(0.02, 0.07), 2))
                         v["temp_front"]= min(-15.8, v["temp_front"]+ round(random.uniform(0.01, 0.04), 2))
                         v["humidity"]  = min(93.0, v["humidity"]  + round(random.uniform(0.1, 0.3), 1))
                     else:
@@ -306,27 +436,6 @@ def live_stream_engine():
                 if len(VEHICLE_HISTORY[vid]) > 60:
                     VEHICLE_HISTORY[vid].pop(0)
 
-                if v["alert_level"] != "No Alert" or v["door_status"] == "Open":
-                    alert_id = f"ALT-{vid[-3:]}-{int(time.time()) % 10000}"
-                    if not any(a["vehicle_id"] == vid and (time.time() - a["raw_time"]) < 20 for a in ACTIVE_ALERTS):
-                        ACTIVE_ALERTS.insert(0, {
-                            "id": alert_id,
-                            "vehicle_id": vid,
-                            "route": v["route_name"],
-                            "timestamp": ts_str,
-                            "raw_time": time.time(),
-                            "alert_level": v["alert_level"],
-                            "condition": v["condition"],
-                            "temp_front": v["temp_front"],
-                            "temp_mid": v["temp_mid"],
-                            "temp_rear": v["temp_rear"],
-                            "gradient": v["thermal_gradient"],
-                            "door_status": v["door_status"],
-                            "event_class": "Spatially Localised (Rear Door Heat Influx)" if v["door_status"] == "Open" else "Thermal Disparity"
-                        })
-                        if len(ACTIVE_ALERTS) > 25:
-                            ACTIVE_ALERTS.pop()
-
 stream_thread = threading.Thread(target=live_stream_engine, daemon=True)
 stream_thread.start()
 
@@ -351,19 +460,33 @@ def get_fleet_state():
 
         active_v = FLEET_LORRIES[active_vid]
         active_hist = VEHICLE_HISTORY[active_vid][-45:]
-
-        # Return full history dict for all vehicles so Graph 3 plots real multi-lorry curves!
         all_hist = {vid: hist[-45:] for vid, hist in VEHICLE_HISTORY.items()}
+
+        active_alerts_list = [a for a in ACTIVE_ALERTS if not a.get("read", False)]
 
         return jsonify({
             "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+            "time_str": datetime.now().strftime("%I:%M %p"),
             "region": "Kongu Region, Tamil Nadu",
             "fleet_summary": {
-                "total_transports": total_lorries,
+                "total_shipments": 12,
+                "in_transit": 6,
+                "delivered": 5,
+                "delayed": 1,
+                "active_transports": total_lorries,
                 "safe_count": lorries_safe,
                 "warning_count": lorries_warn,
                 "critical_count": lorries_crit,
                 "door_open_count": door_open_count
+            },
+            "spoilage_stats": {
+                "spoilage_rate_pct": 2.6,
+                "potential_spoilage_kg": 18,
+                "prevented_spoilage_kg": 15,
+                "savings_inr": 6300,
+                "compliance_pct": 96.4,
+                "cold_chain_health_pct": 98.0,
+                "shipment_performance_pct": 94.0
             },
             "hubs": KONGU_HUBS,
             "fleet": FLEET_LORRIES,
@@ -371,8 +494,10 @@ def get_fleet_state():
             "active_vehicle": active_v,
             "active_history": active_hist,
             "fleet_history": all_hist,
-            "active_alerts": ACTIVE_ALERTS[:8],
-            "audit_log": AUDIT_LOG[:10]
+            "active_alerts": active_alerts_list,
+            "all_alerts": ACTIVE_ALERTS,
+            "audit_log": AUDIT_LOG[:10],
+            "settings": SYSTEM_SETTINGS
         })
 
 @app.route('/api/vehicle/select', methods=['POST'])
@@ -386,6 +511,27 @@ def select_vehicle():
             return jsonify({"status": "ok", "active_vehicle_id": ACTIVE_VEHICLE_ID})
         return jsonify({"status": "error", "message": "Vehicle not found"}), 404
 
+@app.route('/api/alerts/read-all', methods=['POST'])
+def read_all_alerts():
+    with state_lock:
+        for a in ACTIVE_ALERTS:
+            a["read"] = True
+        return jsonify({"status": "success", "message": "All alerts marked as read"})
+
+@app.route('/api/settings', methods=['GET', 'POST'])
+def manage_settings():
+    global SYSTEM_SETTINGS
+    if request.method == 'POST':
+        data = request.get_json() or {}
+        with state_lock:
+            if "temp_min" in data: SYSTEM_SETTINGS["temp_min"] = float(data["temp_min"])
+            if "temp_max" in data: SYSTEM_SETTINGS["temp_max"] = float(data["temp_max"])
+            if "email_alerts" in data: SYSTEM_SETTINGS["email_alerts"] = bool(data["email_alerts"])
+            if "sms_alerts" in data: SYSTEM_SETTINGS["sms_alerts"] = bool(data["sms_alerts"])
+            if "push_notifications" in data: SYSTEM_SETTINGS["push_notifications"] = bool(data["push_notifications"])
+            return jsonify({"status": "success", "settings": SYSTEM_SETTINGS})
+    return jsonify(SYSTEM_SETTINGS)
+
 @app.route('/api/ai/diagnose', methods=['POST'])
 def ai_diagnose():
     data = request.get_json() or {}
@@ -393,7 +539,7 @@ def ai_diagnose():
     with state_lock:
         v = FLEET_LORRIES.get(vid, list(FLEET_LORRIES.values())[0])
 
-    prompt = f"""You are the Boomerang Cold Chain Fleet Intelligence Officer.
+    prompt = f"""You are the FrostGuard Cold Chain Fleet Intelligence Officer.
 Analyze live telemetry for Refrigerated Transport Lorry {v['vehicle_id']} on route {v['route_name']} in the Kongu region, Tamil Nadu:
 - Product: {v['product']} (Safe setpoint <= -18.0 C)
 - Cargo Value: Rs. {v['cargo_val_inr']:,} ({v['cargo_load_kg']} kg)
@@ -408,7 +554,7 @@ Analyze live telemetry for Refrigerated Transport Lorry {v['vehicle_id']} on rou
 
 Provide a 4-point executive advisory for the fleet owner:
 1. ROOT-CAUSE DIAGNOSIS
-2. QUALITY & TEXTURE RISK (Ice crystal coarsening)
+2. QUALITY & TEXTURE RISK (Ice crystal coarsening / thawing)
 3. IMMEDIATE DISPATCHER DIRECTIVE for driver {v['driver']} ({v['driver_phone']})
 4. FINANCIAL EXPOSURE (Rs.)"""
 
@@ -424,15 +570,15 @@ Provide a 4-point executive advisory for the fleet owner:
 
     if not ai_text:
         if v['temp_rear'] >= -10.0 or v['door_status'] == 'Open':
-            ai_text = f"""1. ROOT-CAUSE DIAGNOSIS: Thermal breach in rear zone (+{v['thermal_gradient']}°C gradient). Rear detector heated to {v['temp_rear']}°C while front evaporator is at {v['temp_front']}°C. Direct warm air & moisture influx via unsecured rear door on {v['route_name']}.
-2. QUALITY & TEXTURE RISK: High thawing hazard. Bulk core ({v['temp_mid']}°C) is softening. Re-cooling will cause Ostwald ripening (coarse ice crystal lattices), causing gritty mouthfeel and irreversible shelf life reduction.
-3. IMMEDIATE DISPATCHER DIRECTIVE: Call driver {v['driver']} ({v['driver_phone']}) immediately. Secure rear door latches, switch Thermo King refrigeration to continuous maximum cooling override, and divert to Perundurai SIPCOT Cold Vault if temp remains above -15°C after 15 min.
-4. FINANCIAL EXPOSURE: High risk on total shipment value of ₹ {v['cargo_val_inr']:,}. Immediate intervention preserves core cargo."""
+            ai_text = f"""1. ROOT-CAUSE DIAGNOSIS: Thermal breach in rear zone (+{v['thermal_gradient']}°C gradient). Rear detector heated to {v['temp_rear']}°C while front evaporator is at {v['temp_front']}°C. Warm air & humidity ingress via open compartment door on {v['route_name']}.
+2. QUALITY & TEXTURE RISK: Critical thawing hazard. Ice crystal matrix destabilizing in rear pallets. Rapid recrystallization will cause grittiness and product loss.
+3. IMMEDIATE DISPATCHER DIRECTIVE: Call driver {v['driver']} ({v['driver_phone']}) immediately. Secure rear door latches, switch refrigeration to continuous maximum override, and divert to Perundurai SIPCOT Cold Vault if temp remains above -15°C.
+4. FINANCIAL EXPOSURE: High risk on total shipment value of ₹ {v['cargo_val_inr']:,}. Immediate sealing preserves ₹ 4.1L of core mass."""
         else:
-            ai_text = f"""1. ROOT-CAUSE DIAGNOSIS: Normal deep freeze operations. Chamber thermal gradient is balanced at +{v['thermal_gradient']}°C, indicating uniform airflow from front evaporator ({v['temp_front']}°C) across cargo core ({v['temp_mid']}°C) to rear ({v['temp_rear']}°C).
-2. QUALITY & TEXTURE RISK: Optimal texture preservation. All 3 detectors maintain temperatures below the critical -18.0°C threshold. Zero recrystallization risk.
-3. IMMEDIATE DISPATCHER DIRECTIVE: Lorry is on schedule along {v['route_name']}. Maintain current transit speed ({v['speed_kmh']} km/h). No operational intervention required.
-4. FINANCIAL EXPOSURE: Cargo valuation of ₹ {v['cargo_val_inr']:,} (100% compliant and intact)."""
+            ai_text = f"""1. ROOT-CAUSE DIAGNOSIS: Optimal deep freeze operation. Chamber thermal gradient is balanced at +{v['thermal_gradient']}°C, indicating uniform airflow across pallets.
+2. QUALITY & TEXTURE RISK: Zero recrystallization risk. All 3 detectors maintain temperatures below the critical -18.0°C threshold.
+3. IMMEDIATE DISPATCHER DIRECTIVE: Lorry is on schedule along {v['route_name']}. Maintain current transit speed ({v['speed_kmh']} km/h).
+4. FINANCIAL EXPOSURE: Cargo valuation of ₹ {v['cargo_val_inr']:,} is 100% compliant and protected."""
 
     return jsonify({
         "status": "success",
@@ -487,25 +633,6 @@ def ingest_telemetry():
 
     return jsonify({"status": "success", "vehicle_id": vid}), 201
 
-@app.route('/api/alerts/acknowledge', methods=['POST'])
-def ack_alert():
-    data = request.get_json() or {}
-    aid = data.get("alert_id")
-    op = data.get("operator_name", "Fleet Dispatcher")
-    note = data.get("action_note", "Secured rear door & verified cooling.")
-
-    with state_lock:
-        for i, a in enumerate(ACTIVE_ALERTS):
-            if a["id"] == aid:
-                a["acknowledged"] = True
-                a["responder"] = op
-                a["action_taken"] = note
-                a["ack_time"] = datetime.now().strftime("%H:%M:%S")
-                AUDIT_LOG.insert(0, a)
-                ACTIVE_ALERTS.pop(i)
-                return jsonify({"status": "acknowledged", "alert": a})
-        return jsonify({"status": "not_found"}), 404
-
 @app.route('/api/export/csv', methods=['GET'])
 def export_csv():
     with state_lock:
@@ -528,9 +655,9 @@ def export_csv():
         df = pd.DataFrame(rows)
         csv_path = os.path.join('static', 'kongu_fleet_cold_chain_telemetry.csv')
         df.to_csv(csv_path, index=False)
-        return send_file(csv_path, as_attachment=True, download_name="kongu_fleet_cold_chain_telemetry.csv")
+        return send_file(csv_path, as_attachment=True, download_name="frostguard_kongu_fleet_telemetry.csv")
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5050))
-    print(f"Cold Chain Kongu Fleet Real-Time Server running on http://127.0.0.1:{port}")
+    print(f"FrostGuard Cold Chain Server running on http://127.0.0.1:{port}")
     app.run(host='0.0.0.0', port=port, debug=False)
