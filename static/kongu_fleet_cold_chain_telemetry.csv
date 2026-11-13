@@ -1,0 +1,241 @@
+Vehicle_ID,Route,Timestamp,Temp_Detector_1_Front_C,Temp_Detector_2_Mid_C,Temp_Detector_3_Rear_C,Temp_Average_C,Thermal_Gradient_Delta_C,Humidity_Percent,Door_Status,Battery_Percent
+TN-38-CC-101,Coimbatore -> Tirupur -> Erode (NH544),15:05:29,-21.2,-19.7,-20.5,-20.47,0.7,73.9,Closed,96.5
+TN-38-CC-101,Coimbatore -> Tirupur -> Erode (NH544),15:05:31,-21.2,-19.7,-20.5,-20.47,0.7,73.8,Closed,96.5
+TN-38-CC-101,Coimbatore -> Tirupur -> Erode (NH544),15:05:32,-21.1,-19.7,-20.4,-20.4,0.7,73.9,Closed,96.5
+TN-38-CC-101,Coimbatore -> Tirupur -> Erode (NH544),15:05:34,-21.2,-19.8,-20.5,-20.5,0.7,74.0,Closed,96.5
+TN-38-CC-101,Coimbatore -> Tirupur -> Erode (NH544),15:05:35,-21.2,-19.8,-20.5,-20.5,0.7,74.1,Closed,96.5
+TN-38-CC-101,Coimbatore -> Tirupur -> Erode (NH544),15:05:37,-21.2,-19.8,-20.5,-20.5,0.7,74.1,Closed,96.5
+TN-38-CC-101,Coimbatore -> Tirupur -> Erode (NH544),15:05:38,-21.2,-19.8,-20.5,-20.5,0.7,74.2,Closed,96.5
+TN-38-CC-101,Coimbatore -> Tirupur -> Erode (NH544),15:05:40,-21.2,-19.8,-20.5,-20.5,0.7,74.1,Closed,96.5
+TN-38-CC-101,Coimbatore -> Tirupur -> Erode (NH544),15:05:41,-21.2,-19.8,-20.5,-20.5,0.7,74.0,Closed,96.5
+TN-38-CC-101,Coimbatore -> Tirupur -> Erode (NH544),15:05:43,-21.2,-19.8,-20.5,-20.5,0.7,74.1,Closed,96.5
+TN-38-CC-101,Coimbatore -> Tirupur -> Erode (NH544),15:05:44,-21.1,-19.7,-20.4,-20.4,0.7,74.1,Closed,96.5
+TN-38-CC-101,Coimbatore -> Tirupur -> Erode (NH544),15:05:46,-21.2,-19.8,-20.5,-20.5,0.7,74.0,Closed,96.5
+TN-38-CC-101,Coimbatore -> Tirupur -> Erode (NH544),15:05:47,-21.2,-19.8,-20.4,-20.47,0.8,73.9,Closed,96.5
+TN-38-CC-101,Coimbatore -> Tirupur -> Erode (NH544),15:05:49,-21.2,-19.8,-20.4,-20.47,0.8,73.8,Closed,96.5
+TN-38-CC-101,Coimbatore -> Tirupur -> Erode (NH544),15:05:50,-21.2,-19.8,-20.4,-20.47,0.8,73.7,Closed,96.5
+TN-38-CC-101,Coimbatore -> Tirupur -> Erode (NH544),15:05:52,-21.3,-19.9,-20.5,-20.57,0.8,73.7,Closed,96.5
+TN-38-CC-101,Coimbatore -> Tirupur -> Erode (NH544),15:05:53,-21.3,-19.9,-20.6,-20.6,0.7,73.7,Closed,96.5
+TN-38-CC-101,Coimbatore -> Tirupur -> Erode (NH544),15:05:55,-21.2,-19.8,-20.5,-20.5,0.7,73.6,Closed,96.5
+TN-38-CC-101,Coimbatore -> Tirupur -> Erode (NH544),15:05:56,-21.2,-19.8,-20.5,-20.5,0.7,73.7,Closed,96.5
+TN-38-CC-101,Coimbatore -> Tirupur -> Erode (NH544),15:05:58,-21.2,-19.8,-20.5,-20.5,0.7,73.8,Closed,96.5
+TN-38-CC-101,Coimbatore -> Tirupur -> Erode (NH544),15:05:59,-21.2,-19.8,-20.5,-20.5,0.7,73.7,Closed,96.5
+TN-38-CC-101,Coimbatore -> Tirupur -> Erode (NH544),15:06:01,-21.2,-19.8,-20.5,-20.5,0.7,73.7,Closed,96.5
+TN-38-CC-101,Coimbatore -> Tirupur -> Erode (NH544),15:06:02,-21.1,-19.8,-20.4,-20.43,0.7,73.7,Closed,96.5
+TN-38-CC-101,Coimbatore -> Tirupur -> Erode (NH544),15:06:04,-21.1,-19.8,-20.4,-20.43,0.7,73.6,Closed,96.5
+TN-38-CC-101,Coimbatore -> Tirupur -> Erode (NH544),15:06:05,-21.1,-19.8,-20.4,-20.43,0.7,73.6,Closed,96.5
+TN-38-CC-101,Coimbatore -> Tirupur -> Erode (NH544),15:06:07,-21.1,-19.8,-20.4,-20.43,0.7,73.6,Closed,96.5
+TN-38-CC-101,Coimbatore -> Tirupur -> Erode (NH544),15:06:08,-21.2,-19.8,-20.5,-20.5,0.7,73.7,Closed,96.5
+TN-38-CC-101,Coimbatore -> Tirupur -> Erode (NH544),15:06:10,-21.2,-19.8,-20.5,-20.5,0.7,73.8,Closed,96.5
+TN-38-CC-101,Coimbatore -> Tirupur -> Erode (NH544),15:06:11,-21.2,-19.8,-20.5,-20.5,0.7,73.8,Closed,96.5
+TN-38-CC-101,Coimbatore -> Tirupur -> Erode (NH544),15:06:13,-21.2,-19.8,-20.5,-20.5,0.7,73.9,Closed,96.5
+TN-38-CC-101,Coimbatore -> Tirupur -> Erode (NH544),15:06:14,-21.2,-19.8,-20.5,-20.5,0.7,74.0,Closed,96.5
+TN-38-CC-101,Coimbatore -> Tirupur -> Erode (NH544),15:06:16,-21.2,-19.8,-20.5,-20.5,0.7,74.0,Closed,96.5
+TN-38-CC-101,Coimbatore -> Tirupur -> Erode (NH544),15:06:17,-21.2,-19.8,-20.4,-20.47,0.8,74.0,Closed,96.5
+TN-38-CC-101,Coimbatore -> Tirupur -> Erode (NH544),15:16:15,-21.3,-19.8,-20.5,-20.53,0.8,74.1,Closed,96.5
+TN-38-CC-101,Coimbatore -> Tirupur -> Erode (NH544),15:16:16,-21.3,-19.8,-20.5,-20.53,0.8,74.2,Closed,96.5
+TN-38-CC-101,Coimbatore -> Tirupur -> Erode (NH544),15:16:18,-21.3,-19.8,-20.5,-20.53,0.8,74.1,Closed,96.5
+TN-38-CC-101,Coimbatore -> Tirupur -> Erode (NH544),15:16:19,-21.3,-19.8,-20.5,-20.53,0.8,74.0,Closed,96.5
+TN-38-CC-101,Coimbatore -> Tirupur -> Erode (NH544),15:20:19,-21.3,-19.8,-20.5,-20.53,0.8,73.9,Closed,96.5
+TN-38-CC-101,Coimbatore -> Tirupur -> Erode (NH544),15:20:20,-21.2,-19.8,-20.4,-20.47,0.8,73.9,Closed,96.5
+TN-38-CC-101,Coimbatore -> Tirupur -> Erode (NH544),15:20:22,-21.2,-19.8,-20.4,-20.47,0.8,74.0,Closed,96.5
+TN-38-CC-101,Coimbatore -> Tirupur -> Erode (NH544),15:20:23,-21.2,-19.8,-20.5,-20.5,0.7,73.9,Closed,96.5
+TN-38-CC-101,Coimbatore -> Tirupur -> Erode (NH544),15:31:48,-21.1,-19.7,-20.4,-20.4,0.7,73.9,Closed,96.5
+TN-38-CC-101,Coimbatore -> Tirupur -> Erode (NH544),15:31:49,-21.1,-19.7,-20.4,-20.4,0.7,74.0,Closed,96.5
+TN-38-CC-101,Coimbatore -> Tirupur -> Erode (NH544),15:31:51,-21.1,-19.7,-20.5,-20.43,0.6,74.0,Closed,96.5
+TN-38-CC-101,Coimbatore -> Tirupur -> Erode (NH544),15:31:52,-21.2,-19.8,-20.6,-20.53,0.6,74.1,Closed,96.5
+TN-38-CC-101,Coimbatore -> Tirupur -> Erode (NH544),18:46:01,-21.2,-19.8,-20.6,-20.53,0.6,74.2,Closed,96.5
+TN-38-CC-101,Coimbatore -> Tirupur -> Erode (NH544),18:46:03,-21.2,-19.8,-20.6,-20.53,0.6,74.1,Closed,96.5
+TN-38-CC-101,Coimbatore -> Tirupur -> Erode (NH544),18:46:04,-21.1,-19.7,-20.5,-20.43,0.6,74.1,Closed,96.5
+TN-38-CC-101,Coimbatore -> Tirupur -> Erode (NH544),18:46:06,-21.1,-19.7,-20.5,-20.43,0.6,74.1,Closed,96.5
+TN-38-CC-101,Coimbatore -> Tirupur -> Erode (NH544),18:46:07,-21.1,-19.7,-20.5,-20.43,0.6,74.0,Closed,96.5
+TN-38-CC-101,Coimbatore -> Tirupur -> Erode (NH544),18:46:09,-21.1,-19.7,-20.5,-20.43,0.6,74.0,Closed,96.5
+TN-38-CC-101,Coimbatore -> Tirupur -> Erode (NH544),18:46:10,-21.1,-19.7,-20.5,-20.43,0.6,74.0,Closed,96.5
+TN-38-CC-101,Coimbatore -> Tirupur -> Erode (NH544),18:46:12,-21.0,-19.7,-20.4,-20.37,0.6,74.0,Closed,96.5
+TN-38-CC-101,Coimbatore -> Tirupur -> Erode (NH544),18:46:13,-21.0,-19.7,-20.4,-20.37,0.6,74.0,Closed,96.5
+TN-38-CC-101,Coimbatore -> Tirupur -> Erode (NH544),18:46:15,-20.9,-19.7,-20.3,-20.3,0.6,74.1,Closed,96.5
+TN-38-CC-101,Coimbatore -> Tirupur -> Erode (NH544),18:46:16,-20.9,-19.7,-20.3,-20.3,0.6,74.2,Closed,96.5
+TN-38-CC-101,Coimbatore -> Tirupur -> Erode (NH544),18:46:18,-20.8,-19.6,-20.2,-20.2,0.6,74.1,Closed,96.5
+TN-38-CC-101,Coimbatore -> Tirupur -> Erode (NH544),18:46:19,-20.8,-19.6,-20.2,-20.2,0.6,74.0,Closed,96.5
+TN-38-CC-101,Coimbatore -> Tirupur -> Erode (NH544),18:46:21,-20.7,-19.5,-20.1,-20.1,0.6,73.9,Closed,96.5
+TN-38-CC-101,Coimbatore -> Tirupur -> Erode (NH544),18:46:22,-20.7,-19.5,-20.1,-20.1,0.6,73.8,Closed,96.5
+TN-33-CC-204,Erode Hub -> Perundurai -> Salem Depot (NH544 Bypass),15:05:29,-15.8,-13.0,-6.8,-11.87,9.0,93.0,Open,88.0
+TN-33-CC-204,Erode Hub -> Perundurai -> Salem Depot (NH544 Bypass),15:05:31,-15.8,-13.0,-6.8,-11.87,9.0,93.0,Open,88.0
+TN-33-CC-204,Erode Hub -> Perundurai -> Salem Depot (NH544 Bypass),15:05:32,-15.8,-13.0,-6.8,-11.87,9.0,93.0,Open,88.0
+TN-33-CC-204,Erode Hub -> Perundurai -> Salem Depot (NH544 Bypass),15:05:34,-15.8,-13.0,-6.8,-11.87,9.0,93.0,Open,88.0
+TN-33-CC-204,Erode Hub -> Perundurai -> Salem Depot (NH544 Bypass),15:05:35,-15.8,-13.0,-6.8,-11.87,9.0,93.0,Open,88.0
+TN-33-CC-204,Erode Hub -> Perundurai -> Salem Depot (NH544 Bypass),15:05:37,-15.8,-13.0,-6.8,-11.87,9.0,93.0,Open,88.0
+TN-33-CC-204,Erode Hub -> Perundurai -> Salem Depot (NH544 Bypass),15:05:38,-15.8,-13.0,-6.8,-11.87,9.0,93.0,Open,88.0
+TN-33-CC-204,Erode Hub -> Perundurai -> Salem Depot (NH544 Bypass),15:05:40,-15.8,-13.0,-6.8,-11.87,9.0,93.0,Open,88.0
+TN-33-CC-204,Erode Hub -> Perundurai -> Salem Depot (NH544 Bypass),15:05:41,-15.8,-13.0,-6.8,-11.87,9.0,93.0,Open,88.0
+TN-33-CC-204,Erode Hub -> Perundurai -> Salem Depot (NH544 Bypass),15:05:43,-15.8,-13.0,-6.8,-11.87,9.0,93.0,Open,88.0
+TN-33-CC-204,Erode Hub -> Perundurai -> Salem Depot (NH544 Bypass),15:05:44,-15.8,-13.0,-6.8,-11.87,9.0,93.0,Open,88.0
+TN-33-CC-204,Erode Hub -> Perundurai -> Salem Depot (NH544 Bypass),15:05:46,-15.8,-13.0,-6.8,-11.87,9.0,93.0,Open,88.0
+TN-33-CC-204,Erode Hub -> Perundurai -> Salem Depot (NH544 Bypass),15:05:47,-15.8,-13.0,-6.8,-11.87,9.0,93.0,Open,88.0
+TN-33-CC-204,Erode Hub -> Perundurai -> Salem Depot (NH544 Bypass),15:05:49,-15.8,-13.0,-6.8,-11.87,9.0,93.0,Open,88.0
+TN-33-CC-204,Erode Hub -> Perundurai -> Salem Depot (NH544 Bypass),15:05:50,-15.8,-13.0,-6.8,-11.87,9.0,93.0,Open,88.0
+TN-33-CC-204,Erode Hub -> Perundurai -> Salem Depot (NH544 Bypass),15:05:52,-15.8,-13.0,-6.8,-11.87,9.0,93.0,Open,88.0
+TN-33-CC-204,Erode Hub -> Perundurai -> Salem Depot (NH544 Bypass),15:05:53,-15.8,-13.0,-6.8,-11.87,9.0,93.0,Open,88.0
+TN-33-CC-204,Erode Hub -> Perundurai -> Salem Depot (NH544 Bypass),15:05:55,-15.8,-13.0,-6.8,-11.87,9.0,93.0,Open,88.0
+TN-33-CC-204,Erode Hub -> Perundurai -> Salem Depot (NH544 Bypass),15:05:56,-15.8,-13.0,-6.8,-11.87,9.0,93.0,Open,88.0
+TN-33-CC-204,Erode Hub -> Perundurai -> Salem Depot (NH544 Bypass),15:05:58,-15.8,-13.0,-6.8,-11.87,9.0,93.0,Open,88.0
+TN-33-CC-204,Erode Hub -> Perundurai -> Salem Depot (NH544 Bypass),15:05:59,-15.8,-13.0,-6.8,-11.87,9.0,93.0,Open,88.0
+TN-33-CC-204,Erode Hub -> Perundurai -> Salem Depot (NH544 Bypass),15:06:01,-15.8,-13.0,-6.8,-11.87,9.0,93.0,Open,88.0
+TN-33-CC-204,Erode Hub -> Perundurai -> Salem Depot (NH544 Bypass),15:06:02,-15.8,-13.0,-6.8,-11.87,9.0,93.0,Open,88.0
+TN-33-CC-204,Erode Hub -> Perundurai -> Salem Depot (NH544 Bypass),15:06:04,-15.8,-13.0,-6.8,-11.87,9.0,93.0,Open,88.0
+TN-33-CC-204,Erode Hub -> Perundurai -> Salem Depot (NH544 Bypass),15:06:05,-15.8,-13.0,-6.8,-11.87,9.0,93.0,Open,88.0
+TN-33-CC-204,Erode Hub -> Perundurai -> Salem Depot (NH544 Bypass),15:06:07,-15.8,-13.0,-6.8,-11.87,9.0,93.0,Open,88.0
+TN-33-CC-204,Erode Hub -> Perundurai -> Salem Depot (NH544 Bypass),15:06:08,-15.8,-13.0,-6.8,-11.87,9.0,93.0,Open,88.0
+TN-33-CC-204,Erode Hub -> Perundurai -> Salem Depot (NH544 Bypass),15:06:10,-15.8,-13.0,-6.8,-11.87,9.0,93.0,Open,88.0
+TN-33-CC-204,Erode Hub -> Perundurai -> Salem Depot (NH544 Bypass),15:06:11,-15.8,-13.0,-6.8,-11.87,9.0,93.0,Open,88.0
+TN-33-CC-204,Erode Hub -> Perundurai -> Salem Depot (NH544 Bypass),15:06:13,-15.8,-13.0,-6.8,-11.87,9.0,93.0,Open,88.0
+TN-33-CC-204,Erode Hub -> Perundurai -> Salem Depot (NH544 Bypass),15:06:14,-15.8,-13.0,-6.8,-11.87,9.0,93.0,Open,88.0
+TN-33-CC-204,Erode Hub -> Perundurai -> Salem Depot (NH544 Bypass),15:06:16,-15.8,-13.0,-6.8,-11.87,9.0,93.0,Open,88.0
+TN-33-CC-204,Erode Hub -> Perundurai -> Salem Depot (NH544 Bypass),15:06:17,-15.8,-13.0,-6.8,-11.87,9.0,93.0,Open,88.0
+TN-33-CC-204,Erode Hub -> Perundurai -> Salem Depot (NH544 Bypass),15:16:15,-15.8,-13.0,-6.8,-11.87,9.0,93.0,Open,88.0
+TN-33-CC-204,Erode Hub -> Perundurai -> Salem Depot (NH544 Bypass),15:16:16,-15.8,-13.0,-6.8,-11.87,9.0,93.0,Open,88.0
+TN-33-CC-204,Erode Hub -> Perundurai -> Salem Depot (NH544 Bypass),15:16:18,-15.8,-13.0,-6.8,-11.87,9.0,93.0,Open,88.0
+TN-33-CC-204,Erode Hub -> Perundurai -> Salem Depot (NH544 Bypass),15:16:19,-15.8,-13.0,-6.8,-11.87,9.0,93.0,Open,88.0
+TN-33-CC-204,Erode Hub -> Perundurai -> Salem Depot (NH544 Bypass),15:20:19,-15.8,-13.0,-6.8,-11.87,9.0,93.0,Open,88.0
+TN-33-CC-204,Erode Hub -> Perundurai -> Salem Depot (NH544 Bypass),15:20:20,-15.8,-13.0,-6.8,-11.87,9.0,93.0,Open,88.0
+TN-33-CC-204,Erode Hub -> Perundurai -> Salem Depot (NH544 Bypass),15:20:22,-15.8,-13.0,-6.8,-11.87,9.0,93.0,Open,88.0
+TN-33-CC-204,Erode Hub -> Perundurai -> Salem Depot (NH544 Bypass),15:20:23,-15.8,-13.0,-6.8,-11.87,9.0,93.0,Open,88.0
+TN-33-CC-204,Erode Hub -> Perundurai -> Salem Depot (NH544 Bypass),15:31:48,-15.8,-13.0,-6.8,-11.87,9.0,93.0,Open,88.0
+TN-33-CC-204,Erode Hub -> Perundurai -> Salem Depot (NH544 Bypass),15:31:49,-15.8,-13.0,-6.8,-11.87,9.0,93.0,Open,88.0
+TN-33-CC-204,Erode Hub -> Perundurai -> Salem Depot (NH544 Bypass),15:31:51,-15.8,-13.0,-6.8,-11.87,9.0,93.0,Open,88.0
+TN-33-CC-204,Erode Hub -> Perundurai -> Salem Depot (NH544 Bypass),15:31:52,-15.8,-13.0,-6.8,-11.87,9.0,93.0,Open,88.0
+TN-33-CC-204,Erode Hub -> Perundurai -> Salem Depot (NH544 Bypass),18:46:01,-15.8,-13.0,-6.8,-11.87,9.0,93.0,Open,88.0
+TN-33-CC-204,Erode Hub -> Perundurai -> Salem Depot (NH544 Bypass),18:46:03,-15.8,-13.0,-6.8,-11.87,9.0,93.0,Open,88.0
+TN-33-CC-204,Erode Hub -> Perundurai -> Salem Depot (NH544 Bypass),18:46:04,-15.8,-13.0,-6.8,-11.87,9.0,93.0,Open,88.0
+TN-33-CC-204,Erode Hub -> Perundurai -> Salem Depot (NH544 Bypass),18:46:06,-15.8,-13.0,-6.8,-11.87,9.0,93.0,Open,88.0
+TN-33-CC-204,Erode Hub -> Perundurai -> Salem Depot (NH544 Bypass),18:46:07,-15.8,-13.0,-6.8,-11.87,9.0,93.0,Open,88.0
+TN-33-CC-204,Erode Hub -> Perundurai -> Salem Depot (NH544 Bypass),18:46:09,-15.8,-13.0,-6.8,-11.87,9.0,93.0,Open,88.0
+TN-33-CC-204,Erode Hub -> Perundurai -> Salem Depot (NH544 Bypass),18:46:10,-15.8,-13.0,-6.8,-11.87,9.0,93.0,Open,88.0
+TN-33-CC-204,Erode Hub -> Perundurai -> Salem Depot (NH544 Bypass),18:46:12,-15.8,-13.0,-6.8,-11.87,9.0,93.0,Open,88.0
+TN-33-CC-204,Erode Hub -> Perundurai -> Salem Depot (NH544 Bypass),18:46:13,-15.8,-13.0,-6.8,-11.87,9.0,93.0,Open,88.0
+TN-33-CC-204,Erode Hub -> Perundurai -> Salem Depot (NH544 Bypass),18:46:15,-15.8,-13.0,-6.8,-11.87,9.0,93.0,Open,88.0
+TN-33-CC-204,Erode Hub -> Perundurai -> Salem Depot (NH544 Bypass),18:46:16,-15.8,-13.0,-6.8,-11.87,9.0,93.0,Open,88.0
+TN-33-CC-204,Erode Hub -> Perundurai -> Salem Depot (NH544 Bypass),18:46:18,-15.8,-13.0,-6.8,-11.87,9.0,93.0,Open,88.0
+TN-33-CC-204,Erode Hub -> Perundurai -> Salem Depot (NH544 Bypass),18:46:19,-15.8,-13.0,-6.8,-11.87,9.0,93.0,Open,88.0
+TN-33-CC-204,Erode Hub -> Perundurai -> Salem Depot (NH544 Bypass),18:46:21,-15.8,-13.0,-6.8,-11.87,9.0,93.0,Open,88.0
+TN-33-CC-204,Erode Hub -> Perundurai -> Salem Depot (NH544 Bypass),18:46:22,-15.8,-13.0,-6.8,-11.87,9.0,93.0,Open,88.0
+TN-28-CC-415,Namakkal Dairy Belt -> Karur Cold Bay (NH44),15:05:29,-19.3,-17.3,-15.4,-17.33,3.9,73.6,Closed,91.2
+TN-28-CC-415,Namakkal Dairy Belt -> Karur Cold Bay (NH44),15:05:31,-19.3,-17.3,-15.4,-17.33,3.9,73.6,Closed,91.2
+TN-28-CC-415,Namakkal Dairy Belt -> Karur Cold Bay (NH44),15:05:32,-19.3,-17.3,-15.4,-17.33,3.9,73.5,Closed,91.2
+TN-28-CC-415,Namakkal Dairy Belt -> Karur Cold Bay (NH44),15:05:34,-19.3,-17.3,-15.4,-17.33,3.9,73.4,Closed,91.2
+TN-28-CC-415,Namakkal Dairy Belt -> Karur Cold Bay (NH44),15:05:35,-19.4,-17.4,-15.5,-17.43,3.9,73.3,Closed,91.2
+TN-28-CC-415,Namakkal Dairy Belt -> Karur Cold Bay (NH44),15:05:37,-19.3,-17.4,-15.4,-17.37,3.9,73.3,Closed,91.2
+TN-28-CC-415,Namakkal Dairy Belt -> Karur Cold Bay (NH44),15:05:38,-19.2,-17.4,-15.3,-17.3,3.9,73.2,Closed,91.2
+TN-28-CC-415,Namakkal Dairy Belt -> Karur Cold Bay (NH44),15:05:40,-19.2,-17.4,-15.3,-17.3,3.9,73.3,Closed,91.2
+TN-28-CC-415,Namakkal Dairy Belt -> Karur Cold Bay (NH44),15:05:41,-19.3,-17.5,-15.4,-17.4,3.9,73.2,Closed,91.2
+TN-28-CC-415,Namakkal Dairy Belt -> Karur Cold Bay (NH44),15:05:43,-19.3,-17.5,-15.4,-17.4,3.9,73.3,Closed,91.2
+TN-28-CC-415,Namakkal Dairy Belt -> Karur Cold Bay (NH44),15:05:44,-19.3,-17.5,-15.4,-17.4,3.9,73.3,Closed,91.2
+TN-28-CC-415,Namakkal Dairy Belt -> Karur Cold Bay (NH44),15:05:46,-19.2,-17.5,-15.3,-17.33,3.9,73.2,Closed,91.2
+TN-28-CC-415,Namakkal Dairy Belt -> Karur Cold Bay (NH44),15:05:47,-19.1,-17.4,-15.2,-17.23,3.9,73.3,Closed,91.2
+TN-28-CC-415,Namakkal Dairy Belt -> Karur Cold Bay (NH44),15:05:49,-19.0,-17.4,-15.1,-17.17,3.9,73.2,Closed,91.2
+TN-28-CC-415,Namakkal Dairy Belt -> Karur Cold Bay (NH44),15:05:50,-19.0,-17.4,-15.1,-17.17,3.9,73.3,Closed,91.2
+TN-28-CC-415,Namakkal Dairy Belt -> Karur Cold Bay (NH44),15:05:52,-19.0,-17.4,-15.1,-17.17,3.9,73.4,Closed,91.2
+TN-28-CC-415,Namakkal Dairy Belt -> Karur Cold Bay (NH44),15:05:53,-19.0,-17.4,-15.1,-17.17,3.9,73.4,Closed,91.2
+TN-28-CC-415,Namakkal Dairy Belt -> Karur Cold Bay (NH44),15:05:55,-19.1,-17.4,-15.2,-17.23,3.9,73.3,Closed,91.2
+TN-28-CC-415,Namakkal Dairy Belt -> Karur Cold Bay (NH44),15:05:56,-19.1,-17.4,-15.1,-17.2,4.0,73.3,Closed,91.2
+TN-28-CC-415,Namakkal Dairy Belt -> Karur Cold Bay (NH44),15:05:58,-19.2,-17.4,-15.2,-17.27,4.0,73.2,Closed,91.2
+TN-28-CC-415,Namakkal Dairy Belt -> Karur Cold Bay (NH44),15:05:59,-19.2,-17.4,-15.2,-17.27,4.0,73.1,Closed,91.2
+TN-28-CC-415,Namakkal Dairy Belt -> Karur Cold Bay (NH44),15:06:01,-19.1,-17.3,-15.1,-17.17,4.0,73.0,Closed,91.2
+TN-28-CC-415,Namakkal Dairy Belt -> Karur Cold Bay (NH44),15:06:02,-19.1,-17.3,-15.2,-17.2,3.9,73.1,Closed,91.2
+TN-28-CC-415,Namakkal Dairy Belt -> Karur Cold Bay (NH44),15:06:04,-19.2,-17.4,-15.3,-17.3,3.9,73.1,Closed,91.2
+TN-28-CC-415,Namakkal Dairy Belt -> Karur Cold Bay (NH44),15:06:05,-19.2,-17.4,-15.3,-17.3,3.9,73.1,Closed,91.2
+TN-28-CC-415,Namakkal Dairy Belt -> Karur Cold Bay (NH44),15:06:07,-19.3,-17.5,-15.4,-17.4,3.9,73.1,Closed,91.2
+TN-28-CC-415,Namakkal Dairy Belt -> Karur Cold Bay (NH44),15:06:08,-19.4,-17.5,-15.5,-17.47,3.9,73.2,Closed,91.2
+TN-28-CC-415,Namakkal Dairy Belt -> Karur Cold Bay (NH44),15:06:10,-19.4,-17.5,-15.5,-17.47,3.9,73.2,Closed,91.2
+TN-28-CC-415,Namakkal Dairy Belt -> Karur Cold Bay (NH44),15:06:11,-19.4,-17.5,-15.5,-17.47,3.9,73.2,Closed,91.2
+TN-28-CC-415,Namakkal Dairy Belt -> Karur Cold Bay (NH44),15:06:13,-19.4,-17.5,-15.5,-17.47,3.9,73.2,Closed,91.2
+TN-28-CC-415,Namakkal Dairy Belt -> Karur Cold Bay (NH44),15:06:14,-19.4,-17.5,-15.5,-17.47,3.9,73.1,Closed,91.2
+TN-28-CC-415,Namakkal Dairy Belt -> Karur Cold Bay (NH44),15:06:16,-19.4,-17.5,-15.5,-17.47,3.9,73.0,Closed,91.2
+TN-28-CC-415,Namakkal Dairy Belt -> Karur Cold Bay (NH44),15:06:17,-19.4,-17.5,-15.5,-17.47,3.9,73.1,Closed,91.2
+TN-28-CC-415,Namakkal Dairy Belt -> Karur Cold Bay (NH44),15:16:15,-19.4,-17.5,-15.5,-17.47,3.9,73.2,Closed,91.2
+TN-28-CC-415,Namakkal Dairy Belt -> Karur Cold Bay (NH44),15:16:16,-19.4,-17.5,-15.5,-17.47,3.9,73.3,Closed,91.2
+TN-28-CC-415,Namakkal Dairy Belt -> Karur Cold Bay (NH44),15:16:18,-19.5,-17.5,-15.6,-17.53,3.9,73.2,Closed,91.2
+TN-28-CC-415,Namakkal Dairy Belt -> Karur Cold Bay (NH44),15:16:19,-19.5,-17.5,-15.6,-17.53,3.9,73.3,Closed,91.2
+TN-28-CC-415,Namakkal Dairy Belt -> Karur Cold Bay (NH44),15:20:19,-19.5,-17.5,-15.5,-17.5,4.0,73.3,Closed,91.2
+TN-28-CC-415,Namakkal Dairy Belt -> Karur Cold Bay (NH44),15:20:20,-19.5,-17.5,-15.5,-17.5,4.0,73.4,Closed,91.2
+TN-28-CC-415,Namakkal Dairy Belt -> Karur Cold Bay (NH44),15:20:22,-19.5,-17.5,-15.5,-17.5,4.0,73.4,Closed,91.2
+TN-28-CC-415,Namakkal Dairy Belt -> Karur Cold Bay (NH44),15:20:23,-19.6,-17.5,-15.6,-17.57,4.0,73.5,Closed,91.2
+TN-28-CC-415,Namakkal Dairy Belt -> Karur Cold Bay (NH44),15:31:48,-19.5,-17.4,-15.5,-17.47,4.0,73.4,Closed,91.2
+TN-28-CC-415,Namakkal Dairy Belt -> Karur Cold Bay (NH44),15:31:49,-19.4,-17.3,-15.4,-17.37,4.0,73.4,Closed,91.2
+TN-28-CC-415,Namakkal Dairy Belt -> Karur Cold Bay (NH44),15:31:51,-19.3,-17.2,-15.3,-17.27,4.0,73.4,Closed,91.2
+TN-28-CC-415,Namakkal Dairy Belt -> Karur Cold Bay (NH44),15:31:52,-19.4,-17.3,-15.4,-17.37,4.0,73.4,Closed,91.2
+TN-28-CC-415,Namakkal Dairy Belt -> Karur Cold Bay (NH44),18:46:01,-19.4,-17.3,-15.4,-17.37,4.0,73.4,Closed,91.2
+TN-28-CC-415,Namakkal Dairy Belt -> Karur Cold Bay (NH44),18:46:03,-19.4,-17.3,-15.4,-17.37,4.0,73.3,Closed,91.2
+TN-28-CC-415,Namakkal Dairy Belt -> Karur Cold Bay (NH44),18:46:04,-19.4,-17.3,-15.4,-17.37,4.0,73.4,Closed,91.2
+TN-28-CC-415,Namakkal Dairy Belt -> Karur Cold Bay (NH44),18:46:06,-19.4,-17.3,-15.4,-17.37,4.0,73.3,Closed,91.2
+TN-28-CC-415,Namakkal Dairy Belt -> Karur Cold Bay (NH44),18:46:07,-19.4,-17.3,-15.4,-17.37,4.0,73.2,Closed,91.2
+TN-28-CC-415,Namakkal Dairy Belt -> Karur Cold Bay (NH44),18:46:09,-19.4,-17.3,-15.4,-17.37,4.0,73.2,Closed,91.2
+TN-28-CC-415,Namakkal Dairy Belt -> Karur Cold Bay (NH44),18:46:10,-19.4,-17.3,-15.5,-17.4,3.9,73.3,Closed,91.2
+TN-28-CC-415,Namakkal Dairy Belt -> Karur Cold Bay (NH44),18:46:12,-19.4,-17.3,-15.5,-17.4,3.9,73.2,Closed,91.2
+TN-28-CC-415,Namakkal Dairy Belt -> Karur Cold Bay (NH44),18:46:13,-19.4,-17.3,-15.5,-17.4,3.9,73.2,Closed,91.2
+TN-28-CC-415,Namakkal Dairy Belt -> Karur Cold Bay (NH44),18:46:15,-19.4,-17.3,-15.6,-17.43,3.8,73.3,Closed,91.2
+TN-28-CC-415,Namakkal Dairy Belt -> Karur Cold Bay (NH44),18:46:16,-19.3,-17.3,-15.5,-17.37,3.8,73.4,Closed,91.2
+TN-28-CC-415,Namakkal Dairy Belt -> Karur Cold Bay (NH44),18:46:18,-19.2,-17.3,-15.4,-17.3,3.8,73.4,Closed,91.2
+TN-28-CC-415,Namakkal Dairy Belt -> Karur Cold Bay (NH44),18:46:19,-19.2,-17.3,-15.4,-17.3,3.8,73.5,Closed,91.2
+TN-28-CC-415,Namakkal Dairy Belt -> Karur Cold Bay (NH44),18:46:21,-19.2,-17.3,-15.4,-17.3,3.8,73.4,Closed,91.2
+TN-28-CC-415,Namakkal Dairy Belt -> Karur Cold Bay (NH44),18:46:22,-19.3,-17.3,-15.5,-17.37,3.8,73.4,Closed,91.2
+TN-43-CC-309,Nilgiris/Ooty -> Mettupalayam -> Coimbatore Hub (NH181),15:05:29,-20.0,-19.6,-18.2,-19.27,1.8,67.9,Closed,98.0
+TN-43-CC-309,Nilgiris/Ooty -> Mettupalayam -> Coimbatore Hub (NH181),15:05:31,-20.0,-19.6,-18.3,-19.3,1.7,67.8,Closed,98.0
+TN-43-CC-309,Nilgiris/Ooty -> Mettupalayam -> Coimbatore Hub (NH181),15:05:32,-20.1,-19.6,-18.4,-19.37,1.7,67.9,Closed,98.0
+TN-43-CC-309,Nilgiris/Ooty -> Mettupalayam -> Coimbatore Hub (NH181),15:05:34,-20.1,-19.6,-18.4,-19.37,1.7,68.0,Closed,98.0
+TN-43-CC-309,Nilgiris/Ooty -> Mettupalayam -> Coimbatore Hub (NH181),15:05:35,-20.2,-19.6,-18.5,-19.43,1.7,68.1,Closed,98.0
+TN-43-CC-309,Nilgiris/Ooty -> Mettupalayam -> Coimbatore Hub (NH181),15:05:37,-20.2,-19.6,-18.5,-19.43,1.7,68.0,Closed,98.0
+TN-43-CC-309,Nilgiris/Ooty -> Mettupalayam -> Coimbatore Hub (NH181),15:05:38,-20.2,-19.6,-18.5,-19.43,1.7,68.0,Closed,98.0
+TN-43-CC-309,Nilgiris/Ooty -> Mettupalayam -> Coimbatore Hub (NH181),15:05:40,-20.2,-19.6,-18.5,-19.43,1.7,67.9,Closed,98.0
+TN-43-CC-309,Nilgiris/Ooty -> Mettupalayam -> Coimbatore Hub (NH181),15:05:41,-20.3,-19.7,-18.6,-19.53,1.7,68.0,Closed,98.0
+TN-43-CC-309,Nilgiris/Ooty -> Mettupalayam -> Coimbatore Hub (NH181),15:05:43,-20.2,-19.6,-18.5,-19.43,1.7,67.9,Closed,98.0
+TN-43-CC-309,Nilgiris/Ooty -> Mettupalayam -> Coimbatore Hub (NH181),15:05:44,-20.3,-19.6,-18.6,-19.5,1.7,68.0,Closed,98.0
+TN-43-CC-309,Nilgiris/Ooty -> Mettupalayam -> Coimbatore Hub (NH181),15:05:46,-20.3,-19.6,-18.6,-19.5,1.7,68.1,Closed,98.0
+TN-43-CC-309,Nilgiris/Ooty -> Mettupalayam -> Coimbatore Hub (NH181),15:05:47,-20.3,-19.6,-18.6,-19.5,1.7,68.0,Closed,98.0
+TN-43-CC-309,Nilgiris/Ooty -> Mettupalayam -> Coimbatore Hub (NH181),15:05:49,-20.3,-19.6,-18.6,-19.5,1.7,68.0,Closed,98.0
+TN-43-CC-309,Nilgiris/Ooty -> Mettupalayam -> Coimbatore Hub (NH181),15:05:50,-20.3,-19.6,-18.6,-19.5,1.7,68.1,Closed,98.0
+TN-43-CC-309,Nilgiris/Ooty -> Mettupalayam -> Coimbatore Hub (NH181),15:05:52,-20.3,-19.6,-18.6,-19.5,1.7,68.2,Closed,98.0
+TN-43-CC-309,Nilgiris/Ooty -> Mettupalayam -> Coimbatore Hub (NH181),15:05:53,-20.3,-19.6,-18.6,-19.5,1.7,68.1,Closed,98.0
+TN-43-CC-309,Nilgiris/Ooty -> Mettupalayam -> Coimbatore Hub (NH181),15:05:55,-20.3,-19.6,-18.6,-19.5,1.7,68.0,Closed,98.0
+TN-43-CC-309,Nilgiris/Ooty -> Mettupalayam -> Coimbatore Hub (NH181),15:05:56,-20.2,-19.6,-18.5,-19.43,1.7,67.9,Closed,98.0
+TN-43-CC-309,Nilgiris/Ooty -> Mettupalayam -> Coimbatore Hub (NH181),15:05:58,-20.3,-19.6,-18.6,-19.5,1.7,68.0,Closed,98.0
+TN-43-CC-309,Nilgiris/Ooty -> Mettupalayam -> Coimbatore Hub (NH181),15:05:59,-20.3,-19.6,-18.6,-19.5,1.7,67.9,Closed,98.0
+TN-43-CC-309,Nilgiris/Ooty -> Mettupalayam -> Coimbatore Hub (NH181),15:06:01,-20.3,-19.6,-18.6,-19.5,1.7,68.0,Closed,98.0
+TN-43-CC-309,Nilgiris/Ooty -> Mettupalayam -> Coimbatore Hub (NH181),15:06:02,-20.4,-19.7,-18.7,-19.6,1.7,68.1,Closed,98.0
+TN-43-CC-309,Nilgiris/Ooty -> Mettupalayam -> Coimbatore Hub (NH181),15:06:04,-20.3,-19.6,-18.6,-19.5,1.7,68.0,Closed,98.0
+TN-43-CC-309,Nilgiris/Ooty -> Mettupalayam -> Coimbatore Hub (NH181),15:06:05,-20.3,-19.6,-18.6,-19.5,1.7,68.1,Closed,98.0
+TN-43-CC-309,Nilgiris/Ooty -> Mettupalayam -> Coimbatore Hub (NH181),15:06:07,-20.3,-19.6,-18.6,-19.5,1.7,68.1,Closed,98.0
+TN-43-CC-309,Nilgiris/Ooty -> Mettupalayam -> Coimbatore Hub (NH181),15:06:08,-20.4,-19.7,-18.7,-19.6,1.7,68.1,Closed,98.0
+TN-43-CC-309,Nilgiris/Ooty -> Mettupalayam -> Coimbatore Hub (NH181),15:06:10,-20.4,-19.7,-18.7,-19.6,1.7,68.2,Closed,98.0
+TN-43-CC-309,Nilgiris/Ooty -> Mettupalayam -> Coimbatore Hub (NH181),15:06:11,-20.4,-19.7,-18.7,-19.6,1.7,68.3,Closed,98.0
+TN-43-CC-309,Nilgiris/Ooty -> Mettupalayam -> Coimbatore Hub (NH181),15:06:13,-20.5,-19.8,-18.8,-19.7,1.7,68.2,Closed,98.0
+TN-43-CC-309,Nilgiris/Ooty -> Mettupalayam -> Coimbatore Hub (NH181),15:06:14,-20.5,-19.8,-18.8,-19.7,1.7,68.1,Closed,98.0
+TN-43-CC-309,Nilgiris/Ooty -> Mettupalayam -> Coimbatore Hub (NH181),15:06:16,-20.5,-19.8,-18.8,-19.7,1.7,68.0,Closed,98.0
+TN-43-CC-309,Nilgiris/Ooty -> Mettupalayam -> Coimbatore Hub (NH181),15:06:17,-20.5,-19.8,-18.8,-19.7,1.7,68.1,Closed,98.0
+TN-43-CC-309,Nilgiris/Ooty -> Mettupalayam -> Coimbatore Hub (NH181),15:16:15,-20.5,-19.8,-18.7,-19.67,1.8,68.2,Closed,98.0
+TN-43-CC-309,Nilgiris/Ooty -> Mettupalayam -> Coimbatore Hub (NH181),15:16:16,-20.5,-19.8,-18.7,-19.67,1.8,68.1,Closed,98.0
+TN-43-CC-309,Nilgiris/Ooty -> Mettupalayam -> Coimbatore Hub (NH181),15:16:18,-20.4,-19.7,-18.6,-19.57,1.8,68.2,Closed,98.0
+TN-43-CC-309,Nilgiris/Ooty -> Mettupalayam -> Coimbatore Hub (NH181),15:16:19,-20.3,-19.6,-18.5,-19.47,1.8,68.3,Closed,98.0
+TN-43-CC-309,Nilgiris/Ooty -> Mettupalayam -> Coimbatore Hub (NH181),15:20:19,-20.2,-19.5,-18.4,-19.37,1.8,68.4,Closed,98.0
+TN-43-CC-309,Nilgiris/Ooty -> Mettupalayam -> Coimbatore Hub (NH181),15:20:20,-20.2,-19.5,-18.3,-19.33,1.9,68.3,Closed,98.0
+TN-43-CC-309,Nilgiris/Ooty -> Mettupalayam -> Coimbatore Hub (NH181),15:20:22,-20.2,-19.5,-18.3,-19.33,1.9,68.4,Closed,98.0
+TN-43-CC-309,Nilgiris/Ooty -> Mettupalayam -> Coimbatore Hub (NH181),15:20:23,-20.2,-19.5,-18.3,-19.33,1.9,68.3,Closed,98.0
+TN-43-CC-309,Nilgiris/Ooty -> Mettupalayam -> Coimbatore Hub (NH181),15:31:48,-20.2,-19.5,-18.2,-19.3,2.0,68.3,Closed,98.0
+TN-43-CC-309,Nilgiris/Ooty -> Mettupalayam -> Coimbatore Hub (NH181),15:31:49,-20.2,-19.5,-18.2,-19.3,2.0,68.2,Closed,98.0
+TN-43-CC-309,Nilgiris/Ooty -> Mettupalayam -> Coimbatore Hub (NH181),15:31:51,-20.2,-19.5,-18.2,-19.3,2.0,68.2,Closed,98.0
+TN-43-CC-309,Nilgiris/Ooty -> Mettupalayam -> Coimbatore Hub (NH181),15:31:52,-20.2,-19.5,-18.2,-19.3,2.0,68.2,Closed,98.0
+TN-43-CC-309,Nilgiris/Ooty -> Mettupalayam -> Coimbatore Hub (NH181),18:46:01,-20.3,-19.6,-18.3,-19.4,2.0,68.1,Closed,98.0
+TN-43-CC-309,Nilgiris/Ooty -> Mettupalayam -> Coimbatore Hub (NH181),18:46:03,-20.3,-19.6,-18.3,-19.4,2.0,68.2,Closed,98.0
+TN-43-CC-309,Nilgiris/Ooty -> Mettupalayam -> Coimbatore Hub (NH181),18:46:04,-20.3,-19.6,-18.3,-19.4,2.0,68.3,Closed,98.0
+TN-43-CC-309,Nilgiris/Ooty -> Mettupalayam -> Coimbatore Hub (NH181),18:46:06,-20.3,-19.6,-18.3,-19.4,2.0,68.3,Closed,98.0
+TN-43-CC-309,Nilgiris/Ooty -> Mettupalayam -> Coimbatore Hub (NH181),18:46:07,-20.3,-19.6,-18.3,-19.4,2.0,68.2,Closed,98.0
+TN-43-CC-309,Nilgiris/Ooty -> Mettupalayam -> Coimbatore Hub (NH181),18:46:09,-20.3,-19.6,-18.3,-19.4,2.0,68.3,Closed,98.0
+TN-43-CC-309,Nilgiris/Ooty -> Mettupalayam -> Coimbatore Hub (NH181),18:46:10,-20.3,-19.6,-18.3,-19.4,2.0,68.2,Closed,98.0
+TN-43-CC-309,Nilgiris/Ooty -> Mettupalayam -> Coimbatore Hub (NH181),18:46:12,-20.3,-19.6,-18.3,-19.4,2.0,68.2,Closed,98.0
+TN-43-CC-309,Nilgiris/Ooty -> Mettupalayam -> Coimbatore Hub (NH181),18:46:13,-20.4,-19.6,-18.4,-19.47,2.0,68.1,Closed,98.0
+TN-43-CC-309,Nilgiris/Ooty -> Mettupalayam -> Coimbatore Hub (NH181),18:46:15,-20.4,-19.6,-18.4,-19.47,2.0,68.0,Closed,98.0
+TN-43-CC-309,Nilgiris/Ooty -> Mettupalayam -> Coimbatore Hub (NH181),18:46:16,-20.4,-19.6,-18.4,-19.47,2.0,68.1,Closed,98.0
+TN-43-CC-309,Nilgiris/Ooty -> Mettupalayam -> Coimbatore Hub (NH181),18:46:18,-20.5,-19.6,-18.5,-19.53,2.0,68.1,Closed,98.0
+TN-43-CC-309,Nilgiris/Ooty -> Mettupalayam -> Coimbatore Hub (NH181),18:46:19,-20.5,-19.6,-18.5,-19.53,2.0,68.2,Closed,98.0
+TN-43-CC-309,Nilgiris/Ooty -> Mettupalayam -> Coimbatore Hub (NH181),18:46:21,-20.5,-19.6,-18.5,-19.53,2.0,68.1,Closed,98.0
+TN-43-CC-309,Nilgiris/Ooty -> Mettupalayam -> Coimbatore Hub (NH181),18:46:22,-20.5,-19.6,-18.6,-19.57,1.9,68.1,Closed,98.0

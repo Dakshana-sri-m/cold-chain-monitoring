@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Boomerang Logistics - Kongu Fleet Real-Time Operations Center</title>
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Leaflet CSS & JS (100% Free OpenStreetMap Engine) -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+    
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: #080d1a;
+      color: #f1f5f9;
+    }
+    
+    .font-mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .glass-panel {
+      background: rgba(15, 23, 42, 0.88);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.4);
+    }
+
+    .glass-card {
+      background: rgba(30, 41, 59, 0.7);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+    }
+
+    .pulse-danger {
+      animation: pulseDanger 1.8s infinite;
+    }
+    @keyframes pulseDanger {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.6); }
+      50% { box-shadow: 0 0 0 14px rgba(239, 68, 68, 0); }
+    }
+
+    /* Map container styling */
+    #konguMap {
+      height: 480px;
+      min-height: 480px;
+      width: 100%;
+      border-radius: 10px;
+      z-index: 1;
+    }
+
+    /* Custom Leaflet Pin */
+    .truck-marker {
+      background: none;
+      border: none;
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 5px; height: 5px; }
+    ::-webkit-scrollbar-track { background: #0b1120; }
+    ::-webkit-scrollbar-thumb { background: #334155; border-radius: 3px; }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col bg-slate-950 text-slate-100 selection:bg-sky-500 selection:text-white">
+
+  <!-- TOP MASTHEAD -->
+  <header class="glass-panel sticky top-0 z-50 border-b border-slate-800 px-4 py-2.5">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3">
+      
+      <!-- Company Branding -->
+      <div class="flex items-center space-x-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-sky-600 via-indigo-600 to-cyan-500 flex items-center justify-center shadow-lg shadow-sky-500/20">
+          <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0" />
+          </svg>
+        </div>
+        <div>
+          <div class="flex items-center space-x-2">
+            <h1 class="text-base font-extrabold tracking-tight text-white flex items-center gap-2">
+              BOOMERANG LOGISTICS <span class="text-[11px] px-2 py-0.5 rounded font-mono bg-sky-950 text-sky-400 border border-sky-800">KONGU REGION FLEET</span>
+            </h1>
+            <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-emerald-950 text-emerald-400 border border-emerald-800/60">
+              <span class="w-2 h-2 mr-1.5 rounded-full bg-emerald-400 animate-ping"></span> Live Real-Time Data
+            </span>
+          </div>
+          <p class="text-xs text-slate-400">
+            Refrigerated Transport Monitoring &bull; OpenStreetMap Navigation &bull; Kongu Belt (Coimbatore, Tirupur, Erode, Salem, Namakkal, Nilgiris)
+          </p>
+        </div>
+      </div>
+
+      <!-- Quick Actions -->
+      <div class="flex items-center space-x-3">
+        <button id="btnAudioToggle" onclick="toggleAudio()" class="px-3 py-1.5 rounded-lg bg-slate-900 text-slate-300 hover:text-white border border-slate-700 text-xs font-semibold flex items-center gap-1.5 transition-all">
+          <span id="audioIcon">&#128263;</span> Audio Alerts Muted
+        </button>
+
+        <a href="/api/export/csv" class="px-3 py-1.5 rounded-lg bg-sky-600 hover:bg-sky-500 text-white text-xs font-semibold flex items-center gap-1.5 shadow transition-all">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+          Export CSV
+        </a>
+
+        <div class="hidden sm:flex flex-col text-right">
+          <span class="text-[10px] text-slate-400 font-mono">LIVE CLOCK:</span>
+          <span id="liveClock" class="text-xs font-mono font-bold text-sky-400">--:--:--</span>
+        </div>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- FLEET AT A GLANCE TILES -->
+  <section class="bg-slate-900/90 border-b border-slate-800 px-4 py-2.5">
+    <div class="max-w-7xl mx-auto grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 text-xs">
+      
+      <div class="bg-slate-950/70 p-2.5 rounded-lg border border-slate-800/80">
+        <span class="text-slate-400 block text-[11px]">Active Transports</span>
+        <div class="flex items-baseline justify-between mt-1">
+          <strong class="text-lg font-bold font-mono text-white" id="summaryTotalLorries">4 Lorries</strong>
+          <span class="text-[10px] text-emerald-400 font-semibold">Kongu Belt</span>
+        </div>
+      </div>
+
+      <div class="bg-slate-950/70 p-2.5 rounded-lg border border-slate-800/80">
+        <span class="text-slate-400 block text-[11px]">Safe Cargo (&le; -18&deg;C)</span>
+        <div class="flex items-baseline justify-between mt-1">
+          <strong class="text-lg font-bold font-mono text-emerald-400" id="summarySafeCount">--</strong>
+          <span class="text-[10px] text-emerald-500 font-semibold">Optimal</span>
+        </div>
+      </div>
+
+      <div class="bg-slate-950/70 p-2.5 rounded-lg border border-slate-800/80">
+        <span class="text-slate-400 block text-[11px]">Warning Drift (-18 to -15&deg;C)</span>
+        <div class="flex items-baseline justify-between mt-1">
+          <strong class="text-lg font-bold font-mono text-amber-400" id="summaryWarnCount">--</strong>
+          <span class="text-[10px] text-amber-500 font-semibold">Attention</span>
+        </div>
+      </div>
+
+      <div class="bg-slate-950/70 p-2.5 rounded-lg border border-slate-800/80">
+        <span class="text-slate-400 block text-[11px]">Critical Excursion (&gt; -15&deg;C)</span>
+        <div class="flex items-baseline justify-between mt-1">
+          <strong class="text-lg font-bold font-mono text-rose-400" id="summaryCritCount">--</strong>
+          <span class="text-[10px] text-rose-500 font-semibold">Action Needed</span>
+        </div>
+      </div>
+
+      <div class="bg-slate-950/70 p-2.5 rounded-lg border border-slate-800/80">
+        <span class="text-slate-400 block text-[11px]">Compartment Door Open</span>
+        <div class="flex items-baseline justify-between mt-1">
+          <strong class="text-lg font-bold font-mono text-rose-400" id="summaryDoorsOpen">--</strong>
+          <span class="text-[10px] text-slate-400 font-semibold">Rear Influx</span>
+        </div>
+      </div>
+
+      <div class="bg-slate-950/70 p-2.5 rounded-lg border border-slate-800/80">
+        <span class="text-slate-400 block text-[11px]">Total Cargo Value</span>
+        <div class="flex items-baseline justify-between mt-1">
+          <strong class="text-lg font-bold font-mono text-sky-300">18,000 kg</strong>
+          <span class="text-[10px] text-sky-400 font-semibold">&#8377;16.2 Lakh</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- MAIN DASHBOARD CONTENT -->
+  <main class="flex-1 max-w-7xl w-full mx-auto p-4 space-y-4">
+
+    <!-- VEHICLE SELECTOR CARDS -->
+    <div class="glass-panel rounded-xl p-3">
+      <div class="flex items-center justify-between pb-2 border-b border-slate-800">
+        <h2 class="text-xs font-bold uppercase tracking-wider text-slate-300 flex items-center gap-2">
+          <span>Active Transport Lorries in Kongu Region:</span>
+          <span class="text-slate-400 font-normal">(Click any lorry to inspect its 3 temperature detectors)</span>
+        </h2>
+        <span class="text-xs text-sky-400 font-mono">Live 1.5s Stream</span>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 mt-3" id="vehicleCardsGrid">
+        <!-- Dynamically rendered vehicle cards -->
+      </div>
+    </div>
+
+    <!-- MAP & 3-DETECTOR COMPARTMENT STATUS -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-4">
+      
+      <!-- LEFT (COL-7): OPENSTREETMAP (100% FREE & ACCURATE ROAD CORRIDORS) -->
+      <div class="glass-panel rounded-xl p-4 lg:col-span-7 flex flex-col">
+        <div class="flex flex-wrap items-center justify-between pb-2 border-b border-slate-800 gap-2">
+          <div>
+            <h3 class="text-sm font-bold text-white flex items-center gap-2">
+              Kongu Region Highway Transport Map (Tamil Nadu)
+              <span class="text-[10px] px-2 py-0.5 rounded font-mono bg-emerald-950 text-emerald-400 border border-emerald-800">
+                OpenStreetMap Free Engine
+              </span>
+            </h3>
+            <p class="text-[11px] text-slate-400">
+              Live highway corridors (NH544, NH44, NH181) connecting Coimbatore, Tirupur, Erode, Salem, Namakkal & Nilgiris
+            </p>
+          </div>
+
+          <!-- Free Tile Provider Switcher -->
+          <div class="flex items-center space-x-1.5 text-xs">
+            <span class="text-[10px] text-slate-400">Map Style:</span>
+            <select id="mapTileSelect" onchange="changeMapTile(this.value)" class="bg-slate-900 border border-slate-700 text-slate-200 text-[11px] rounded px-2 py-1 font-mono">
+              <option value="osm">OpenStreetMap Standard (Free)</option>
+              <option value="carto_dark">CARTO Dark Matter (Free)</option>
+              <option value="carto_light">CARTO Positron Light (Free)</option>
+              <option value="opentopo">OpenTopoMap Terrain (Free)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Leaflet Map Container -->
+        <div class="mt-3 relative">
+          <div id="konguMap"></div>
+        </div>
+
+        <!-- Route Color Legend -->
+        <div class="mt-3 grid grid-cols-2 sm:grid-cols-4 gap-2 text-[10px] text-slate-300 font-mono">
+          <div class="bg-slate-900/80 p-1.5 rounded border border-emerald-500/30 flex items-center gap-1.5 truncate">
+            <span class="w-3 h-1 bg-emerald-400 inline-block rounded"></span>
+            <span>NH544: Cbe-Tpr-Erode</span>
+          </div>
+          <div class="bg-slate-900/80 p-1.5 rounded border border-rose-500/40 flex items-center gap-1.5 truncate">
+            <span class="w-3 h-1 bg-rose-500 inline-block rounded"></span>
+            <span>NH544: Erode-Salem</span>
+          </div>
+          <div class="bg-slate-900/80 p-1.5 rounded border border-amber-500/30 flex items-center gap-1.5 truncate">
+            <span class="w-3 h-1 bg-amber-400 inline-block rounded"></span>
+            <span>NH44: Namakkal-Karur</span>
+          </div>
+          <div class="bg-slate-900/80 p-1.5 rounded border border-cyan-500/30 flex items-center gap-1.5 truncate">
+            <span class="w-3 h-1 bg-cyan-400 inline-block rounded"></span>
+            <span>NH181: Ooty-Mtp-Cbe</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT (COL-5): 3-TEMPERATURE DETECTOR COMPARTMENT VISUALIZER -->
+      <div class="glass-panel rounded-xl p-4 lg:col-span-5 flex flex-col justify-between space-y-3">
+        
+        <!-- Selected Lorry Header -->
+        <div class="pb-2 border-b border-slate-800 flex items-center justify-between">
+          <div>
+            <span class="text-[10px] text-slate-400 block font-mono">SELECTED REFRIGERATED TRANSPORT:</span>
+            <h3 class="text-base font-extrabold text-white flex items-center gap-2">
+              <span id="selVehicleId">TN-33-CC-204</span>
+              <span id="selVehicleBadge" class="text-xs px-2 py-0.5 rounded font-mono font-bold bg-rose-950 text-rose-400 border border-rose-800">
+                CRITICAL
+              </span>
+            </h3>
+            <span class="text-xs text-sky-400 font-medium" id="selRouteName">Erode Hub &rarr; Perundurai &rarr; Salem Depot</span>
+          </div>
+
+          <div class="text-right">
+            <span class="text-[10px] text-slate-400 block">DRIVER:</span>
+            <span class="text-xs font-semibold text-slate-200" id="selDriverName">K. Murugan</span>
+            <span class="text-[11px] text-slate-400 font-mono block" id="selDriverPhone">+91 98422 71045</span>
+          </div>
+        </div>
+
+        <!-- 3-ZONE REFRIGERATED CONTAINER SCHEMATIC -->
+        <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 relative">
+          <div class="flex items-center justify-between text-[11px] text-slate-400 mb-2">
+            <span class="font-bold text-slate-300">TRUCK CONTAINER INTERNAL 3-ZONE SENSING</span>
+            <span>Airflow: Front &rarr; Rear</span>
+          </div>
+
+          <!-- Cutaway Lorry Container Visual -->
+          <div class="border-2 border-slate-700 rounded-lg p-2 bg-slate-900 grid grid-cols-3 gap-2 relative overflow-hidden">
+            
+            <!-- ZONE 1: FRONT (CHILLER OUTLET) -->
+            <div id="zoneBox1" class="rounded p-2 text-center transition-all border border-sky-500/40 bg-sky-950/40">
+              <span class="text-[9px] uppercase font-bold text-sky-400 block">Detector 1 (Front)</span>
+              <span class="text-[10px] text-slate-400">Chiller Air Outlet</span>
+              <div id="zoneTemp1" class="text-base font-black font-mono text-sky-300 mt-1">-16.4&deg;C</div>
+              <span class="text-[9px] text-slate-400 block mt-0.5">Cold Source Zone</span>
+            </div>
+
+            <!-- ZONE 2: MIDDLE (CARGO CORE) -->
+            <div id="zoneBox2" class="rounded p-2 text-center transition-all border border-indigo-500/40 bg-indigo-950/40">
+              <span class="text-[9px] uppercase font-bold text-indigo-400 block">Detector 2 (Mid)</span>
+              <span class="text-[10px] text-slate-400">Cargo Core Center</span>
+              <div id="zoneTemp2" class="text-base font-black font-mono text-indigo-300 mt-1">-13.8&deg;C</div>
+              <span class="text-[9px] text-slate-400 block mt-0.5">Bulk Storage Mass</span>
+            </div>
+
+            <!-- ZONE 3: REAR (BACK DOOR) -->
+            <div id="zoneBox3" class="rounded p-2 text-center transition-all border border-rose-500/60 bg-rose-950/60 pulse-danger">
+              <span class="text-[9px] uppercase font-bold text-rose-400 block">Detector 3 (Rear)</span>
+              <span class="text-[10px] text-slate-400">Back Door Zone</span>
+              <div id="zoneTemp3" class="text-base font-black font-mono text-rose-300 mt-1">-7.5&deg;C</div>
+              <span class="text-[9px] text-rose-400 font-bold block mt-0.5">Thermal Influx Area</span>
+            </div>
+
+          </div>
+
+          <!-- Thermal Gradient & Door Indicator -->
+          <div class="mt-3 grid grid-cols-2 gap-2 text-xs">
+            <div class="bg-slate-900 p-2 rounded border border-slate-800">
+              <span class="text-slate-400 block text-[10px]">Thermal Gradient (&Delta;T = Rear - Front):</span>
+              <strong id="kpiGradient" class="text-base font-mono font-bold text-amber-400">+8.9&deg;C</strong>
+              <span class="text-[10px] text-slate-400 block mt-0.5" id="kpiGradientText">Airflow Disparity Alert</span>
+            </div>
+
+            <div class="bg-slate-900 p-2 rounded border border-slate-800">
+              <span class="text-slate-400 block text-[10px]">Rear Door Seal Sensor:</span>
+              <div class="flex items-center gap-1.5 mt-0.5">
+                <span id="kpiDoorState" class="text-base font-bold text-rose-400">OPEN</span>
+                <span id="kpiDoorIcon" class="text-sm">&#128275;</span>
+              </div>
+              <span class="text-[10px] text-rose-400 block" id="kpiDoorSub">Warm Air & Moisture Entering</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Operational Status Tiles -->
+        <div class="grid grid-cols-3 gap-2 text-xs">
+          <div class="bg-slate-900/60 p-2 rounded-lg border border-slate-800">
+            <span class="text-slate-400 block text-[10px]">Chamber Humidity</span>
+            <strong id="kpiHumidity" class="text-sm font-mono text-slate-100">89.2%</strong>
+            <span class="text-[10px] text-rose-400 block">Moisture Ingress</span>
+          </div>
+
+          <div class="bg-slate-900/60 p-2 rounded-lg border border-slate-800">
+            <span class="text-slate-400 block text-[10px]">Transit Speed</span>
+            <strong id="kpiSpeed" class="text-sm font-mono text-slate-100">0 km/h</strong>
+            <span class="text-[10px] text-slate-400 block">Halted at Bay</span>
+          </div>
+
+          <div class="bg-slate-900/60 p-2 rounded-lg border border-slate-800">
+            <span class="text-slate-400 block text-[10px]">IoT Device Battery</span>
+            <strong id="kpiBattery" class="text-sm font-mono text-emerald-400">88.0%</strong>
+            <span class="text-[10px] text-slate-400 block">Backup Active</span>
+          </div>
+        </div>
+
+        <!-- AI FLEET INTELLIGENCE & ACTION ADVISORY (POWERED BY GEMINI AI) -->
+        <div class="p-3 rounded-xl bg-slate-950 border border-indigo-500/30 space-y-2 text-xs">
+          <div class="flex items-center justify-between pb-1.5 border-b border-slate-800">
+            <div class="flex items-center space-x-2">
+              <span class="w-2 h-2 rounded-full bg-indigo-400 animate-pulse"></span>
+              <strong class="text-indigo-300 font-bold uppercase tracking-wider text-[11px]">AI Fleet Excursion Advisory</strong>
+              <span class="text-[9px] px-1.5 py-0.5 rounded bg-indigo-950 text-indigo-400 border border-indigo-800 font-mono">Gemini AI</span>
+            </div>
+            <button onclick="requestAIDiagnosis()" id="btnAIDiagnose" class="px-2.5 py-1 rounded bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-[10px] flex items-center gap-1 shadow transition-all">
+              <span>&#9889;</span> Analyze Lorry
+            </button>
+          </div>
+          <div id="aiAdvisoryBox" class="text-slate-300 text-[11px] leading-relaxed whitespace-pre-line bg-slate-900/60 p-2.5 rounded-lg border border-slate-800 max-h-44 overflow-y-auto font-mono">
+            Click "Analyze Lorry" to generate live AI root-cause diagnosis, quality risk, and driver action.
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- 4 ADVANCED REAL-TIME GRAPHS -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+      
+      <!-- GRAPH 1: 3-TEMPERATURE DETECTOR LIVE TIME-SERIES -->
+      <div class="glass-panel rounded-xl p-4 space-y-2">
+        <div class="flex flex-wrap items-center justify-between pb-2 border-b border-slate-800 gap-2">
+          <div>
+            <h3 class="text-xs font-bold text-white uppercase tracking-wider flex items-center gap-2">
+              Graph 1: 3-Detector Real-Time Thermal Multi-Line (<span id="g1VehicleId">TN-33-CC-204</span>)
+            </h3>
+            <p class="text-[11px] text-slate-400">Front ($T_1$), Mid ($T_2$), and Rear ($T_3$) Probes vs -18&deg;C Safe Setpoint</p>
+          </div>
+          <div class="flex items-center space-x-2 text-[10px]">
+            <span class="flex items-center gap-1 text-sky-400"><span class="w-2.5 h-0.5 bg-sky-400 inline-block"></span> T1 Front</span>
+            <span class="flex items-center gap-1 text-indigo-400"><span class="w-2.5 h-0.5 bg-indigo-400 inline-block"></span> T2 Mid</span>
+            <span class="flex items-center gap-1 text-rose-400"><span class="w-2.5 h-0.5 bg-rose-400 inline-block"></span> T3 Rear</span>
+          </div>
+        </div>
+        <div class="h-64 w-full">
+          <canvas id="multiSensorChart"></canvas>
+        </div>
+      </div>
+
+      <!-- GRAPH 2: THERMAL GRADIENT (DISPARITY BETWEEN REAR AND FRONT DETECTORS) -->
+      <div class="glass-panel rounded-xl p-4 space-y-2">
+        <div class="flex flex-wrap items-center justify-between pb-2 border-b border-slate-800 gap-2">
+          <div>
+            <h3 class="text-xs font-bold text-white uppercase tracking-wider flex items-center gap-2">
+              Graph 2: Thermal Gradient & Airflow Distribution (&Delta;T = T_Rear - T_Front)
+            </h3>
+            <p class="text-[11px] text-slate-400">Tracks airflow blockages and rear door heat ingress</p>
+          </div>
+          <span class="text-[10px] font-mono text-amber-400 px-1.5 py-0.5 rounded bg-slate-900 border border-slate-800">Permissible: &le; 3&deg;C</span>
+        </div>
+        <div class="h-64 w-full">
+          <canvas id="gradientChart"></canvas>
+        </div>
+      </div>
+
+      <!-- GRAPH 3: FLEET MULTI-LORRY COMPARATIVE TEMPERATURE -->
+      <div class="glass-panel rounded-xl p-4 space-y-2">
+        <div class="flex flex-wrap items-center justify-between pb-2 border-b border-slate-800 gap-2">
+          <div>
+            <h3 class="text-xs font-bold text-white uppercase tracking-wider">
+              Graph 3: Kongu Fleet Comparative Real-Time Temperatures
+            </h3>
+            <p class="text-[11px] text-slate-400">Live dynamic temperature curves for all 4 Kongu transport lorries concurrently</p>
+          </div>
+          <span class="text-[10px] font-mono text-sky-400">All Lorries Active</span>
+        </div>
+        <div class="h-64 w-full">
+          <canvas id="fleetComparisonChart"></canvas>
+        </div>
+      </div>
+
+      <!-- GRAPH 4: HUMIDITY & REAR DOOR INFLUX CORRELATION -->
+      <div class="glass-panel rounded-xl p-4 space-y-2">
+        <div class="flex flex-wrap items-center justify-between pb-2 border-b border-slate-800 gap-2">
+          <div>
+            <h3 class="text-xs font-bold text-white uppercase tracking-wider">
+              Graph 4: Moisture Ingress & Rear Door Influx Correlation
+            </h3>
+            <p class="text-[11px] text-slate-400">Door opening events directly spike humidity and T3 rear probe temperature</p>
+          </div>
+          <span class="text-[10px] font-mono text-cyan-400">RH % vs Door</span>
+        </div>
+        <div class="h-64 w-full">
+          <canvas id="humidityDoorChart"></canvas>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ACTIVE FLEET ALERTS -->
+    <div class="glass-panel rounded-xl p-4">
+      <div class="flex items-center justify-between pb-2 border-b border-slate-800">
+        <div>
+          <h3 class="text-xs font-bold text-white uppercase tracking-wider">
+            Real-Time Exception Alerts & Operational Action Log
+          </h3>
+          <p class="text-[11px] text-slate-400">Immediate alerts requiring driver intervention or fleet re-routing</p>
+        </div>
+        <span id="activeAlertBadge" class="text-xs font-mono font-bold px-2 py-0.5 rounded bg-rose-950 text-rose-300 border border-rose-800">
+          Alert Active
+        </span>
+      </div>
+
+      <div class="mt-3 overflow-x-auto">
+        <table class="w-full text-left text-xs text-slate-300">
+          <thead class="bg-slate-900/80 text-slate-400 uppercase font-mono text-[10px]">
+            <tr>
+              <th class="p-2.5">Time</th>
+              <th class="p-2.5">Vehicle</th>
+              <th class="p-2.5">Route</th>
+              <th class="p-2.5">T1 (Front)</th>
+              <th class="p-2.5">T2 (Mid)</th>
+              <th class="p-2.5">T3 (Rear)</th>
+              <th class="p-2.5">Gradient</th>
+              <th class="p-2.5">Door</th>
+              <th class="p-2.5">Classification</th>
+              <th class="p-2.5">Action</th>
+            </tr>
+          </thead>
+          <tbody id="fleetAlertsTbody" class="divide-y divide-slate-800 font-mono">
+            <!-- Dynamically populated rows -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- JAVASCRIPT LOGIC -->
+  <script>
+    let activeVehicleId = "TN-33-CC-204";
+    let fleetState = null;
+    let konguMap = null;
+    let lorryMarkers = {};
+    let routePolylines = {};
+    let tileLayers = {};
+    let currentTileLayer = null;
+
+    let multiSensorChart = null;
+    let gradientChart = null;
+    let fleetComparisonChart = null;
+    let humidityDoorChart = null;
+
+    let audioEnabled = false;
+    let audioCtx = null;
+    let lastAudioToneTime = 0;
+
+    document.addEventListener('DOMContentLoaded', () => {
+      initFreeOpenStreetMap();
+      initCharts();
+      pollFleet();
+      setInterval(pollFleet, 1500); // 1.5s real-time poll
+      setInterval(updateClock, 1000);
+    });
+
+    function updateClock() {
+      const now = new Date();
+      document.getElementById('liveClock').innerText = now.toTimeString().split(' ')[0];
+    }
+
+    function toggleAudio() {
+      audioEnabled = !audioEnabled;
+      const btn = document.getElementById('btnAudioToggle');
+      if (audioEnabled) {
+        if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        if (audioCtx.state === 'suspended') audioCtx.resume();
+        btn.className = 'px-3 py-1.5 rounded-lg bg-sky-950 text-sky-300 border border-sky-700 text-xs font-semibold flex items-center gap-1.5 transition-all';
+        btn.innerHTML = '<span id=\"audioIcon\">&#128266;</span> Alerts Audible';
+        playAlertTone(750, 0.15);
+      } else {
+        btn.className = 'px-3 py-1.5 rounded-lg bg-slate-900 text-slate-300 hover:text-white border border-slate-700 text-xs font-semibold flex items-center gap-1.5 transition-all';
+        btn.innerHTML = '<span id=\"audioIcon\">&#128263;</span> Audio Alerts Muted';
+      }
+    }
+
+    function playAlertTone(freq = 880, dur = 0.25) {
+      if (!audioEnabled || !audioCtx) return;
+      const now = Date.now();
+      if (now - lastAudioToneTime < 3000) return;
+      lastAudioToneTime = now;
+      try {
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+        gain.gain.setValueAtTime(0.12, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + dur);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + dur);
+      } catch (e) {}
+    }
+
+    // ----------------- FREE OPENSTREETMAP INITIALIZATION -----------------
+    function initFreeOpenStreetMap() {
+      // Centered on Kongu Region (Coimbatore, Erode, Salem)
+      konguMap = L.map('konguMap', {
+        attributionControl: true,
+        zoomControl: true
+      }).setView([11.2750, 77.5850], 9);
+
+      // Free Tile Layer Definitions (100% Free, NO Google API keys or billing needed!)
+      tileLayers = {
+        // 1. OpenStreetMap Standard (Gold Standard Free Open Source)
+        osm: L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          maxZoom: 19,
+          attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }),
+        // 2. CARTO Dark Matter (Free OSM-based Dark theme)
+        carto_dark: L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+          maxZoom: 19,
+          attribution: '&copy; OpenStreetMap &copy; CARTO'
+        }),
+        // 3. CARTO Positron Light (Free OSM-based Light theme)
+        carto_light: L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+          maxZoom: 19,
+          attribution: '&copy; OpenStreetMap &copy; CARTO'
+        }),
+        // 4. OpenTopoMap (Free Topographical & Terrain map)
+        opentopo: L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
+          maxZoom: 17,
+          attribution: '&copy; OpenStreetMap &copy; OpenTopoMap'
+        })
+      };
+
+      // Set default layer to OpenStreetMap Standard
+      currentTileLayer = tileLayers.osm;
+      currentTileLayer.addTo(konguMap);
+
+      // Force map to adapt to container size
+      setTimeout(() => { konguMap.invalidateSize(); }, 300);
+      window.addEventListener('resize', () => { konguMap.invalidateSize(); });
+
+      // Add Major Cold Storage Hub Pins across Kongu Region
+      const hubPins = [
+        { name: "Coimbatore Mega Dairy Hub", lat: 11.0168, lng: 76.9558, type: "Origin Plant" },
+        { name: "Tirupur Cold Bay", lat: 11.1085, lng: 77.3411, type: "Waypoint Bay" },
+        { name: "Perundurai SIPCOT Cold Vault", lat: 11.2750, lng: 77.5850, type: "Transit Depot" },
+        { name: "Erode Logistics Hub", lat: 11.3410, lng: 77.7172, type: "Regional Hub" },
+        { name: "Salem Central Terminal", lat: 11.6643, lng: 78.1460, type: "Mega Terminal" },
+        { name: "Namakkal Dairy Base", lat: 11.2189, lng: 78.1674, type: "Dairy Base" },
+        { name: "Karur Perishables Bay", lat: 10.9601, lng: 78.0766, type: "Regional Bay" },
+        { name: "Nilgiris Vault (Ooty)", lat: 11.4102, lng: 76.6950, type: "Hardening Vault" }
+      ];
+
+      hubPins.forEach(h => {
+        const hubIcon = L.divIcon({
+          html: `<div class="w-4 h-4 rounded-full bg-slate-900 border-2 border-sky-400 shadow-md flex items-center justify-center text-[7px] font-bold text-sky-400">H</div>`,
+          className: 'hub-pin',
+          iconSize: [16, 16]
+        });
+        L.marker([h.lat, h.lng], { icon: hubIcon }).addTo(konguMap)
+          .bindPopup(`<div class="font-mono text-xs"><b>${h.name}</b><br><span class="text-slate-500">${h.type}</span></div>`);
+      });
+    }
+
+    function changeMapTile(layerKey) {
+      if (!konguMap || !tileLayers[layerKey]) return;
+      if (currentTileLayer) {
+        konguMap.removeLayer(currentTileLayer);
+      }
+      currentTileLayer = tileLayers[layerKey];
+      currentTileLayer.addTo(konguMap);
+    }
+
+    // ----------------- GRAPH INITIALIZATION -----------------
+    function initCharts() {
+      // 1. MultiSensor Chart (T1, T2, T3)
+      const ctx1 = document.getElementById('multiSensorChart').getContext('2d');
+      multiSensorChart = new Chart(ctx1, {
+        type: 'line',
+        data: {
+          labels: [],
+          datasets: [
+            {
+              label: 'Detector 1 - Front (Chiller Outlet)',
+              data: [],
+              borderColor: '#38bdf8',
+              backgroundColor: 'rgba(56, 189, 248, 0.08)',
+              borderWidth: 2,
+              tension: 0.2,
+              pointRadius: 0
+            },
+            {
+              label: 'Detector 2 - Mid (Cargo Core)',
+              data: [],
+              borderColor: '#818cf8',
+              backgroundColor: 'transparent',
+              borderWidth: 2,
+              tension: 0.2,
+              pointRadius: 0
+            },
+            {
+              label: 'Detector 3 - Rear (Back Door Influx)',
+              data: [],
+              borderColor: '#f43f5e',
+              backgroundColor: 'rgba(244, 63, 94, 0.12)',
+              fill: true,
+              borderWidth: 2.5,
+              tension: 0.2,
+              pointRadius: 1
+            },
+            {
+              label: 'Safe Setpoint (-18°C)',
+              data: [],
+              borderColor: '#0284c7',
+              borderWidth: 1.5,
+              borderDash: [5, 5],
+              pointRadius: 0
+            },
+            {
+              label: 'Critical Thawing (-10°C)',
+              data: [],
+              borderColor: '#ef4444',
+              borderWidth: 1.5,
+              borderDash: [3, 3],
+              pointRadius: 0
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          animation: false,
+          interaction: { mode: 'index', intersect: false },
+          scales: {
+            x: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#94a3b8', font: { family: 'JetBrains Mono', size: 9 } } },
+            y: { min: -25, max: -5, grid: { color: 'rgba(255,255,255,0.08)' }, ticks: { color: '#94a3b8', font: { family: 'JetBrains Mono', size: 9 }, callback: v => v + '°C' } }
+          },
+          plugins: { legend: { display: false } }
+        }
+      });
+
+      // 2. Gradient Chart (ΔT)
+      const ctx2 = document.getElementById('gradientChart').getContext('2d');
+      gradientChart = new Chart(ctx2, {
+        type: 'line',
+        data: {
+          labels: [],
+          datasets: [
+            {
+              label: 'Thermal Gradient (ΔT °C)',
+              data: [],
+              borderColor: '#f59e0b',
+              backgroundColor: 'rgba(245, 158, 11, 0.15)',
+              fill: true,
+              borderWidth: 2,
+              tension: 0.2,
+              pointRadius: 0
+            },
+            {
+              label: 'Permissible Airflow Limit (3.0°C)',
+              data: [],
+              borderColor: '#ef4444',
+              borderWidth: 1.5,
+              borderDash: [4, 4],
+              pointRadius: 0
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          animation: false,
+          scales: {
+            x: { grid: { display: false }, ticks: { color: '#94a3b8', font: { family: 'JetBrains Mono', size: 9 } } },
+            y: { min: 0, max: 12, grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#94a3b8', font: { family: 'JetBrains Mono', size: 9 }, callback: v => '+' + v + '°' } }
+          },
+          plugins: { legend: { display: false } }
+        }
+      });
+
+      // 3. Fleet Comparison Chart (All Lorries Real Time-Series)
+      const ctx3 = document.getElementById('fleetComparisonChart').getContext('2d');
+      fleetComparisonChart = new Chart(ctx3, {
+        type: 'line',
+        data: {
+          labels: [],
+          datasets: [
+            { label: 'TN-38-CC-101 (Coimbatore)', data: [], borderColor: '#10b981', borderWidth: 2, tension: 0.2, pointRadius: 0 },
+            { label: 'TN-33-CC-204 (Erode Incident)', data: [], borderColor: '#f43f5e', borderWidth: 2.5, tension: 0.2, pointRadius: 0 },
+            { label: 'TN-28-CC-415 (Namakkal)', data: [], borderColor: '#f59e0b', borderWidth: 2, tension: 0.2, pointRadius: 0 },
+            { label: 'TN-43-CC-309 (Nilgiris)', data: [], borderColor: '#06b6d4', borderWidth: 2, tension: 0.2, pointRadius: 0 },
+            { label: 'Safe Limit (-18°C)', data: [], borderColor: '#0284c7', borderDash: [4, 4], borderWidth: 1.5, pointRadius: 0 }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          animation: false,
+          scales: {
+            x: { grid: { display: false }, ticks: { color: '#94a3b8', font: { family: 'JetBrains Mono', size: 9 } } },
+            y: { min: -25, max: -6, grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#94a3b8', font: { family: 'JetBrains Mono', size: 9 }, callback: v => v + '°' } }
+          },
+          plugins: { legend: { display: true, labels: { color: '#94a3b8', font: { size: 9 }, boxWidth: 10 } } }
+        }
+      });
+
+      // 4. Humidity & Door Chart
+      const ctx4 = document.getElementById('humidityDoorChart').getContext('2d');
+      humidityDoorChart = new Chart(ctx4, {
+        type: 'line',
+        data: {
+          labels: [],
+          datasets: [
+            {
+              label: 'Chamber Humidity %',
+              data: [],
+              borderColor: '#06b6d4',
+              backgroundColor: 'rgba(6, 182, 212, 0.12)',
+              fill: true,
+              borderWidth: 2,
+              tension: 0.2,
+              pointRadius: 0,
+              yAxisID: 'y'
+            },
+            {
+              label: 'Door Open Breach',
+              data: [],
+              backgroundColor: 'rgba(244, 63, 94, 0.35)',
+              type: 'bar',
+              yAxisID: 'yDoor',
+              barPercentage: 1.0
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          animation: false,
+          scales: {
+            x: { grid: { display: false }, ticks: { color: '#94a3b8', font: { family: 'JetBrains Mono', size: 9 } } },
+            y: { min: 60, max: 98, grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#94a3b8', font: { family: 'JetBrains Mono', size: 9 }, callback: v => v + '%' } },
+            yDoor: { min: 0, max: 1.2, display: false }
+          },
+          plugins: { legend: { display: false } }
+        }
+      });
+    }
+
+    // ----------------- REAL-TIME POLLING & MAP / GRAPHS SYNC -----------------
+    async function pollFleet() {
+      try {
+        const res = await fetch(`/api/fleet/state?vehicle_id=${activeVehicleId}`);
+        if (!res.ok) return;
+        const data = await res.json();
+        fleetState = data;
+        updateUI(data);
+      } catch (err) {
+        console.error("Fleet poll failed:", err);
+      }
+    }
+
+    function selectVehicle(vid) {
+      activeVehicleId = vid;
+      document.getElementById('g1VehicleId').innerText = vid;
+      pollFleet();
+    }
+
+    function updateUI(data) {
+      const fleet = data.fleet || {};
+      const sum = data.fleet_summary || {};
+      const activeV = data.active_vehicle || {};
+      const activeHist = data.active_history || [];
+      const fleetHist = data.fleet_history || {};
+
+      // Summary Bar
+      document.getElementById('summaryTotalLorries').innerText = `${sum.total_transports} Lorries`;
+      document.getElementById('summarySafeCount').innerText = `${sum.safe_count} Lorries`;
+      document.getElementById('summaryWarnCount').innerText = `${sum.warning_count} Lorries`;
+      document.getElementById('summaryCritCount').innerText = `${sum.critical_count} Lorries`;
+      document.getElementById('summaryDoorsOpen').innerText = `${sum.door_open_count} Open`;
+
+      // Render Vehicle Selector Cards
+      const cardsGrid = document.getElementById('vehicleCardsGrid');
+      cardsGrid.innerHTML = Object.values(fleet).map(v => {
+        const isSel = (v.vehicle_id === activeVehicleId);
+        const isCrit = (v.alert_level === 'Critical');
+        const isWarn = (v.alert_level === 'Warning');
+        const borderCls = isSel ? 'border-sky-500 bg-sky-950/40 ring-1 ring-sky-500' : (isCrit ? 'border-rose-500/60 bg-slate-900/80' : 'border-slate-800 bg-slate-900/50');
+        const badgeCls = isCrit ? 'bg-rose-500 text-white' : (isWarn ? 'bg-amber-500 text-slate-950' : 'bg-emerald-500 text-white');
+
+        return `
+          <div onclick="selectVehicle('${v.vehicle_id}')" class="p-2.5 rounded-lg border ${borderCls} cursor-pointer hover:bg-slate-800/80 transition-all text-xs">
+            <div class="flex items-center justify-between">
+              <strong class="font-mono text-white text-[13px] flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full" style="background-color: ${v.route_color || '#38bdf8'}"></span>
+                ${v.vehicle_id}
+              </strong>
+              <span class="text-[9px] font-bold px-1.5 py-0.5 rounded uppercase ${badgeCls}">${v.alert_level}</span>
+            </div>
+            <span class="text-[10px] text-slate-400 block truncate mt-0.5">${v.route_name}</span>
+            <div class="mt-2 grid grid-cols-3 gap-1 text-center font-mono">
+              <div class="bg-slate-950/80 p-1 rounded border border-slate-800/50">
+                <span class="text-[8px] text-slate-500 block">T1 Front</span>
+                <span class="font-bold text-sky-400">${v.temp_front.toFixed(1)}&deg;</span>
+              </div>
+              <div class="bg-slate-950/80 p-1 rounded border border-slate-800/50">
+                <span class="text-[8px] text-slate-500 block">T2 Mid</span>
+                <span class="font-bold text-indigo-400">${v.temp_mid.toFixed(1)}&deg;</span>
+              </div>
+              <div class="bg-slate-950/80 p-1 rounded border border-slate-800/50">
+                <span class="text-[8px] text-slate-500 block">T3 Rear</span>
+                <span class="font-bold ${v.temp_rear > -15 ? 'text-rose-400' : 'text-slate-200'}">${v.temp_rear.toFixed(1)}&deg;</span>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      // Selected Vehicle 3-Detector Visual
+      document.getElementById('selVehicleId').innerText = activeV.vehicle_id;
+      document.getElementById('selRouteName').innerText = activeV.route_name;
+      document.getElementById('selDriverName').innerText = activeV.driver;
+      document.getElementById('selDriverPhone').innerText = activeV.driver_phone;
+
+      const badge = document.getElementById('selVehicleBadge');
+      badge.innerText = activeV.alert_level.toUpperCase();
+      badge.className = `text-xs px-2 py-0.5 rounded font-mono font-bold ${activeV.alert_level === 'Critical' ? 'bg-rose-950 text-rose-400 border border-rose-800' : (activeV.alert_level === 'Warning' ? 'bg-amber-950 text-amber-400 border border-amber-800' : 'bg-emerald-950 text-emerald-400 border border-emerald-800')}`;
+
+      // 3 Detector Temps in Compartment Cutaway
+      document.getElementById('zoneTemp1').innerText = `${activeV.temp_front.toFixed(1)}°C`;
+      document.getElementById('zoneTemp2').innerText = `${activeV.temp_mid.toFixed(1)}°C`;
+      document.getElementById('zoneTemp3').innerText = `${activeV.temp_rear.toFixed(1)}°C`;
+
+      const z3 = document.getElementById('zoneBox3');
+      if (activeV.temp_rear >= -10.0) {
+        z3.className = 'rounded p-2 text-center transition-all border border-rose-500 bg-rose-950/70 pulse-danger';
+        playAlertTone(920, 0.3);
+      } else if (activeV.temp_rear > -15.0) {
+        z3.className = 'rounded p-2 text-center transition-all border border-rose-500/60 bg-rose-950/50';
+      } else if (activeV.temp_rear > -18.0) {
+        z3.className = 'rounded p-2 text-center transition-all border border-amber-500/60 bg-amber-950/50';
+      } else {
+        z3.className = 'rounded p-2 text-center transition-all border border-slate-700 bg-slate-900';
+      }
+
+      // Gradient & Door
+      document.getElementById('kpiGradient').innerText = `+${activeV.thermal_gradient.toFixed(1)}°C`;
+      document.getElementById('kpiGradientText').innerText = activeV.thermal_gradient > 3.0 ? 'Ventilation Disparity (Rear Hotspot)' : 'Balanced Internal Airflow';
+      
+      const doorText = document.getElementById('kpiDoorState');
+      const doorIcon = document.getElementById('kpiDoorIcon');
+      const doorSub = document.getElementById('kpiDoorSub');
+      if (activeV.door_status === 'Open') {
+        doorText.innerText = 'OPEN';
+        doorText.className = 'text-base font-bold text-rose-400';
+        doorIcon.innerText = '🔓';
+        doorSub.innerText = 'Direct Warm Air & Moisture Influx!';
+        doorSub.className = 'text-[10px] text-rose-400 font-bold block';
+      } else {
+        doorText.innerText = 'CLOSED';
+        doorText.className = 'text-base font-bold text-emerald-400';
+        doorIcon.innerText = '🔒';
+        doorSub.innerText = 'Chamber Sealed & Preserved';
+        doorSub.className = 'text-[10px] text-slate-400 block';
+      }
+
+      document.getElementById('kpiHumidity').innerText = `${activeV.humidity.toFixed(1)}%`;
+      document.getElementById('kpiSpeed').innerText = `${activeV.speed_kmh.toFixed(0)} km/h`;
+      document.getElementById('kpiBattery').innerText = `${activeV.battery_percent.toFixed(1)}%`;
+
+      // Update OpenStreetMap Highway Corridors & Moving Vehicle Pins
+      updateOpenStreetMap(fleet);
+
+      // Update All 4 Graphs
+      updateCharts(activeHist, fleetHist);
+
+      // Update Alerts Table
+      renderAlertsTable(data.active_alerts || []);
+    }
+
+    // ----------------- OPENSTREETMAP ROUTE LINES & PINS -----------------
+    function updateOpenStreetMap(fleet) {
+      if (!konguMap) return;
+
+      Object.values(fleet).forEach(v => {
+        // 1. Draw or Update Highway Route Line (Polylines)
+        if (v.waypoints && v.waypoints.length > 1) {
+          if (!routePolylines[v.vehicle_id]) {
+            routePolylines[v.vehicle_id] = L.polyline(v.waypoints, {
+              color: v.route_color || '#38bdf8',
+              weight: (v.vehicle_id === activeVehicleId ? 5 : 3.5),
+              opacity: (v.vehicle_id === activeVehicleId ? 0.95 : 0.65),
+              dashArray: (v.vehicle_id === 'TN-33-CC-204' ? '6, 6' : null)
+            }).addTo(konguMap);
+          } else {
+            routePolylines[v.vehicle_id].setStyle({
+              weight: (v.vehicle_id === activeVehicleId ? 5 : 3.5),
+              opacity: (v.vehicle_id === activeVehicleId ? 0.95 : 0.65)
+            });
+          }
+        }
+
+        // 2. Moving Vehicle Marker with live 3-detector status
+        if (!v.gps_lat || !v.gps_lng) return;
+
+        const isCrit = (v.alert_level === 'Critical' || v.door_status === 'Open');
+        const isWarn = (v.alert_level === 'Warning');
+        const pinColor = isCrit ? '#ef4444' : (isWarn ? '#f59e0b' : '#10b981');
+        const isSel = (v.vehicle_id === activeVehicleId);
+
+        const iconHtml = `
+          <div class="relative cursor-pointer">
+            <div class="w-7 h-7 rounded-full flex items-center justify-center text-white font-bold text-[11px] shadow-2xl transition-all ${isSel ? 'ring-4 ring-sky-400 ring-offset-2 ring-offset-slate-900 scale-110' : ''}" style="background-color: ${pinColor}">
+              🚚
+            </div>
+            ${isCrit ? '<span class="absolute -top-1 -right-1 w-3 h-3 bg-rose-500 rounded-full animate-ping"></span>' : ''}
+          </div>
+        `;
+
+        const icon = L.divIcon({ html: iconHtml, className: 'truck-marker', iconSize: [28, 28] });
+
+        if (lorryMarkers[v.vehicle_id]) {
+          lorryMarkers[v.vehicle_id].setLatLng([v.gps_lat, v.gps_lng]);
+          lorryMarkers[v.vehicle_id].setIcon(icon);
+        } else {
+          lorryMarkers[v.vehicle_id] = L.marker([v.gps_lat, v.gps_lng], { icon: icon }).addTo(konguMap);
+          lorryMarkers[v.vehicle_id].on('click', () => selectVehicle(v.vehicle_id));
+        }
+
+        lorryMarkers[v.vehicle_id].bindPopup(`
+          <div class="font-mono text-xs">
+            <b class="text-sky-600">${v.vehicle_id}</b> (${v.name})<br/>
+            <b>Route:</b> ${v.route_name}<br/>
+            <b>Detector 1 (Front):</b> ${v.temp_front.toFixed(1)}°C<br/>
+            <b>Detector 2 (Mid):</b> ${v.temp_mid.toFixed(1)}°C<br/>
+            <b>Detector 3 (Rear):</b> <span style="color: ${isCrit ? 'red' : 'inherit'}">${v.temp_rear.toFixed(1)}°C</span><br/>
+            <b>Door:</b> ${v.door_status} | <b>Speed:</b> ${v.speed_kmh} km/h
+          </div>
+        `);
+      });
+    }
+
+    // ----------------- GRAPH UPDATES WITH 3 TEMPERATURE DETECTORS -----------------
+    function updateCharts(activeHist, fleetHist) {
+      if (!activeHist || activeHist.length === 0) return;
+
+      const labels = activeHist.map(h => h.timestamp);
+
+      // Graph 1: 3 Temperature Detectors (Front, Mid, Rear)
+      multiSensorChart.data.labels = labels;
+      multiSensorChart.data.datasets[0].data = activeHist.map(h => h.temp_front);
+      multiSensorChart.data.datasets[1].data = activeHist.map(h => h.temp_mid);
+      multiSensorChart.data.datasets[2].data = activeHist.map(h => h.temp_rear);
+      multiSensorChart.data.datasets[3].data = labels.map(() => -18.0);
+      multiSensorChart.data.datasets[4].data = labels.map(() => -10.0);
+      multiSensorChart.update();
+
+      // Graph 2: Thermal Gradient (ΔT = Rear - Front)
+      gradientChart.data.labels = labels;
+      gradientChart.data.datasets[0].data = activeHist.map(h => h.gradient);
+      gradientChart.data.datasets[1].data = labels.map(() => 3.0);
+      gradientChart.update();
+
+      // Graph 3: Real Dynamic Multi-Lorry Comparison Curves (Using fleet_history)
+      if (fleetHist) {
+        fleetComparisonChart.data.labels = labels;
+        const v1Hist = fleetHist['TN-38-CC-101'] || [];
+        const v2Hist = fleetHist['TN-33-CC-204'] || [];
+        const v3Hist = fleetHist['TN-28-CC-415'] || [];
+        const v4Hist = fleetHist['TN-43-CC-309'] || [];
+
+        fleetComparisonChart.data.datasets[0].data = v1Hist.map(h => h.temp_avg);
+        fleetComparisonChart.data.datasets[1].data = v2Hist.map(h => h.temp_avg);
+        fleetComparisonChart.data.datasets[2].data = v3Hist.map(h => h.temp_avg);
+        fleetComparisonChart.data.datasets[3].data = v4Hist.map(h => h.temp_avg);
+        fleetComparisonChart.data.datasets[4].data = labels.map(() => -18.0);
+        fleetComparisonChart.update();
+      }
+
+      // Graph 4: Humidity & Door Opening Correlation
+      humidityDoorChart.data.labels = labels;
+      humidityDoorChart.data.datasets[0].data = activeHist.map(h => h.humidity);
+      humidityDoorChart.data.datasets[1].data = activeHist.map(h => h.door_status === 'Open' ? 1.0 : 0.0);
+      humidityDoorChart.update();
+    }
+
+    function renderAlertsTable(alerts) {
+      const tbody = document.getElementById('fleetAlertsTbody');
+      if (!alerts || alerts.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="10" class="p-3 text-center text-slate-500">All transport lorries operating within normal thermal thresholds (&le; -18&deg;C).</td></tr>';
+        return;
+      }
+
+      tbody.innerHTML = alerts.map(a => {
+        const isCrit = (a.alert_level === 'Critical' || a.door_status === 'Open');
+        const badgeCls = isCrit ? 'bg-rose-950 text-rose-300 border border-rose-800' : 'bg-amber-950 text-amber-300 border border-amber-800';
+
+        return `
+          <tr class="hover:bg-slate-900/50">
+            <td class="p-2.5 text-slate-400 font-mono">${a.timestamp}</td>
+            <td class="p-2.5 font-bold text-white cursor-pointer hover:underline" onclick="selectVehicle('${a.vehicle_id}')">${a.vehicle_id}</td>
+            <td class="p-2.5 text-slate-300 text-[11px]">${a.route}</td>
+            <td class="p-2.5 text-sky-400">${a.temp_front.toFixed(1)}&deg;C</td>
+            <td class="p-2.5 text-indigo-400">${a.temp_mid.toFixed(1)}&deg;C</td>
+            <td class="p-2.5 font-bold ${a.temp_rear > -15 ? 'text-rose-400' : 'text-slate-200'}">${a.temp_rear.toFixed(1)}&deg;C</td>
+            <td class="p-2.5 text-amber-400">+${a.gradient.toFixed(1)}&deg;C</td>
+            <td class="p-2.5 font-bold ${a.door_status === 'Open' ? 'text-rose-400' : 'text-emerald-400'}">${a.door_status}</td>
+            <td class="p-2.5 text-[11px] text-slate-400">${a.event_class}</td>
+            <td class="p-2.5">
+              <button onclick="ackFleetAlert('${a.id}')" class="px-2 py-0.5 rounded bg-sky-600 hover:bg-sky-500 text-white font-semibold text-[10px]">
+                Acknowledge
+              </button>
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    async function ackFleetAlert(aid) {
+      await fetch('/api/alerts/acknowledge', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ alert_id: aid, operator_name: 'Fleet Owner / Dispatcher', action_note: 'Contacted driver via wireless terminal.' })
+      });
+      pollFleet();
+    }
+
+    async function requestAIDiagnosis() {
+      const box = document.getElementById('aiAdvisoryBox');
+      const btn = document.getElementById('btnAIDiagnose');
+      btn.disabled = true;
+      btn.innerHTML = '<span class="animate-spin inline-block">&#8635;</span> Analyzing...';
+      box.innerText = "Querying Gemini AI Fleet Intelligence Model...";
+
+      try {
+        const res = await fetch('/api/ai/diagnose', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ vehicle_id: activeVehicleId })
+        });
+        if (res.ok) {
+          const data = await res.json();
+          box.innerText = data.advisory;
+        } else {
+          box.innerText = "AI Advisory temporarily unavailable.";
+        }
+      } catch (e) {
+        box.innerText = "Error requesting AI diagnosis: " + e;
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = '<span>&#9889;</span> Analyze Lorry';
+      }
+    }
+  </script>
+</body>
+</html>
